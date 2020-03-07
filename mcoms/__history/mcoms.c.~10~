@@ -1,0 +1,90 @@
+#include <mcoms.h>
+
+#include <string.h>
+#include <stdio.h>
+
+void setup()
+{
+   output_a(0x00);
+   output_b(0x00);
+   output_c(0x00);
+   output_d(0x00);
+   output_e(0x00);
+   
+   delay_ms(100);
+   
+   if(DEBUG)
+   {
+      fprintf(RS232,"********************************\r");
+      fprintf(RS232,"       Grupo APM (c) 2020       \r");
+      fprintf(RS232,"================================\r");
+      fprintf(RS232,"Bluetooth Basketball Score Board\r");
+      fprintf(RS232,"================================\r");
+      fprintf(RS232, "Version %s - rev %s \r", FW_VERSION, FW_REVISION);
+      fprintf(RS232,"********************************\r");
+      fprintf(RS232,"      CONSOLA DE DEPURACION     \r");
+   }
+   else
+   {
+      fputs("Grupo APM (c) 2020 :: BBSB 1.0 rev A",RS232);
+   }
+   
+   if(DEBUG) {fputs("> Habilitacion de interrupciones",RS232);}
+   enable_interrupts(INT_RDA);
+   enable_interrupts(INT_SSP);
+   enable_interrupts(GLOBAL);
+}
+
+void main()
+{
+   setup();
+   
+   TICK_TYPE CurrentTick,PreviousTick;
+
+   CurrentTick = PreviousTick = get_ticks();
+
+   while(TRUE)
+   {
+      CurrentTick = get_ticks();
+
+      if(GetTickDifference(CurrentTick, PreviousTick) >= (TICK_TYPE)TICKS_PER_SECOND)
+      {
+         timeTick();
+         PreviousTick = CurrentTick;
+      }
+
+      //TODO: User Code
+   }
+
+}
+
+#INT_RDA
+void  RDA_isr(void) 
+{
+   char cmd[10];
+   fgets(cmd,RS232);
+   parseCommand(cmd);
+}
+
+#INT_SSP
+void  SSP_isr(void) 
+{
+
+}
+
+TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick)
+{
+   return(currTick-prevTick);
+}
+
+void timeTick(void)
+{
+   //TODO: User Code
+}
+
+void parseCommand(char cmd[10])
+{
+   if(DEBUG){printf(RS232, ">Comando recibido: %s", cmd);}
+   
+   
+}

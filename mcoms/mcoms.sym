@@ -1,0 +1,202 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     @INTERRUPT_AREA
+029     @INTERRUPT_AREA
+02A     @INTERRUPT_AREA
+02B     @INTERRUPT_AREA
+02C-02F UPPER_TICKS_1
+030-039 cmd
+03A-043 rcmd
+044     cmdIndex
+045.0   cmdGet
+046-049 puertoA
+04A-04D puertoB
+04E-051 puertoC
+052-055 puertoD
+056-059 puertoE
+05A-05D puertoF
+05E-05F strtok.save
+060-063 MAIN.CurrentTick
+064-067 MAIN.PreviousTick
+068-06B GetTickDifference.currTick
+068     @delay_ms1.P1
+068     @PSTRINGCN7_9600_62_63.P2
+068     @GET_TICKS_1.@SCRATCH1
+068     @PSTRINGC7_9600_62_63.@SCRATCH1
+068     MAIN.@SCRATCH1
+069     @PSTRINGC7_9600_62_63.@SCRATCH2
+069     @PSTRINGCN7_9600_62_63.@SCRATCH1
+069     MAIN.@SCRATCH2
+06A     @PSTRINGC7_9600_62_63.@SCRATCH3
+06A     @PSTRINGCN7_9600_62_63.@SCRATCH2
+06A     MAIN.@SCRATCH3
+06B     @PSTRINGC7_9600_62_63.@SCRATCH4
+06B     @PSTRINGCN7_9600_62_63.@SCRATCH3
+06B     MAIN.@SCRATCH4
+06C-06F GetTickDifference.prevTick
+06C     @PSTRINGCN7_9600_62_63.@SCRATCH4
+070     RDA_isr.c
+071     RDA_isr.@SCRATCH1
+071     parseCommand.@SCRATCH1
+072     RDA_isr.@SCRATCH2
+072     parseCommand.@SCRATCH2
+073     RDA_isr.@SCRATCH3
+073     parseCommand.@SCRATCH3
+074     RDA_isr.@SCRATCH4
+074     parseCommand.@SCRATCH4
+075     RDA_isr.@SCRATCH5
+075     parseCommand.@SCRATCH5
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07F     @INTERRUPT_AREA
+0A0-0A9 parseCommand.c
+0B4     @I2C_WRITE_1.P1
+0B4     @PSTRINGC7_1.@SCRATCH1
+0B5     @PSTRINGC7_1.@SCRATCH2
+0B6     @PSTRINGC7_1.@SCRATCH3
+0B7     @PSTRINGC7_1.@SCRATCH4
+0FF     @INTERRUPT_AREA
+107.6   C1OUT
+108.6   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+17F     @INTERRUPT_AREA
+1FF     @INTERRUPT_AREA
+27F     @INTERRUPT_AREA
+2FF     @INTERRUPT_AREA
+37F     @INTERRUPT_AREA
+3FF     @INTERRUPT_AREA
+47F     @INTERRUPT_AREA
+4FF     @INTERRUPT_AREA
+57F     @INTERRUPT_AREA
+5FF     @INTERRUPT_AREA
+67F     @INTERRUPT_AREA
+6FF     @INTERRUPT_AREA
+77F     @INTERRUPT_AREA
+7FF     @INTERRUPT_AREA
+87F     @INTERRUPT_AREA
+8FF     @INTERRUPT_AREA
+97F     @INTERRUPT_AREA
+9FF     @INTERRUPT_AREA
+A7F     @INTERRUPT_AREA
+AFF     @INTERRUPT_AREA
+B7F     @INTERRUPT_AREA
+BFF     @INTERRUPT_AREA
+C7F     @INTERRUPT_AREA
+CFF     @INTERRUPT_AREA
+D7F     @INTERRUPT_AREA
+DFF     @INTERRUPT_AREA
+E7F     @INTERRUPT_AREA
+EFF     @INTERRUPT_AREA
+F7F     @INTERRUPT_AREA
+FFF     @INTERRUPT_AREA
+
+ROM Allocation:
+00005A  @const781.call
+000069  @const756.call
+00007A  @const758.call
+00008B  @const759.call
+00009C  @const760.call
+0000AD  @const761.call
+0000BE  @const762.call
+0000C9  @const763.call
+0000CB  @const764.call
+0000CC  @const767.call
+0000DD  @const768.call
+0000EE  @const769.call
+000101  @const771.call
+00010D  @const772.call
+00011E  @const773.call
+00012F  @const774.call
+000140  @PSTRINGC7_1
+0001B6  @I2C_WRITE_1
+0001EA  parseCommand
+00036E  doTest
+000403  @goto11291
+000414  RDA_isr
+000464  SSP_isr
+000468  @const782.call
+000472  @const783.call
+00047F  @const784.call
+00048C  @const785.call
+00049D  @const787.call
+0004A6  @const788.call
+0004AE  @const789.call
+0004B9  @const790.call
+0004C4  @const791.call
+0004CF  @const792.call
+0004DA  @const793.call
+0004E4  @const794.call
+0004ED  @const795.call
+0004F6  @const796.call
+000504  @const797.call
+00050F  @const798.call
+000517  @const799.call
+000522  @const800.call
+00052D  @const801.call
+000538  @const802.call
+000543  @const803.call
+00054D  @PSTRINGC7_9600_62_63
+0005A5  @PSTRINGCN7_9600_62_63
+0005FE  setup
+000619  @delay_ms1
+00076A  @GET_TICKS_1
+000792  GetTickDifference
+0007AA  timeTick
+000800  MAIN
+000800  @cinit1
+00082E  @cinit2
+
+Project Directory:
+    C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\
+
+Project Files:
+    mcoms.c                                                 [06-mar.-20 21:13  CRC=DEF934C8]
+    mcoms.h                                                 [06-mar.-20 21:13  CRC=2F0A7C40]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [12-nov.-13 14:35  CRC=6CB1A611]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul.-11 10:13  CRC=23EDEC8F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul.-10 09:27  CRC=897CEC6C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 13:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 13:24  CRC=4E4534F4]
+
+Source signature=F1C99B9B
+
+Units:
+    mcoms (main)
+
+Compiler Settings:
+    Processor:      PIC16F887
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   mcoms.xsym
+    Errors:      mcoms.err
+    Ext Symbols: mcoms.esym
+    INHX8:       mcoms.hex
+    Symbols:     mcoms.sym
+    List:        mcoms.lst
+    Debug/COFF:  mcoms.cof
+    Project:     mcoms.ccspjt
+    Call Tree:   mcoms.tre
+    Statistics:  mcoms.STA

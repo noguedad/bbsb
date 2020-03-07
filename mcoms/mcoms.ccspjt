@@ -1,0 +1,24 @@
+[PROJECT]
+Target=mcoms.hex
+Processor_Text=PIC16F887
+CCSVerions=5.015
+Compiler=PCM
+CCSVersion=5.015
+[Target Data]
+FileList=mcoms.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms]
+Type=4
+[mru-list]
+1=mcoms.c
+[Opened Files]
+1=mcoms.c
+2=mcoms.h
+3=
+4=
+[mcoms.c]
+Type=4
+[Units]
+Count=1
+1=mcoms (main)

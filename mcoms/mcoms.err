@@ -1,0 +1,18 @@
+--- Info 300 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 41(1,1): More info:   Timer 0 tick time is 128.00 us
+>>> Warning 230 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 55(40,41): String truncated
+>>> Warning 230 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 56(40,41): String truncated
+--- Info 300 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 60(17,24): More info:   First Declaration of PuertoA
+*** Error 31 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(3,10): Identifier is already used in this scope
+*** Error 48 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(12,19): Expecting a (
+*** Error 48 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(21,28): Expecting a (
+*** Error 48 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(30,37): Expecting a (
+*** Error 48 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(39,46): Expecting a (
+*** Error 48 "C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(48,55): Expecting a (
+*** Error 57 "mcoms.c" Line 35(12,13): Expecting a structure/union
+*** Error 57 "mcoms.c" Line 36(12,13): Expecting a structure/union
+*** Error 57 "mcoms.c" Line 37(12,13): Expecting a structure/union
+*** Error 57 "mcoms.c" Line 38(12,13): Expecting a structure/union
+*** Error 57 "mcoms.c" Line 41(12,13): Expecting a structure/union
+*** Error 57 "mcoms.c" Line 42(12,13): Expecting a structure/union
+*** Error 57 "mcoms.c" Line 43(12,13): Expecting a structure/union
+*** Error 57 "mcoms.c" Line 44(12,13): Expecting a structure/union
