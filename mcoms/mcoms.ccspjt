@@ -3,7 +3,7 @@ Target=mcoms.hex
 Processor_Text=PIC16F887
 CCSVerions=5.015
 Compiler=PCM
-CCSVersion=5.015
+CCSVersion=5.076
 [Target Data]
 FileList=mcoms.c
 [Directories]
@@ -17,8 +17,34 @@ Type=4
 2=mcoms.h
 3=
 4=
+t1=1
+t2=1
+Count=2
 [mcoms.c]
 Type=4
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=2
+D1=07-03-2020
+D1_L=4
+D1_L1=[82337]Project Opened.
+D1_L2=[82455]Started Editing.
+D1_L3=[82520]Stopped Editing.
+TotalEdit=2
+TotalDebug=0
+D1_E=2
+D1_D=0
+D1_L4=[82520]Project Closed.
+D2=08-03-2020
+D2_L=2
+D2_L1=[43444]Project Opened.
+D2_L2=[43595]Project Closed.
 [Units]
 Count=1
 1=mcoms (main)
+
+[defines]
+buildcount=1

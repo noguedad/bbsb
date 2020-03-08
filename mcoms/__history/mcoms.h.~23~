@@ -58,6 +58,7 @@ char  rcmd[10] = "\0\0\0\0\0\0\0\0\0\0";
 int8  cmdIndex = 0;
 int1  cmdGet   = false;
 
+enum ePuertos { PuertoA = 1, PuertoB, PuertoC, PuertoD, PuertoE, PuertoF };
 struct sPuerto
 {
    int a;

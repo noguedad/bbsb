@@ -1,10 +1,10 @@
 004-005 @READ_PROGRAM_MEMORY8.P1
 004-005 @WRITE_PROGRAM_MEMORY8.P2
-015     CCP_1
 015     CCP_1_LOW
+015     CCP_1
 016     CCP_1_HIGH
-01B     CCP_2_LOW
 01B     CCP_2
+01B     CCP_2_LOW
 01C     CCP_2_HIGH
 020     @INTERRUPT_AREA
 021     @INTERRUPT_AREA
@@ -30,36 +30,27 @@
 056-059 puertoE
 05A-05D puertoF
 05E-05F strtok.save
-060-063 MAIN.CurrentTick
-064-067 MAIN.PreviousTick
-068-06B GetTickDifference.currTick
-068     @delay_ms1.P1
-068     @PSTRINGCN7_9600_62_63.P2
-068     @GET_TICKS_1.@SCRATCH1
-068     @PSTRINGC7_9600_62_63.@SCRATCH1
-068     MAIN.@SCRATCH1
-069     @PSTRINGC7_9600_62_63.@SCRATCH2
-069     @PSTRINGCN7_9600_62_63.@SCRATCH1
-069     MAIN.@SCRATCH2
-06A     @PSTRINGC7_9600_62_63.@SCRATCH3
-06A     @PSTRINGCN7_9600_62_63.@SCRATCH2
-06A     MAIN.@SCRATCH3
-06B     @PSTRINGC7_9600_62_63.@SCRATCH4
-06B     @PSTRINGCN7_9600_62_63.@SCRATCH3
-06B     MAIN.@SCRATCH4
-06C-06F GetTickDifference.prevTick
-06C     @PSTRINGCN7_9600_62_63.@SCRATCH4
-070     RDA_isr.c
-071     RDA_isr.@SCRATCH1
-071     parseCommand.@SCRATCH1
-072     RDA_isr.@SCRATCH2
-072     parseCommand.@SCRATCH2
-073     RDA_isr.@SCRATCH3
-073     parseCommand.@SCRATCH3
-074     RDA_isr.@SCRATCH4
-074     parseCommand.@SCRATCH4
-075     RDA_isr.@SCRATCH5
-075     parseCommand.@SCRATCH5
+060-061 @sprintf_string
+062-065 MAIN.CurrentTick
+066-069 MAIN.PreviousTick
+06A     @delay_ms1.P1
+06A-06D GetTickDifference.currTick
+06A     @PSTRINGCN7_9600_62_63.P1
+06A     @GET_TICKS_1.@SCRATCH1
+06A     @PSTRINGC7_9600_62_63.@SCRATCH1
+06A     MAIN.@SCRATCH1
+06B     @PSTRINGC7_9600_62_63.@SCRATCH2
+06B     @PSTRINGCN7_9600_62_63.@SCRATCH1
+06B     MAIN.@SCRATCH2
+06C     @PSTRINGC7_9600_62_63.@SCRATCH3
+06C     @PSTRINGCN7_9600_62_63.@SCRATCH2
+06C     MAIN.@SCRATCH3
+06D     @PSTRINGC7_9600_62_63.@SCRATCH4
+06D     @PSTRINGCN7_9600_62_63.@SCRATCH3
+06D     MAIN.@SCRATCH4
+06E-071 GetTickDifference.prevTick
+06E     @PSTRINGCN7_9600_62_63.@SCRATCH4
+072     RDA_isr.c
 077     @SCRATCH
 078     @SCRATCH
 078     _RETURN_
@@ -67,11 +58,21 @@
 07A     @SCRATCH
 07F     @INTERRUPT_AREA
 0A0-0A9 parseCommand.c
-0B4     @I2C_WRITE_1.P1
-0B4     @PSTRINGC7_1.@SCRATCH1
-0B5     @PSTRINGC7_1.@SCRATCH2
-0B6     @PSTRINGC7_1.@SCRATCH3
-0B7     @PSTRINGC7_1.@SCRATCH4
+0A0     RDA_isr.@SCRATCH1
+0A1     RDA_isr.@SCRATCH2
+0A2     RDA_isr.@SCRATCH3
+0A3     RDA_isr.@SCRATCH4
+0A4     RDA_isr.@SCRATCH5
+0AA     @I2C_WRITEU_1.P1
+0AA     @PSTRINGC7_1.@SCRATCH1
+0AA     parseCommand.@SCRATCH1
+0AB     @PSTRINGC7_1.@SCRATCH2
+0AB     parseCommand.@SCRATCH2
+0AC     @PSTRINGC7_1.@SCRATCH3
+0AC     parseCommand.@SCRATCH3
+0AD     @PSTRINGC7_1.@SCRATCH4
+0AD     parseCommand.@SCRATCH4
+0AE     parseCommand.@SCRATCH5
 0FF     @INTERRUPT_AREA
 107.6   C1OUT
 108.6   C2OUT
@@ -107,76 +108,112 @@ E7F     @INTERRUPT_AREA
 EFF     @INTERRUPT_AREA
 F7F     @INTERRUPT_AREA
 FFF     @INTERRUPT_AREA
+107F     @INTERRUPT_AREA
+10FF     @INTERRUPT_AREA
+117F     @INTERRUPT_AREA
+11FF     @INTERRUPT_AREA
+127F     @INTERRUPT_AREA
+12FF     @INTERRUPT_AREA
+137F     @INTERRUPT_AREA
+13FF     @INTERRUPT_AREA
+147F     @INTERRUPT_AREA
+14FF     @INTERRUPT_AREA
+157F     @INTERRUPT_AREA
+15FF     @INTERRUPT_AREA
+167F     @INTERRUPT_AREA
+16FF     @INTERRUPT_AREA
+177F     @INTERRUPT_AREA
+17FF     @INTERRUPT_AREA
+187F     @INTERRUPT_AREA
+18FF     @INTERRUPT_AREA
+197F     @INTERRUPT_AREA
+19FF     @INTERRUPT_AREA
+1A7F     @INTERRUPT_AREA
+1AFF     @INTERRUPT_AREA
+1B7F     @INTERRUPT_AREA
+1BFF     @INTERRUPT_AREA
+1C7F     @INTERRUPT_AREA
+1CFF     @INTERRUPT_AREA
+1D7F     @INTERRUPT_AREA
+1DFF     @INTERRUPT_AREA
+1E7F     @INTERRUPT_AREA
+1EFF     @INTERRUPT_AREA
+1F7F     @INTERRUPT_AREA
+1FFF     @INTERRUPT_AREA
 
 ROM Allocation:
-00005A  @const781.call
-000069  @const756.call
-00007A  @const758.call
-00008B  @const759.call
-00009C  @const760.call
-0000AD  @const761.call
-0000BE  @const762.call
-0000C9  @const763.call
-0000CB  @const764.call
-0000CC  @const767.call
-0000DD  @const768.call
-0000EE  @const769.call
-000101  @const771.call
-00010D  @const772.call
-00011E  @const773.call
-00012F  @const774.call
-000140  @PSTRINGC7_1
-0001B6  @I2C_WRITE_1
-0001EA  parseCommand
-00036E  doTest
-000403  @goto11291
-000414  RDA_isr
-000464  SSP_isr
-000468  @const782.call
-000472  @const783.call
-00047F  @const784.call
-00048C  @const785.call
-00049D  @const787.call
-0004A6  @const788.call
-0004AE  @const789.call
-0004B9  @const790.call
-0004C4  @const791.call
-0004CF  @const792.call
-0004DA  @const793.call
-0004E4  @const794.call
-0004ED  @const795.call
-0004F6  @const796.call
-000504  @const797.call
-00050F  @const798.call
-000517  @const799.call
-000522  @const800.call
-00052D  @const801.call
-000538  @const802.call
-000543  @const803.call
-00054D  @PSTRINGC7_9600_62_63
-0005A5  @PSTRINGCN7_9600_62_63
-0005FE  setup
-000619  @delay_ms1
-00076A  @GET_TICKS_1
-000792  GetTickDifference
-0007AA  timeTick
+00005A  @const801.call
+000069  @const772.call
+00007A  @const777.call
+00008B  @const778.call
+00009C  @const779.call
+0000AD  @const780.call
+0000BE  @const781.call
+0000C9  @const782.call
+0000CB  @const783.call
+0000CC  @const786.call
+0000DD  @const787.call
+0000EE  @const788.call
+000101  @const790.call
+00010F  @const791.call
+00011B  @const792.call
+00012C  @const793.call
+00013D  @const794.call
+00014E  @PSTRINGC7_1
+0001C4  @I2C_WRITEU_1
+0001D6  parseCommand
+00035A  doTest
+0003C9  @goto48030
+0003DA  RDA_isr
+000430  SSP_isr
+000434  @const802.call
+00043E  @const803.call
+00044B  @const804.call
+000458  @const805.call
+000469  @const807.call
+000472  @const808.call
+00047A  @const809.call
+000485  @const810.call
+000490  @const811.call
+00049B  @const812.call
+0004A6  @const813.call
+0004B0  @const814.call
+0004B9  @const815.call
+0004C2  @const816.call
+0004D0  @const817.call
+0004DB  @const818.call
+0004E3  @const819.call
+0004EE  @const820.call
+0004F9  @const821.call
+000504  @const822.call
+00050F  @const823.call
+000519  @PSTRINGC7_9600_62_63
+000571  @PSTRINGCN7_9600_62_63
+0005CA  setup
+0005E5  @delay_ms1
+000737  @GET_TICKS_1
+000753  GetTickDifference
+00076B  timeTick
 000800  MAIN
 000800  @cinit1
-00082E  @cinit2
+00083F  @cinit2
 
 Project Directory:
-    C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\
+    C:\Users\nogue\Documents\GitHub\bbsb\mcoms\
 
 Project Files:
-    mcoms.c                                                 [06-mar.-20 21:13  CRC=DEF934C8]
-    mcoms.h                                                 [06-mar.-20 21:13  CRC=2F0A7C40]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [12-nov.-13 14:35  CRC=6CB1A611]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul.-11 10:13  CRC=23EDEC8F]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul.-10 09:27  CRC=897CEC6C]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 13:55  CRC=2D1F019F]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 13:24  CRC=4E4534F4]
+    mcoms.c                                                 [07-mar.-20 20:14  CRC=203912B0]
+    mcoms.h                                                 [07-mar.-20 22:54  CRC=57BFDC81]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [15-ene.-18 15:53  CRC=9C71CB72]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [26-mar.-15 12:34  CRC=C4814297]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-sep.-14 11:47  CRC=897CEC6C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 14:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 14:24  CRC=4E4534F4]
 
-Source signature=F1C99B9B
+Source signature=2C12552D
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=2F67
 
 Units:
     mcoms (main)
@@ -188,6 +225,7 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
+    Compile Mode:       CCS5
 
 Output Files:
     XREF file:   mcoms.xsym
