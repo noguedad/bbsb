@@ -1,0 +1,29 @@
+#include <mtime.h>
+
+#INT_RDA
+void  RDA_isr(void) 
+{
+
+}
+
+#INT_SSP
+void  SSP_isr(void) 
+{
+
+}
+
+void main()
+{
+
+	enable_interrupts(INT_RDA);
+	enable_interrupts(INT_SSP);
+	enable_interrupts(GLOBAL);
+
+	while(TRUE)
+	{
+
+
+		//TODO: User Code
+	}
+
+}

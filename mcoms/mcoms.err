@@ -1,14 +1,9 @@
-Compiling C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms on 07-mar.-20 at 22:54
+Compiling C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms on 09-mar.-20 at 21:46
 --- Info 300 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 41(1,1): More info:   Timer 0 tick time is 128.00 us
->>> Warning 230 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 56(40,41): String truncated
->>> Warning 230 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 57(40,41): String truncated
->>> Warning 230 "mcoms.c" Line 114(1,1): String truncated
->>> Warning 216 "mcoms.c" Line 203(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
->>> Warning 216 "mcoms.c" Line 203(1,2): Interrupts disabled during call to prevent re-entrancy:  (@I2C_WRITEU_1)
->>> Warning 202 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(21,28): Variable never used:   puertoC
->>> Warning 202 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(30,37): Variable never used:   puertoD
->>> Warning 202 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(39,46): Variable never used:   puertoE
->>> Warning 202 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 67(48,55): Variable never used:   puertoF
-      Memory usage:   ROM=25%      RAM=23% - 30%
-      0 Errors,  9 Warnings.
+>>> Warning 216 "mcoms.c" Line 559(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
+>>> Warning 216 "mcoms.c" Line 559(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
+>>> Warning 216 "mcoms.c" Line 559(1,2): Interrupts disabled during call to prevent re-entrancy:  (i2c_send)
+>>> Warning 216 "mcoms.c" Line 559(1,2): Interrupts disabled during call to prevent re-entrancy:  (sendN2Port)
+      Memory usage:   ROM=51%      RAM=23% - 33%
+      0 Errors,  4 Warnings.
 Build Successful.

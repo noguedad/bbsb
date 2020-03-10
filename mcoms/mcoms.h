@@ -1,7 +1,7 @@
 #include <16F887.h>
 
-#define FW_VERSION   "1.0"
-#define FW_REVISION  "A"
+#define FW_VERSION   "1.5"
+#define FW_REVISION  "D"
 
 //-- CONFIGURACION DE PIC --
 #device ADC=16
@@ -41,31 +41,81 @@
 #use timer  (timer=0,tick=100us,bits=32,NOISR)
 
 //-- DEFINICIONES --
-#define TICK_TYPE    unsigned int32
-#define I2C_TIMER    0x0A
-#define I2C_SCORE    0x0C
+#define TICK_TYPE       unsigned int32
+#define I2C_TIMER       0x0A
+#define I2C_SCORE       0x0C
 
 #define I2C_CMD_INIT    0xF0
 #define I2C_CMD_TEST    0xFF
+#define I2C_CMD_RESET   0xFD
+#define I2C_CMD_PER0    0x70
+#define I2C_CMD_PER1    0x71
+#define I2C_CMD_PER2    0x72
+#define I2C_CMD_PER3    0x73
+#define I2C_CMD_PER4    0x74
+#define I2C_CMD_MDON    0x75
+#define I2C_CMD_MDOF    0x76
+#define I2C_CMD_POS0    0x70
+#define I2C_CMD_POSL    0x71
+#define I2C_CMD_POSV    0x72
+#define I2C_CMD_CLON    0x73
+#define I2C_CMD_CLOF    0x74
+#define I2C_CMD_CVON    0x75
+#define I2C_CMD_CVOF    0x76
+#define I2C_CMD_BUZ1    0x81
+#define I2C_CMD_BUZ2    0x82
+#define I2C_CMD_BUZ3    0x83
 
-#define P_JUGADOR_D     puertoB
-#define P_JUGADOR_U     puertoA
-#define P_FALTASJ_D     PuertoC
+#define ON              1
+#define OFF             0
+#define DEFAULT_D       200
+#define I2CWAIT         50
+
+#define   PuertoA    1
+#define   PuertoB    2
+#define   PuertoC    3
+#define   PuertoD    4
+#define   PuertoE    5
+#define   PuertoF    6
 
 //-- DECLARACIONES --
-char  cmd[10]  = "\0\0\0\0\0\0\0\0\0\0";
-char  rcmd[10] = "\0\0\0\0\0\0\0\0\0\0";
-int8  cmdIndex = 0;
-int1  cmdGet   = false;
-
-struct sPuerto
+//Estructura para el puerto
+typedef struct sPort    
 {
    int a;
    int b;
    int c;
    int d;
-} puertoA, puertoB, puertoC, puertoD, puertoE, puertoF;
+} tPort;
 
+//Datos para la captura de comandos del RS232
+char  cmd[10]  = "\0\0\0\0\0\0\0\0\0";
+char  rcmd[10] = "\0\0\0\0\0\0\0\0\0";
+int8  cmdIndex = 0;
+int1  cmdGet   = false;
+
+//Puertos de Displays
+tPort pNJugadorU;
+tPort pNJugadorD;
+tPort pFJugadorU;
+tPort pFJugadorD;
+
+//Tiempo
+int8 m_d=0;
+int8 m_u=0;
+int8 s_d=0;
+int8 s_u=0;
+int1 enableTime = false;
+
+//Tiro
+int8 sh_d=0;
+int8 sh_u=0;
+int1 enableShot = false;
+
+int1 pauseTime = false;
+
+int16 scoreL =0;
+int16 scoreV =0;
 
 //-- PROTOTIPOS --
 TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick);
@@ -74,3 +124,15 @@ void SSP_isr(void);
 void timeTick(void);
 void parseCommand(void);
 void doTest(void);
+void showNumber(int8, tPort);
+int8  char2int(char); 
+void doReset(void);
+void sendN2Port(int8, int8, int8);
+void timeSet(int8, int8, int8, int8);
+void shotSet(int8, int8);
+void timePass();
+void shotPass();
+void doBuzz(int);
+void showScoreL(void);
+void showScoreV(void);
+void i2c_send(int8, int8);

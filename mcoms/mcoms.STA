@@ -1,104 +1,136 @@
 
-ROM used:   2079/8192 (25%)
-            2225/8192 (27%) including unused fragments
+ROM used:   4195/8192 (51%)
+            4587/8192 (56%) including unused fragments
 
-            1.3 Average locations per line
-            11.9 Average locations per statement
+            2.1 Average locations per line
+            9.0 Average locations per statement
 
-RAM used:   83/368 (23%) at main() level
-            111/368 (30%) worst case
+RAM used:   85/368 (23%) at main() level
+            121/368 (33%) worst case
 
-Stack used: 3 worst case (1 in main + 2 for interrupts)
+Stack used: 7 worst case (3 in main + 4 for interrupts)
 Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  204   175 100  mcoms.c
-   77     0   0  mcoms.h
+  560   466 100  mcoms.c
+  139     0   0  mcoms.h
   786     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h
   435     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h
    32     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h
    28     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h
    37     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h
 ----- -----
- 1599   175 Total
+ 2017   466 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
- Inline         1             @delay_ms1
-0     18   1    1             @I2C_WRITEU_1
-0     28   1    1             @GET_TICKS_1
-0    365  18    0   1661  3.9  setup
-0     17   1    0             @const772
-0     88   4    4             @PSTRINGC7_9600_62_63
-0     17   1    0             @const777
-0     17   1    0             @const778
-0     17   1    0             @const779
-0     17   1    0             @const780
-0     11   1    0             @const781
-0      2   0    0             @const782
-0      1   0    0             @const783
-0     89   4    5             @PSTRINGCN7_9600_62_63
-0     17   1    0             @const786
-0     17   1    0             @const787
-0     19   1    0             @const788
-0    118   6    4             @PSTRINGC7_1
-0     14   1    0             @const790
-0     12   1    0             @const791
-0     17   1    0             @const792
-0     17   1    0             @const793
-0     17   1    0             @const794
-1    177   9   12    226  4.0  MAIN
-0     86   4   14    409  5.5  RDA_isr
-0     15   1    0             @const801
+0     20   0    1             @delay_ms1
+0     18   0    1     14  0.8  @I2C_WRITEU_1
+0     28   1    1    333  7.3  @GET_TICKS_1
+0    457  11    0   2472  3.9  setup
+0     17   0    0             @const809
+0     88   2    4             @PSTRINGC7_9600_62_63
+0     17   0    0             @const814
+0     17   0    0             @const815
+0     17   0    0             @const816
+0     17   0    0             @const817
+0     11   0    0             @const818
+0      2   0    0             @const819
+0      1   0    0             @const820
+0     94   2    5             @PSTRINGCN7_9600_62_63
+0     17   0    0             @const823
+0     17   0    0             @const824
+0     19   0    0             @const825
+0    118   3    4             @PSTRINGC7_1
+0     14   0    0     27  1.0  @const827
+0     12   0    0     27  1.0  @const828
+0     17   0    0    409  5.5  @const829
+0     17   0    0    228  3.3  @const830
+0     14   0    0    463  5.5  @const831
+0     17   0    0     70  1.8  @const832
+2    491  12   12    255  4.5  MAIN
+0     88   2    9    409  5.5  RDA_isr
+0     14   0    0     70  1.8  @const839
 0      4   0    0      5  1.0  SSP_isr
 0     24   1    8     56  3.4  GetTickDifference
-0      3   0    0      5  1.0  timeTick
- Inline         0    423  2.3  doTest
-0     10   0    0             @const802
-0     13   1    0             @const803
-0     13   1    0             @const804
-0     17   1    0             @const805
-0    499  24   15   2310  4.9  parseCommand
-0      9   0    0             @const807
-0      8   0    0             @const808
-0     11   1    0             @const809
-0     11   1    0             @const810
-0     11   1    0             @const811
-0     11   1    0             @const812
-0     10   0    0             @const813
-0      9   0    0             @const814
-0      9   0    0             @const815
-0     14   1    0             @const816
-0     11   1    0             @const817
-0      8   0    0             @const818
-0     11   1    0             @const819
-0     11   1    0             @const820
-0     11   1    0             @const821
-0     11   1    0             @const822
-0     10   0    0             @const823
-0     17   1    0             @goto48030
- Inline         0             @cinit1
+ Inline         0     50  1.7  timeTick
+ Inline         1    618  4.2  doTest
+0     10   0    0    154  3.7  @const840
+0     13   0    0    154  3.7  @const841
+0     13   0    0    683  4.3  @const842
+0     17   0    0    154  3.7  @const843
+0     21   1    2     78  1.6  doBuzz
+1   1717  41   15   7748  6.9  parseCommand
+0     16   0    0    154  3.7  @const846
+1      8   0    0    154  3.7  @goto60643
+0      8   0    0     70  1.8  @const848
+0      8   0    0     70  1.8  @const849
+0      8   0    0    654  4.3  @const850
+0      9   0    0     70  1.8  @const851
+0     10   0    0   3282  4.9  @const852
+0      9   0    0     70  1.8  @const853
+0      8   0    0    514  3.8  @const854
+0     11   0    0   3447  4.9  @const855
+0     11   0    0    154  3.7  @const856
+0     11   0    0    463  3.7  @const857
+0     11   0    0    154  3.7  @const858
+0      8   0    0    154  3.7  @const859
+0     10   0    0    154  3.7  @const860
+0      9   0    0   1046  4.9  @const861
+0      9   0    0    154  3.7  @const862
+0     10   0    0             @const863
+0      7   0    0    463  3.7  @const864
+0      7   0    0             @const865
+0      7   0    0     70  1.8  @const866
+0      7   0    0             @const867
+1      9   0    0     70  1.8  @goto60855
+0     13   0    0   1046  4.9  @const869
+0     14   0    0     70  1.8  @const870
+0     11   0    0     70  1.8  @const871
+0      8   0    0    463  3.7  @const872
+0     11   0    0     70  1.8  @const873
+0     11   0    0     70  1.8  @const874
+0     11   0    0    407  3.8  @const875
+0     11   0    0     70  1.8  @const876
+0      8   0    0   1046  4.9  @const877
+0     10   0    0     70  1.8  @const878
+0     12   0    0     70  1.8  @const879
+0      1   0    0      3  0.0  showScoreL
+0      1   0    0      3  0.0  showScoreV
+ Inline         2    207  2.4  shotSet
+ Inline         4    561  4.1  timeSet
+ Inline         2    461  4.9  shotPass
+ Inline         4   1275  5.6  timePass
+0    135   3    6   1046  4.9  showNumber
+0     13   0    0      3  0.0  @goto61096
+0     34   1    6    207  2.4  @WRITEBITA
+0     64   2    1    463  3.7  char2int
+0     14   0    0    461  4.9  @goto61135
+ Inline         0    108  1.7  doReset
+0     15   0    5    112  3.8  sendN2Port
+0     19   0    2     80  2.0  i2c_send
+ Inline         0    154  3.7  @cinit1
 
 Program metrics:
-    Functions               8
-    Statements              175
-    Comments                217
-    Volume (V)              6914
-    Difficulty (D)          22.5
-    Effort to implement (E) 155586
-    Time to implement (T)   2 hours, 24 minutes
-    Est Delivered Bugs (B)  1
-    Cyclomatic Complexity   50
-    Maintainability (MI)    133
+    Functions               68
+    Statements              466
+    Comments                224
+    Volume (V)              61721
+    Difficulty (D)          224.1
+    Effort to implement (E) 13833657
+    Time to implement (T)   213 hours, 29 minutes
+    Est Delivered Bugs (B)  19
+    Cyclomatic Complexity   292
+    Maintainability (MI)    120
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
 00004-00059    86  0  
-0005A-007FF  1812  146  
-00800-00FFF   177  1871  
-01000-017FF     0  2048  
+0005A-007FF  1880  78  
+00800-00FFF  1734  314  
+01000-017FF   491  1557  
 01800-01FFF     0  2048  
 
 

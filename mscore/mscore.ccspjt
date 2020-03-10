@@ -1,0 +1,59 @@
+[PROJECT]
+Target=mscore.hex
+Processor_Text=PIC16F887
+CCSVerions=5.076
+Compiler=PCM
+CCSVersion=5.076
+[Target Data]
+FileList=mscore.c
+[Directories]
+Include=
+[C:\Users\nogue\Documents\GitHub\bbsb\mscore\mscore]
+Type=4
+[mru-list]
+1=mscore.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=09-03-2020
+D1_L=18
+D1_L1=[70584]Project Opened.
+D1_L2=[70662]Started Editing.
+D1_L3=[72559]Stopped Editing.
+TotalEdit=42
+TotalDebug=0
+D1_E=42
+D1_D=0
+D1_L4=[72561]Project Closed.
+D1_L5=[73402]Project Opened.
+D1_L6=[73786]Started Editing.
+D1_L7=[74092]Stopped Editing.
+D1_L8=[74331]Started Editing.
+D1_L9=[74816]Stopped Editing.
+D1_L10=[74816]Project Closed.
+D1_L11=[76461]Project Opened.
+D1_L12=[76475]Project Closed.
+D1_L13=[78321]Project Opened.
+D1_L14=[78325]Started Editing.
+D1_L15=[78336]Stopped Editing.
+D1_L16=[78336]Project Closed.
+D1_L17=[78339]Project Opened.
+D1_L18=[78346]Project Closed.
+
+[Opened Files]
+1=mscore.c
+t1=1
+Count=2
+2=mscore.h
+t2=1
+[mscore.c]
+Type=4
+
+[defines]
+buildcount=7
+[Units]
+Count=1
+1=mscore (main)

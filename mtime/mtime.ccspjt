@@ -1,0 +1,115 @@
+[PROJECT]
+Target=mtime.hex
+Processor_Text=PIC16F887
+CCSVerions=5.076
+Compiler=PCM
+CCSVersion=5.076
+[Target Data]
+FileList=mtime.c
+[Directories]
+Include=
+[C:\Users\nogue\Documents\GitHub\bbsb\mtime\mtime]
+Type=4
+[mru-list]
+1=mtime.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=09-03-2020
+D1_L=74
+D1_L1=[40734]Project Opened.
+D1_L2=[40754]Started Editing.
+D1_L3=[41720]Stopped Editing.
+D1_L4=[42214]Started Editing.
+D1_L5=[42840]Stopped Editing.
+D1_L6=[42948]Started Editing.
+D1_L7=[43622]Stopped Editing.
+D1_L8=[44277]Started Editing.
+D1_L9=[44807]Stopped Editing.
+D1_L10=[44926]Started Editing.
+D1_L11=[47656]Stopped Editing.
+D1_L12=[47661]Started Editing.
+D1_L13=[47839]Stopped Editing.
+TotalEdit=149
+TotalDebug=0
+D1_E=149
+D1_D=0
+D1_L14=[47839]Project Closed.
+D1_L15=[47839]Project Opened.
+D1_L16=[47843]Project Closed.
+D1_L17=[48108]Project Opened.
+D1_L18=[48123]Started Editing.
+D1_L19=[48806]Stopped Editing.
+D1_L20=[48976]Started Editing.
+D1_L21=[49350]Stopped Editing.
+D1_L22=[49350]Project Closed.
+D1_L23=[49495]Project Opened.
+D1_L24=[49637]Started Editing.
+D1_L25=[50126]Stopped Editing.
+D1_L26=[50126]Project Closed.
+D1_L27=[50399]Project Opened.
+D1_L28=[50799]Started Editing.
+D1_L29=[51094]Stopped Editing.
+D1_L30=[51094]Project Closed.
+D1_L31=[51932]Project Opened.
+D1_L32=[51958]Started Editing.
+D1_L33=[52129]Stopped Editing.
+D1_L34=[52129]Project Closed.
+D1_L35=[54606]Project Opened.
+D1_L36=[54619]Started Editing.
+D1_L37=[54919]Stopped Editing.
+D1_L38=[54920]Project Closed.
+D1_L39=[55449]Project Opened.
+D1_L40=[55481]Started Editing.
+D1_L41=[55624]Stopped Editing.
+D1_L42=[55624]Project Closed.
+D1_L43=[55633]Project Opened.
+D1_L44=[55641]Started Editing.
+D1_L45=[55962]Stopped Editing.
+D1_L46=[60226]Started Editing.
+D1_L47=[60598]Stopped Editing.
+D1_L48=[64340]Started Editing.
+D1_L49=[65110]Stopped Editing.
+D1_L50=[66192]Started Editing.
+D1_L51=[66522]Stopped Editing.
+D1_L52=[66701]Started Editing.
+D1_L53=[67369]Stopped Editing.
+D1_L54=[67605]Project Closed.
+D1_L55=[67620]Project Opened.
+D1_L56=[67629]Started Editing.
+D1_L57=[68250]Stopped Editing.
+D1_L58=[70299]Project Closed.
+D1_L59=[74816]Project Opened.
+D1_L60=[74825]Started Editing.
+D1_L61=[75322]Stopped Editing.
+D1_L62=[75322]Project Closed.
+D1_L63=[75349]Project Opened.
+D1_L64=[75359]Project Closed.
+D1_L65=[75674]Project Opened.
+D1_L66=[75694]Started Editing.
+D1_L67=[76387]Stopped Editing.
+D1_L68=[76461]Project Closed.
+D1_L69=[78244]Project Opened.
+D1_L70=[78270]Started Editing.
+D1_L71=[78321]Stopped Editing.
+D1_L72=[78321]Project Closed.
+D1_L73=[78336]Project Opened.
+D1_L74=[78339]Project Closed.
+
+[Opened Files]
+1=mtime.c
+t1=1
+Count=2
+2=mtime.h
+t2=1
+[mtime.c]
+Type=4
+
+[defines]
+buildcount=43
+[Units]
+Count=1
+1=mtime (main)

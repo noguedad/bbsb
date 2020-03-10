@@ -1,0 +1,8 @@
+Compiling C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms on 08-mar.-20 at 20:42
+--- Info 300 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 41(1,1): More info:   Timer 0 tick time is 128.00 us
+>>> Warning 230 "mcoms.c" Line 103(1,1): String truncated
+>>> Warning 216 "mcoms.c" Line 192(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
+>>> Warning 216 "mcoms.c" Line 192(1,2): Interrupts disabled during call to prevent re-entrancy:  (@I2C_WRITEU_1)
+      Memory usage:   ROM=24%      RAM=16% - 21%
+      0 Errors,  3 Warnings.
+Build Successful.

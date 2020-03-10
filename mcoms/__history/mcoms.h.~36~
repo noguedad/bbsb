@@ -1,0 +1,76 @@
+#include <16F887.h>
+
+#define FW_VERSION   "1.0"
+#define FW_REVISION  "A"
+
+//-- CONFIGURACION DE PIC --
+#device ADC=16
+
+#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES NOPUT                    //No Power Up Timer
+#FUSES NOMCLR                   //Master Clear pin used for I/O
+#FUSES NOPROTECT                //Code not protected from reading
+#FUSES NOCPD                    //No EE protection
+#FUSES NOBROWNOUT               //No brownout reset
+#FUSES IESO                     //Internal External Switch Over mode enabled
+#FUSES FCMEN                    //Fail-safe clock monitor enabled
+#FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+#FUSES BORV40                   //Brownout reset at 4.0V
+#FUSES NOWRT                    //Program memory not write protected
+
+#use delay(internal=8MHz)
+
+//-- CONFIGURACION DE IO --
+#use FIXED_IO( A_outputs=PIN_A7,PIN_A6,PIN_A5,PIN_A4 )
+#use FIXED_IO( B_outputs=PIN_B7,PIN_B6,PIN_B5,PIN_B4,PIN_B3,PIN_B2,PIN_B1,PIN_B0 )
+#use FIXED_IO( C_outputs=PIN_C5 )
+#use FIXED_IO( D_outputs=PIN_D7,PIN_D6,PIN_D5,PIN_D4,PIN_D3,PIN_D2,PIN_D1,PIN_D0 )
+#use FIXED_IO( E_outputs=PIN_E0 )
+
+//-- DEFINICION DE PINES --
+#define I2C_SCL   PIN_C3
+#define I2C_SDA   PIN_C4
+#define RS232_TX  PIN_C6
+#define RS232_RX  PIN_C7
+#define DISPLAY   PIN_E0
+#define DEBUG     input_state(PIN_C2)
+
+//-- CONFIGURACION DE PUERTOS Y TIMERS --
+#use rs232  (baud=9600,parity=N,xmit=RS232_TX,rcv=RS232_RX,bits=8,stream=RS232)
+#use i2c    (Master,Fast,sda=I2C_SDA,scl=I2C_SCL)
+#use timer  (timer=0,tick=100us,bits=32,NOISR)
+
+//-- DEFINICIONES --
+#define TICK_TYPE       unsigned int32
+#define I2C_TIMER       0x0A
+#define I2C_SCORE       0x0C
+
+#define I2C_CMD_INIT    0xF0
+#define I2C_CMD_TEST    0xFF
+
+//-- DECLARACIONES --
+struct sPuerto
+{
+   int a;
+   int b;
+   int c;
+   int d;
+};
+
+typedef sPuerto puerto;
+
+char  cmd[10]  = "\0\0\0\0\0\0\0\0\0";
+char  rcmd[10] = "\0\0\0\0\0\0\0\0\0";
+int8  cmdIndex = 0;
+int1  cmdGet   = false;
+
+
+
+
+//-- PROTOTIPOS --
+TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick);
+void RDA_isr(void);
+void SSP_isr(void);
+void timeTick(void);
+void parseCommand(void);
+void doTest(void);

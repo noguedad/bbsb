@@ -1,0 +1,7 @@
+Compiling C:\Users\nogue\Documents\GitHub\bbsb\mscore\mscore on 09-mar.-20 at 21:45
+>>> Warning 216 "mscore.c" Line 380(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
+>>> Warning 216 "mscore.c" Line 380(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGCN7_9600_62_63)
+>>> Warning 216 "mscore.c" Line 380(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
+      Memory usage:   ROM=42%      RAM=20% - 29%
+      0 Errors,  3 Warnings.
+Build Successful.
