@@ -40,8 +40,8 @@
 06A     SSP_isr.state
 06A     RDA_isr.c
 06B     parseI2CCommand.c
-06B     @I2C_WRITE_1.P1
 06B-074 parseCommand.c
+06B     @I2C_WRITE_1.P1
 06B     RDA_isr.@SCRATCH1
 06B     SSP_isr.@SCRATCH1
 06C     @PSTRINGCN7_9600_62_63.P1
@@ -153,7 +153,7 @@ FFF     @INTERRUPT_AREA
 1FFF     @INTERRUPT_AREA
 
 ROM Allocation:
-00005A  @const798.call
+00005A  @const797.call
 000068  @const772.call
 000079  @const777.call
 00008A  @const778.call
@@ -165,82 +165,81 @@ ROM Allocation:
 0000CB  @const786.call
 0000DC  @const787.call
 0000ED  @const788.call
-000100  @const790.call
-00010B  @const791.call
-000119  @const792.call
-000127  @const793.call
-000138  @PSTRINGC7_1
-0001AE  char2int
-0001EE  @goto29622
-0001FC  @WRITEBITA
-00021E  showNumber
-0002A5  @goto29584
-0002B2  @delay_ms1
-0002C6  doTest
-00038E  doReset
-0003A2  parseCommand
-0005E9  @goto29419
-0005F3  RDA_isr
-000643  @PSTRINGCN7_9600_62_63
-0006A1  @PRINTF_X_9600_62_63
-0006C4  @const801.call
-0006CF  @const806.call
-0006D8  @const807.call
-0006E1  @const808.call
-0006EA  @const809.call
-0006F7  @const810.call
-000704  @const811.call
-000710  @const812.call
-00071E  @const813.call
-00072B  @const814.call
-000739  @const815.call
-000744  @const816.call
-00074F  @const817.call
-00075A  @const818.call
-000765  @const819.call
-000770  @const820.call
-00077B  @const821.call
-000785  @const824.call
-000795  @const826.call
-00079E  @const827.call
-0007AB  @const828.call
-0007B8  @const829.call
-0007C4  @const830.call
-0007D2  @const831.call
-0007DF  @const832.call
-0007ED  @const833.call
-0007F9  @const834.call
+0000F8  @const790.call
+000106  @const791.call
+000114  @const792.call
+000125  @PSTRINGC7_1
+00019B  char2int
+0001DB  @goto64191
+0001E9  @WRITEBITA
+00020B  showNumber
+000292  @goto64140
+00029F  @delay_ms1
+0002B3  doTest
+00037B  doReset
+00038F  parseCommand
+0005D6  @goto63975
+0005E0  RDA_isr
+000630  @PSTRINGCN7_9600_62_63
+00068E  @PRINTF_X_9600_62_63
+0006B1  @const800.call
+0006BC  @const805.call
+0006C5  @const806.call
+0006CE  @const807.call
+0006D7  @const808.call
+0006E4  @const809.call
+0006F1  @const810.call
+0006FD  @const811.call
+00070B  @const812.call
+000718  @const813.call
+000726  @const814.call
+000731  @const815.call
+00073C  @const816.call
+000747  @const817.call
+000752  @const818.call
+00075D  @const819.call
+000768  @const820.call
+000772  @const823.call
+000782  @const825.call
+00078B  @const826.call
+000798  @const827.call
+0007A5  @const828.call
+0007B1  @const829.call
+0007BF  @const830.call
+0007CC  @const831.call
+0007DA  @const832.call
+0007E6  @const833.call
+0007EA  @const834.call
+0007EE  @const835.call
+0007F2  @const836.call
+0007F6  @const837.call
+0007FA  @const838.call
 000800  SSP_isr
 000823  @I2C_WRITE_1
 000879  parseI2CCommand
-000ACA  @const835.call
-000ACE  @const836.call
-000AD2  @const837.call
-000AD6  @const838.call
-000ADA  @const839.call
-000ADE  @const850.call
-000AE6  @PSTRINGC7_9600_62_63
-000B3E  setup
-000D2A  MAIN
-000D2A  @cinit1
-000D65  @cinit2
+000ACA  @const849.call
+000AD2  @PSTRINGC7_9600_62_63
+000B2A  setup
+000CFE  MAIN
+000CFE  @cinit1
+000D39  @cinit2
 
 Project Directory:
     C:\Users\nogue\Documents\GitHub\bbsb\mscore\
 
 Project Files:
-    mscore.c                                                [09-mar.-20 20:44  CRC=04B38359]
-    mscore.h                                                [09-mar.-20 21:45  CRC=A05B1E51]
+    mscore.c                                                [11-mar.-20 22:16  CRC=83B4764A]
+    mscore.h                                                [11-mar.-20 22:16  CRC=A05B1E51]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [15-ene.-18 16:53  CRC=9C71CB72]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [26-mar.-15 13:34  CRC=C4814297]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-sep.-14 12:47  CRC=897CEC6C]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 15:55  CRC=2D1F019F]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 15:24  CRC=4E4534F4]
 
-Source signature=592807A6
+Source signature=D828FA97
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=4E7C
+Hex file CRC=EC0F
 
 Units:
     mscore (main)

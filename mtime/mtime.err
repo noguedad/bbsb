@@ -1,7 +1,7 @@
-Compiling C:\Users\nogue\Documents\GitHub\bbsb\mtime\mtime on 09-mar.-20 at 21:45
->>> Warning 216 "mtime.c" Line 427(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
->>> Warning 216 "mtime.c" Line 427(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGCN7_9600_62_63)
->>> Warning 216 "mtime.c" Line 427(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
+Compiling C:\Users\nogue\Documents\GitHub\bbsb\mtime\mtime on 11-mar.-20 at 22:18
+>>> Warning 216 "mtime.c" Line 422(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
+>>> Warning 216 "mtime.c" Line 422(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGCN7_9600_62_63)
+>>> Warning 216 "mtime.c" Line 422(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
       Memory usage:   ROM=41%      RAM=19% - 26%
       0 Errors,  3 Warnings.
 Build Successful.

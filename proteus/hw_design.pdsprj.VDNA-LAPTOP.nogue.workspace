@@ -32,7 +32,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="60" flags="00008023" y="414" h="250" pid="0" iid="41">
+   <POPUP w="450" x="124" flags="00008023" y="450" h="250" pid="0" iid="41">
     <PROPERTIES>
      <ITEM name="AutoEcho">1</ITEM>
      <ITEM name="HexMode">0</ITEM>
@@ -250,7 +250,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="68" flags="00000023" y="169" h="250" pid="0" iid="40">
+   <POPUP w="450" x="115" flags="00000023" y="145" h="250" pid="0" iid="40">
     <PROPERTIES>
      <ITEM name="ComboBox1000">S</ITEM>
      <ITEM name="ComboBox1001">Sr</ITEM>

@@ -17,13 +17,13 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=1
+Days=2
 D1=09-03-2020
 D1_L=18
 D1_L1=[70584]Project Opened.
 D1_L2=[70662]Started Editing.
 D1_L3=[72559]Stopped Editing.
-TotalEdit=42
+TotalEdit=49
 TotalDebug=0
 D1_E=42
 D1_D=0
@@ -42,18 +42,30 @@ D1_L15=[78336]Stopped Editing.
 D1_L16=[78336]Project Closed.
 D1_L17=[78339]Project Opened.
 D1_L18=[78346]Project Closed.
+D2=11-03-2020
+D2_L=8
+D2_L1=[70803]Project Opened.
+D2_L2=[70833]Started Editing.
+D2_L3=[71083]Stopped Editing.
+D2_E=7
+D2_D=0
+D2_L4=[71083]Project Closed.
+D2_L5=[80112]Project Opened.
+D2_L6=[80127]Started Editing.
+D2_L7=[80224]Stopped Editing.
+D2_L8=[80224]Project Closed.
 
 [Opened Files]
 1=mscore.c
-t1=1
+t1=251
 Count=2
 2=mscore.h
-t2=1
+t2=251
 [mscore.c]
 Type=4
 
 [defines]
-buildcount=7
+buildcount=9
 [Units]
 Count=1
 1=mscore (main)

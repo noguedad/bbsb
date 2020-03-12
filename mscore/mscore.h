@@ -1,7 +1,7 @@
 #include <16F887.h>
 
-#define FW_VERSION   "1.5"
-#define FW_REVISION  "D"
+#define FW_VERSION   "2.0"
+#define FW_REVISION  "F"
 
 //-- CONFIGURACION DE PIC --
 #device ADC=16
@@ -34,10 +34,10 @@
 #define RS232_RX  PIN_C7
 #define DISPLAY   PIN_E0
 #define DEBUG     input_state(PIN_A3)
-#define POSLOCAL  PIN_E1
-#define CENLOCAL  PIN_E2
-#define CENVISITA PIN_C2
-#define POSVISITA PIN_C1
+#define POSLOCAL  PIN_C1
+#define CENLOCAL  PIN_C2
+#define CENVISITA PIN_E2
+#define POSVISITA PIN_E1
 
 #define I2C_TIMER       0x0A
 #define I2C_SCORE       0x0C

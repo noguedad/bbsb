@@ -1,7 +1,7 @@
 ÀÄmscore
    ÃÄMAIN  1/91  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
-   ³  ÀÄsetup  1/492  Ram=0
+   ³  ÀÄsetup  1/468  Ram=0
    ³     ÃÄ@delay_ms1  0/20  Ram=1
    ³     ÃÄ@PSTRINGC7_9600_62_63  1/88  Ram=4
    ³     ÃÄ@PSTRINGC7_9600_62_63  1/88  Ram=4
@@ -14,7 +14,6 @@
    ³     ÃÄ@PSTRINGC7_9600_62_63  1/88  Ram=4
    ³     ÃÄ@PSTRINGC7_9600_62_63  1/88  Ram=4
    ³     ÃÄ@PSTRINGC7_9600_62_63  1/88  Ram=4
-   ³     ÃÄ@PSTRINGC7_1  0/118  Ram=4
    ³     ÃÄ@PSTRINGC7_1  0/118  Ram=4
    ³     ÃÄ@delay_ms1  0/20  Ram=1
    ³     ÃÄ@PSTRINGC7_1  0/118  Ram=4
@@ -27,11 +26,11 @@
    ÃÄRDA_isr  0/80  Ram=6
    ³  ÃÄparseCommand  0/583  Ram=21
    ³  ³  ÃÄ@PSTRINGC7_1  0/118  Ram=4
-   ³  ³  ÃÄ@goto29419  0/10  Ram=0
+   ³  ³  ÃÄ@goto63975  0/10  Ram=0
    ³  ³  ÃÄchar2int  0/64  Ram=1
-   ³  ³  ³  ÀÄ@goto29622  0/14  Ram=0
+   ³  ³  ³  ÀÄ@goto64191  0/14  Ram=0
    ³  ³  ÃÄshowNumber  0/135  Ram=6
-   ³  ³  ³  ÃÄ@goto29584  0/13  Ram=0
+   ³  ³  ³  ÃÄ@goto64140  0/13  Ram=0
    ³  ³  ³  ÃÄ@WRITEBITA  0/34  Ram=6
    ³  ³  ³  ÃÄ@WRITEBITA  0/34  Ram=6
    ³  ³  ³  ÃÄ@WRITEBITA  0/34  Ram=6
@@ -97,7 +96,7 @@
    ³  ³  ÃÄ@PSTRINGC7_1  0/118  Ram=4
    ³  ³  ÀÄdoReset  0/20  Ram=0
    ³  ³     ÀÄ@PSTRINGC7_1  0/118  Ram=4
-   ³  ÀÄ@const798  0/14  Ram=0
+   ³  ÀÄ@const797  0/14  Ram=0
    ÀÄSSP_isr  1/714  Ram=3
       ÃÄ@I2C_WRITE_1  (Inline)  Ram=1
       ÃÄ@PSTRINGCN7_9600_62_63  0/94  Ram=5

@@ -22,14 +22,10 @@ void setup()
       fprintf(RS232,"********************************\r");
       fprintf(RS232,"      DEPURACION :: PUNTOS      \r");
    }
-   else
-   {
-      fputs("Grupo APM (c) 2020 :: BBSB 1.0 rev A",RS232);
-   }
+
    
    if(DEBUG) {fputs("> Habilitacion de I2C",RS232);}
    i2c_slaveaddr(I2C_SCORE);
-   //i2c_speed(100000);
    
    delay_ms(DEFAULT_D);
    

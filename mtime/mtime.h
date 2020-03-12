@@ -1,7 +1,7 @@
 #include <16F887.h>
 
-#define FW_VERSION   "1.5"
-#define FW_REVISION  "D"
+#define FW_VERSION   "2.0"
+#define FW_REVISION  "F"
 
 //-- CONFIGURACION DE PIC --
 #device ADC=16

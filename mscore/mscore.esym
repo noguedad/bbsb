@@ -1,9 +1,10 @@
-D G "__PCM__" 0 430 ""5.076""
-D G "__DEVICE__" 0 430 "887"
-D G "__DATE__" 0 430 ""09-mar.-20""
-D G "__TIME__" 0 430 ""21:45:30""
-D G "_UNICODE" 0 430 ""?""
-D G "__EVAL" 0 430 ""?"" "Standard Header file for the PIC16F887 device ////////////////"
+F N "doReset" 0 373 ""
+D G "__PCM__" 0 381 ""5.076""
+D G "__DEVICE__" 0 381 "887"
+D G "__DATE__" 0 381 ""11-mar.-20""
+D G "__TIME__" 0 381 ""22:16:58""
+D G "_UNICODE" 0 381 ""?""
+D G "__EVAL" 0 381 ""?"" "Standard Header file for the PIC16F887 device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 f N "set_tris_a" 2 39 ""
 v L "value" 2 39 "int8" `55 
@@ -1162,18 +1163,18 @@ d G "INT_RB4" 2 780 "0x1100B08"
 d G "INT_RB5" 2 781 "0x1200B08"
 d G "INT_RB6" 2 782 "0x1400B08"
 d G "INT_RB7" 2 783 "0x1800B08"
-D G "FW_VERSION" 1 3 ""1.5""
-D G "FW_REVISION" 1 4 ""D""
+D G "FW_VERSION" 1 3 ""2.0""
+D G "FW_REVISION" 1 4 ""F""
 D G "I2C_SCL" 1 31 "PIN_C3"
 D G "I2C_SDA" 1 32 "PIN_C4"
 D G "RS232_TX" 1 33 "PIN_C6"
 D G "RS232_RX" 1 34 "PIN_C7"
 D G "DISPLAY" 1 35 "PIN_E0"
 D G "DEBUG" 1 36 "input_state(PIN_A3)"
-D G "POSLOCAL" 1 37 "PIN_E1"
-D G "CENLOCAL" 1 38 "PIN_E2"
-D G "CENVISITA" 1 39 "PIN_C2"
-D G "POSVISITA" 1 40 "PIN_C1"
+D G "POSLOCAL" 1 37 "PIN_C1"
+D G "CENLOCAL" 1 38 "PIN_C2"
+D G "CENVISITA" 1 39 "PIN_E2"
+D G "POSVISITA" 1 40 "PIN_E1"
 D G "I2C_TIMER" 1 42 "0x0A"
 D G "I2C_SCORE" 1 43 "0x0C"
 D G "I2C_CMD_INIT" 1 50 "0xF0"
@@ -1211,18 +1212,18 @@ f G "SSP_isr" 1 96 "void()" `666
 F N "parseCommand" 1 97 ""
 f G "parseCommand" 1 97 "void()" `667 
 F N "doTest" 1 98 ""
-f G "doTest" 1 98 "void(int8 n,tPort p)" `668 
+f G "doTest" 1 98 "void()" `668 
 F N "showNumber" 1 99 ""
 V L "??65535" 1 99 "int8" `670 
 V L "??65535" 1 99 "tPort" `671 
-f G "showNumber" 1 99 "void(int8 ,tPort ,int8 pVisitaU)" `669 
+f G "showNumber" 1 99 "void(int8 ,tPort )" `669 
 F N "char2int" 1 100 ""
 V L "??65535" 1 100 "int8" `673 
 f G "char2int" 1 100 "int8(int8 )" `672 
 F N "doReset" 1 101 ""
 f G "doReset" 1 101 "void()" `674 
 F N "parseI2CCommand" 1 102 ""
-f G "parseI2CCommand" 1 102 "void(int8 n)" `675  "(C) Copyright 1996,2008 Custom Computer Services            ////"
+f G "parseI2CCommand" 1 102 "void()" `675  "(C) Copyright 1996,2008 Custom Computer Services            ////"
 D G "_STRING" 3 12 ""
 D G "_STDDEF" 4 13 ""
 D G "ptrdiff_t" 4 18 "unsigned int16"
@@ -1247,7 +1248,7 @@ F N "memmove" 3 34 ""
 V L "s1" 3 34 "*void" `677 
 V L "s2" 3 34 "*void" `678 
 V L "n" 3 34 "int8" `679 
-F G "memmove" 3 35 "*int8(*void s1,*void s2,int8 n,*void s1,*void s2,int8 n)" `676 
+F G "memmove" 3 35 "*int8(*void s1,*void s2,int8 n)" `676 
 V L "sc1" 3 36 "*int8" `680 
 V L "sc2" 3 37 "*int8" `681 
 D G "strcopy" 3 54 "strcpy"
@@ -1255,7 +1256,7 @@ F N "strncpy" 3 61 ""
 V L "s1" 3 61 "*int8" `683 
 V L "s2" 3 61 "*int8" `684 
 V L "n" 3 61 "int8" `685 
-F G "strncpy" 3 62 "*int8(*int8 s1,*int8 s2,int8 n,*int8 s1,*int8 s2,int8 n)" `682 
+F G "strncpy" 3 62 "*int8(*int8 s1,*int8 s2,int8 n)" `682 
 V L "s" 3 63 "*int8" `686 
 F N "strcat" 3 78 ""
 V L "s1" 3 78 "*int8" `688 
@@ -1266,14 +1267,14 @@ F N "strncat" 3 96 ""
 V L "s1" 3 96 "*int8" `692 
 V L "s2" 3 96 "*int8" `693 
 V L "n" 3 96 "int8" `694 
-F G "strncat" 3 97 "*int8(*int8 s1,*int8 s2,int8 n,*int8 s1,*int8 s2,int8 n)" `691 
+F G "strncat" 3 97 "*int8(*int8 s1,*int8 s2,int8 n)" `691 
 V L "s" 3 98 "*int8" `695 
 C L "memcmp" 3 19 3 "FUNCTION"
 F N "memcmp" 3 120 ""
 V L "s1" 3 120 "*void" `697 
 V L "s2" 3 120 "*void" `698 
 V L "n" 3 120 "int8" `699 
-F G "memcmp" 3 121 "sint8(*void s1,*void s2,int8 n,*void s1,*void s2,int8 n)" `696 
+F G "memcmp" 3 121 "sint8(*void s1,*void s2,int8 n)" `696 
 V L "su1" 3 122 "*int8" `700 
 V L "su2" 3 122 "*int8" `701 
 C L "strcmp" 3 19 2 "FUNCTION"
@@ -1291,13 +1292,13 @@ F N "strncmp" 3 157 ""
 V L "s1" 3 157 "*int8" `709 
 V L "s2" 3 157 "*int8" `710 
 V L "n" 3 157 "int8" `711 
-F G "strncmp" 3 158 "sint8(*int8 s1,*int8 s2,int8 n,*int8 su1,*int8 su2,int8 strcmp)" `708 
+F G "strncmp" 3 158 "sint8(*int8 s1,*int8 s2,int8 n)" `708 
 C L "strxfrm" 3 19 4 "FUNCTION"
 F N "strxfrm" 3 170 ""
 V L "s1" 3 170 "*int8" `713 
 V L "s2" 3 170 "*int8" `714 
 V L "n" 3 170 "int8" `715 
-F G "strxfrm" 3 171 "int8(*int8 s1,*int8 s2,int8 n,*int8 su1,*int8 su2,int8 strcmp)" `712 
+F G "strxfrm" 3 171 "int8(*int8 s1,*int8 s2,int8 n)" `712 
 V L "c" 3 172 "int8" `716 
 V L "n1" 3 173 "int8" `717 
 C L "strxfrm" 3 19 1 "FUNCTION"
@@ -1305,7 +1306,7 @@ F N "memchr" 3 201 ""
 V L "s" 3 201 "*void" `719 
 V L "c" 3 201 "int8" `720 
 V L "n" 3 201 "int8" `721 
-F G "memchr" 3 202 "*int8(*void s,int8 c,int8 n,*void s,int8 pVisitaU,int8 strcmp)" `718 
+F G "memchr" 3 202 "*int8(*void s,int8 c,int8 n)" `718 
 V L "uc" 3 203 "int8" `722 
 V L "su" 3 204 "*int8" `723 
 F N "strchr" 3 215 ""
@@ -1372,47 +1373,46 @@ D G "_STDIO" 6 12 ""
 C L "setup" 3 2 7 "FUNCTION"
 C L "setup" 6 20 5 "FUNCTION"
 F N "setup" 0 4 ""
-F G "setup" 0 5 "void(*int8 uc)" `771 
-C L "setup" 0 32 1 "FUNCTION"
-C L "setup" 0 32 1 "FUNCTION"
-F N "MAIN" 0 101 ""
-F G "MAIN" 0 102 "void()" `794 
-C L "MAIN" 0 32 1 "FUNCTION"
-F N "RDA_isr" 0 114 ""
-F G "RDA_isr" 0 115 "void()" `665 
-V L "c" 0 116 "int8" `797 
-F N "SSP_isr" 0 144 ""
-F G "SSP_isr" 0 145 "void()" `666 
-V L "state" 0 146 "int8" `799 
-F N "parseI2CCommand" 0 162 ""
-F G "parseI2CCommand" 0 163 "void()" `675 
-V L "c" 0 164 "int8" `805 
-C L "parseI2CCommand" 0 32 1 "FUNCTION"
-C L "parseI2CCommand" 0 32 1 "FUNCTION"
-C L "parseI2CCommand" 0 32 1 "FUNCTION"
-C L "parseI2CCommand" 0 32 1 "FUNCTION"
-C L "parseI2CCommand" 0 32 1 "FUNCTION"
-C L "parseI2CCommand" 0 32 1 "FUNCTION"
-F N "doTest" 0 230 ""
-F G "doTest" 0 231 "void()" `668 
-V L "i" 0 238 "int8" `822 
-F N "parseCommand" 0 254 ""
-F G "parseCommand" 0 255 "void()" `667 
-V L "c" 0 256 "int8[10]" `823 
-C L "parseCommand" 0 32 1 "FUNCTION"
-F N "showNumber" 0 318 ""
-V L "n" 0 318 "int8" `670 
-V L "p" 0 318 "tPort" `842 
-F G "showNumber" 0 319 "void(int8 n,tPort p)" `669 
-V L "a" 0 320 "int1" `840 
-V L "b" 0 320 "int1" `841 
-V L "c" 0 320 "int1" `842 
-V L "d" 0 320 "int1" `843 
-F N "char2int" 0 348 ""
-V L "c" 0 348 "int8" `850 
-F G "char2int" 0 349 "int8(int8 c)" `672 
-F N "doReset" 0 376 ""
-F G "doReset" 0 377 "void()" `674 
+F G "setup" 0 5 "void()" `771 
+C L "setup" 0 33 1 "FUNCTION"
+F N "MAIN" 0 97 ""
+F G "MAIN" 0 98 "void()" `793 
+C L "MAIN" 0 33 1 "FUNCTION"
+F N "RDA_isr" 0 110 ""
+F G "RDA_isr" 0 111 "void()" `665 
+V L "c" 0 112 "int8" `796 
+F N "SSP_isr" 0 140 ""
+F G "SSP_isr" 0 141 "void()" `666 
+V L "state" 0 142 "int8" `798 
+F N "parseI2CCommand" 0 158 ""
+F G "parseI2CCommand" 0 159 "void()" `675 
+V L "c" 0 160 "int8" `804 
+C L "parseI2CCommand" 0 33 1 "FUNCTION"
+C L "parseI2CCommand" 0 33 1 "FUNCTION"
+C L "parseI2CCommand" 0 33 1 "FUNCTION"
+C L "parseI2CCommand" 0 33 1 "FUNCTION"
+C L "parseI2CCommand" 0 33 1 "FUNCTION"
+C L "parseI2CCommand" 0 33 1 "FUNCTION"
+F N "doTest" 0 226 ""
+F G "doTest" 0 227 "void()" `668 
+V L "i" 0 234 "int8" `821 
+F N "parseCommand" 0 250 ""
+F G "parseCommand" 0 251 "void()" `667 
+V L "c" 0 252 "int8[10]" `822 
+C L "parseCommand" 0 33 1 "FUNCTION"
+F N "showNumber" 0 314 ""
+V L "n" 0 314 "int8" `670 
+V L "p" 0 314 "tPort" `841 
+F G "showNumber" 0 315 "void(int8 n,tPort p)" `669 
+V L "a" 0 316 "int1" `839 
+V L "b" 0 316 "int1" `840 
+V L "c" 0 316 "int1" `841 
+V L "d" 0 316 "int1" `842 
+F N "char2int" 0 344 ""
+V L "c" 0 344 "int8" `849 
+F G "char2int" 0 345 "int8(int8 c)" `672 
+F N "doReset" 0 372 ""
+F G "doReset" 0 373 "void()" `674 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep_ulpwu" 1 0

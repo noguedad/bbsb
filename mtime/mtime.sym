@@ -155,7 +155,7 @@ FFF     @INTERRUPT_AREA
 1FFF     @INTERRUPT_AREA
 
 ROM Allocation:
-00005A  @const801.call
+00005A  @const800.call
 000068  @const775.call
 000079  @const780.call
 00008A  @const781.call
@@ -167,90 +167,89 @@ ROM Allocation:
 0000CB  @const789.call
 0000DC  @const790.call
 0000ED  @const791.call
-000100  @const793.call
-00010B  @const794.call
-000119  @const795.call
-000127  @const796.call
-000138  @PSTRINGC7_1
-00018A  char2int
-0001BB  @goto15204
-0001C9  @WRITEBITA
-0001EB  showNumber
-000266  @goto15166
-000273  showQuarter
-0002A5  @goto15144
-0002AD  @delay_ms1
-0002C1  buzz
-000322  doTest
-00039C  doReset
-0003B0  parseCommand
-0005BF  @goto14957
-0005C8  RDA_isr
-000618  @PSTRINGCN7_9600_62_63
-000671  @PRINTF_X_9600_62_63
-000694  @const804.call
-00069F  @const809.call
-0006A8  @const810.call
-0006B1  @const811.call
-0006BA  @const812.call
-0006C4  @const813.call
-0006CE  @const814.call
-0006D8  @const815.call
-0006E2  @const816.call
-0006EE  @const817.call
-0006FC  @const818.call
-000703  @const819.call
-00070A  @const820.call
-000711  @const821.call
-00071C  @const822.call
-000727  @const823.call
-000732  @const824.call
-00073D  @const825.call
-000748  @const826.call
-000752  @const829.call
-000762  @const831.call
-00076B  @const832.call
-000775  @const833.call
-00077F  @const834.call
-000789  @const835.call
-000793  @const836.call
-00079F  @const837.call
-0007AD  @const838.call
-0007B4  @const839.call
-0007BB  @const840.call
-0007C2  @const841.call
-0007CE  @const842.call
-0007D2  @const843.call
-0007D6  @const844.call
-0007DA  @const845.call
-0007DE  @const846.call
-0007E2  @const847.call
-0007E6  @const859.call
+0000F8  @const793.call
+000106  @const794.call
+000114  @const795.call
+000125  @PSTRINGC7_1
+000177  char2int
+0001A8  @goto25604
+0001B6  @WRITEBITA
+0001D8  showNumber
+000253  @goto25568
+000260  showQuarter
+000292  @goto25550
+00029A  @delay_ms1
+0002AE  buzz
+00030F  doTest
+000389  doReset
+00039D  parseCommand
+0005AC  @goto25348
+0005B5  RDA_isr
+000605  @PSTRINGCN7_9600_62_63
+00065E  @PRINTF_X_9600_62_63
+000681  @const803.call
+00068C  @const808.call
+000695  @const809.call
+00069E  @const810.call
+0006A7  @const811.call
+0006B1  @const812.call
+0006BB  @const813.call
+0006C5  @const814.call
+0006CF  @const815.call
+0006DB  @const816.call
+0006E9  @const817.call
+0006F0  @const818.call
+0006F7  @const819.call
+0006FE  @const820.call
+000709  @const821.call
+000714  @const822.call
+00071F  @const823.call
+00072A  @const824.call
+000735  @const825.call
+00073F  @const828.call
+00074F  @const830.call
+000758  @const831.call
+000762  @const832.call
+00076C  @const833.call
+000776  @const834.call
+000780  @const835.call
+00078C  @const836.call
+00079A  @const837.call
+0007A1  @const838.call
+0007A8  @const839.call
+0007AF  @const840.call
+0007BB  @const841.call
+0007BF  @const842.call
+0007C3  @const843.call
+0007C7  @const844.call
+0007CB  @const845.call
+0007CF  @const846.call
+0007D3  @const858.call
 000800  SSP_isr
 000823  @I2C_WRITE_1
 000879  parseI2CCommand
 000AA8  @PSTRINGC7_9600_62_63
 000B00  setup
-000CEB  MAIN
-000CEB  @cinit1
-000D26  @cinit2
+000CD3  MAIN
+000CD3  @cinit1
+000D0E  @cinit2
 
 Project Directory:
     C:\Users\nogue\Documents\GitHub\bbsb\mtime\
 
 Project Files:
-    mtime.c                                                 [09-mar.-20 21:45  CRC=F7D1205F]
-    mtime.h                                                 [09-mar.-20 21:45  CRC=BB5F1866]
+    mtime.c                                                 [11-mar.-20 22:18  CRC=A35C46CB]
+    mtime.h                                                 [11-mar.-20 22:18  CRC=BB5F1866]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [15-ene.-18 16:53  CRC=9C71CB72]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [26-mar.-15 13:34  CRC=C4814297]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-sep.-14 12:47  CRC=897CEC6C]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 15:55  CRC=2D1F019F]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 15:24  CRC=4E4534F4]
 
-Source signature=67499EC1
+Source signature=12D4C52D
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=4DF6
+Hex file CRC=3E3A
 
 Units:
     mtime (main)

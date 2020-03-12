@@ -1,10 +1,10 @@
-F N "doReset" 0 423 ""
-D G "__PCM__" 0 430 ""5.076""
-D G "__DEVICE__" 0 430 "887"
-D G "__DATE__" 0 430 ""09-mar.-20""
-D G "__TIME__" 0 430 ""21:45:15""
-D G "_UNICODE" 0 430 ""?""
-D G "__EVAL" 0 430 ""?"" "Standard Header file for the PIC16F887 device ////////////////"
+F N "doReset" 0 418 ""
+D G "__PCM__" 0 425 ""5.076""
+D G "__DEVICE__" 0 425 "887"
+D G "__DATE__" 0 425 ""11-mar.-20""
+D G "__TIME__" 0 425 ""22:18:30""
+D G "_UNICODE" 0 425 ""?""
+D G "__EVAL" 0 425 ""?"" "Standard Header file for the PIC16F887 device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 f N "set_tris_a" 2 39 ""
 v L "value" 2 39 "int8" `55 
@@ -1163,8 +1163,8 @@ d G "INT_RB4" 2 780 "0x1100B08"
 d G "INT_RB5" 2 781 "0x1200B08"
 d G "INT_RB6" 2 782 "0x1400B08"
 d G "INT_RB7" 2 783 "0x1800B08"
-D G "FW_VERSION" 1 3 ""1.5""
-D G "FW_REVISION" 1 4 ""D""
+D G "FW_VERSION" 1 3 ""2.0""
+D G "FW_REVISION" 1 4 ""F""
 D G "I2C_SCL" 1 31 "PIN_C3"
 D G "I2C_SDA" 1 32 "PIN_C4"
 D G "RS232_TX" 1 33 "PIN_C6"
@@ -1391,53 +1391,52 @@ C L "setup" 6 20 5 "FUNCTION"
 F N "setup" 0 4 ""
 F G "setup" 0 5 "void()" `774 
 C L "setup" 0 32 1 "FUNCTION"
-C L "setup" 0 32 1 "FUNCTION"
-F N "MAIN" 0 99 ""
-F G "MAIN" 0 100 "void()" `797 
+F N "MAIN" 0 94 ""
+F G "MAIN" 0 95 "void()" `796 
 C L "MAIN" 0 32 1 "FUNCTION"
-F N "RDA_isr" 0 112 ""
-F G "RDA_isr" 0 113 "void()" `664 
-V L "c" 0 114 "int8" `800 
-F N "SSP_isr" 0 142 ""
-F G "SSP_isr" 0 143 "void()" `665 
-V L "state" 0 144 "int8" `802 
-F N "parseI2CCommand" 0 160 ""
-F G "parseI2CCommand" 0 161 "void()" `674 
-V L "c" 0 162 "int8" `808 
+F N "RDA_isr" 0 107 ""
+F G "RDA_isr" 0 108 "void()" `664 
+V L "c" 0 109 "int8" `799 
+F N "SSP_isr" 0 137 ""
+F G "SSP_isr" 0 138 "void()" `665 
+V L "state" 0 139 "int8" `801 
+F N "parseI2CCommand" 0 155 ""
+F G "parseI2CCommand" 0 156 "void()" `674 
+V L "c" 0 157 "int8" `807 
 C L "parseI2CCommand" 0 32 1 "FUNCTION"
 C L "parseI2CCommand" 0 32 1 "FUNCTION"
 C L "parseI2CCommand" 0 32 1 "FUNCTION"
 C L "parseI2CCommand" 0 32 1 "FUNCTION"
 C L "parseI2CCommand" 0 32 1 "FUNCTION"
-F N "doTest" 0 232 ""
-F G "doTest" 0 233 "void()" `667 
-V L "i" 0 240 "int8" `827 
-F N "buzz" 0 254 ""
-V L "t" 0 254 "int8" `829 
-F G "buzz" 0 255 "void(int8 t)" `677 
+F N "doTest" 0 227 ""
+F G "doTest" 0 228 "void()" `667 
+V L "i" 0 235 "int8" `826 
+F N "buzz" 0 249 ""
+V L "t" 0 249 "int8" `828 
+F G "buzz" 0 250 "void(int8 t)" `677 
 C L "buzz" 0 32 1 "FUNCTION"
 C L "buzz" 0 32 1 "FUNCTION"
 C L "buzz" 0 32 1 "FUNCTION"
-F N "parseCommand" 0 279 ""
-F G "parseCommand" 0 280 "void()" `666 
-V L "c" 0 281 "int8[10]" `828 
+F N "parseCommand" 0 274 ""
+F G "parseCommand" 0 275 "void()" `666 
+V L "c" 0 276 "int8[10]" `827 
 C L "parseCommand" 0 32 1 "FUNCTION"
-F N "showQuarter" 0 350 ""
-V L "n" 0 350 "int8" `849 
-F G "showQuarter" 0 351 "void(int8 n)" `675 
-F N "showNumber" 0 365 ""
-V L "n" 0 365 "int8" `669 
-V L "p" 0 365 "tPort" `851 
-F G "showNumber" 0 366 "void(int8 n,tPort p)" `668 
-V L "a" 0 367 "int1" `849 
-V L "b" 0 367 "int1" `850 
-V L "c" 0 367 "int1" `851 
-V L "d" 0 367 "int1" `852 
-F N "char2int" 0 395 ""
-V L "c" 0 395 "int8" `859 
-F G "char2int" 0 396 "int8(int8 c)" `671 
-F N "doReset" 0 423 ""
-F G "doReset" 0 424 "void()" `673 
+F N "showQuarter" 0 345 ""
+V L "n" 0 345 "int8" `848 
+F G "showQuarter" 0 346 "void(int8 n)" `675 
+F N "showNumber" 0 360 ""
+V L "n" 0 360 "int8" `669 
+V L "p" 0 360 "tPort" `850 
+F G "showNumber" 0 361 "void(int8 n,tPort p)" `668 
+V L "a" 0 362 "int1" `848 
+V L "b" 0 362 "int1" `849 
+V L "c" 0 362 "int1" `850 
+V L "d" 0 362 "int1" `851 
+F N "char2int" 0 390 ""
+V L "c" 0 390 "int8" `858 
+F G "char2int" 0 391 "int8(int8 c)" `671 
+F N "doReset" 0 418 ""
+F G "doReset" 0 419 "void()" `673 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep_ulpwu" 1 0

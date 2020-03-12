@@ -1,9 +1,27 @@
+/**:COPYRIGHT
+
+           _/       _/
+        _/_/_/   _/_/
+         _/       _/
+        _/       _/
+       _/_/   _/_/_/
+    
+   t1soluciones © 2020
+          PARA
+       Grupo  APM
+    
+ */
+ 
+ // *AUTOR:    Victor Noguedad
+ // *ARCHIVO:  mscoms.c
+ // *RESUMEN:  Programa principal del modulo de comunicaciones
+ 
 #include <16F887.h>
 
-#define FW_VERSION   "1.5"
-#define FW_REVISION  "D"
+#define FW_VERSION   "2.0"
+#define FW_REVISION  "F"
 
-//-- CONFIGURACION DE PIC --
+// ::[CONFIGURACION DE PIC]::
 #device ADC=16
 
 #FUSES NOWDT                    //No Watch Dog Timer
@@ -20,14 +38,13 @@
 
 #use delay(internal=8MHz)
 
-//-- CONFIGURACION DE IO --
+// ::[CONFIGURACION DE IO]::
 #use FIXED_IO( A_outputs=PIN_A7,PIN_A6,PIN_A5,PIN_A4 )
 #use FIXED_IO( B_outputs=PIN_B7,PIN_B6,PIN_B5,PIN_B4,PIN_B3,PIN_B2,PIN_B1,PIN_B0 )
 #use FIXED_IO( C_outputs=PIN_C5 )
 #use FIXED_IO( D_outputs=PIN_D7,PIN_D6,PIN_D5,PIN_D4,PIN_D3,PIN_D2,PIN_D1,PIN_D0 )
 #use FIXED_IO( E_outputs=PIN_E0 )
 
-//-- DEFINICION DE PINES --
 #define I2C_SCL   PIN_C3
 #define I2C_SDA   PIN_C4
 #define RS232_TX  PIN_C6
@@ -35,12 +52,12 @@
 #define DISPLAY   PIN_E0
 #define DEBUG     input_state(PIN_C2)
 
-//-- CONFIGURACION DE PUERTOS Y TIMERS --
+// ::[CONFIGURACION PUERTOS]::
 #use rs232  (baud=9600,parity=N,xmit=RS232_TX,rcv=RS232_RX,bits=8,stream=RS232)
 #use i2c    (Master,Fast,sda=I2C_SDA,scl=I2C_SCL)
 #use timer  (timer=0,tick=100us,bits=32,NOISR)
 
-//-- DEFINICIONES --
+// ::[DEFINICIONES]::
 #define TICK_TYPE       unsigned int32
 #define I2C_TIMER       0x0A
 #define I2C_SCORE       0x0C
@@ -68,7 +85,7 @@
 
 #define ON              1
 #define OFF             0
-#define DEFAULT_D       200
+#define DEFAULT_D       100
 #define I2CWAIT         50
 
 #define   PuertoA    1
@@ -78,7 +95,7 @@
 #define   PuertoE    5
 #define   PuertoF    6
 
-//-- DECLARACIONES --
+// ::[DECLARACIONES]::
 //Estructura para el puerto
 typedef struct sPort    
 {
@@ -114,10 +131,15 @@ int1 enableShot = false;
 
 int1 pauseTime = false;
 
-int16 scoreL =0;
-int16 scoreV =0;
+int8 scoreLU =0;
+int8 scoreLD =0;
+int1 scoreLC =0;
+int8 scoreVU =0;
+int8 scoreVD =0;
+int1 scoreVC =0;
 
-//-- PROTOTIPOS --
+// ::[PROTOTIPOS]::
+
 TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick);
 void RDA_isr(void);
 void SSP_isr(void);
@@ -125,7 +147,7 @@ void timeTick(void);
 void parseCommand(void);
 void doTest(void);
 void showNumber(int8, tPort);
-int8  char2int(char); 
+int8 char2int(char); 
 void doReset(void);
 void sendN2Port(int8, int8, int8);
 void timeSet(int8, int8, int8, int8);
@@ -133,6 +155,10 @@ void shotSet(int8, int8);
 void timePass();
 void shotPass();
 void doBuzz(int);
-void showScoreL(void);
-void showScoreV(void);
+void setScoreL (int8, int8, int8);
+void setScoreV (int8, int8, int8);
 void i2c_send(int8, int8);
+void addScoreL (int8);
+void addScoreV (int8);
+void resScoreL (void);
+void resScoreV (void);

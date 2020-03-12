@@ -1,6 +1,6 @@
 
-ROM used:   3458/8192 (42%)
-            3461/8192 (42%) including unused fragments
+ROM used:   3415/8192 (42%)
+            3417/8192 (42%) including unused fragments
 
             1.9 Average locations per line
             9.4 Average locations per statement
@@ -13,7 +13,7 @@ Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  383   367 100  mscore.c
+  379   365 100  mscore.c
   105     0   0  mscore.h
   786     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h
   435     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h
@@ -21,15 +21,15 @@ Lines Stmts  %   Files
    28     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h
    37     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h
 ----- -----
- 1806   367 Total
+ 1802   365 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
 0     20   1    1             @delay_ms1
- Inline         1     14  0.8  @I2C_WRITE_1
-1    492  14    0   3380  3.9  setup
+ Inline         1             @I2C_WRITE_1
+1    468  14    0   3306  3.5  setup
 0     17   0    0    234  7.5  @const772
-1     88   3    4   2472  3.9  @PSTRINGC7_9600_62_63
+1     88   3    4   1990  3.4  @PSTRINGC7_9600_62_63
 0     17   0    0             @const777
 0     17   0    0             @const778
 0     17   0    0             @const779
@@ -40,80 +40,79 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0     94   3    5             @PSTRINGCN7_9600_62_63
 0     17   0    0             @const786
 0     17   0    0             @const787
-0     19   1    0             @const788
+0     11   0    0             @const788
 0    118   3    4             @PSTRINGC7_1
-0     11   0    0             @const790
+0     14   0    0             @const790
 0     14   0    0             @const791
-0     14   0    0             @const792
-0     17   0    0     27  1.0  @const793
+0     17   0    0             @const792
 1     91   3    0     27  1.0  MAIN
 0     80   2    6    409  5.5  RDA_isr
-0     14   0    0    228  3.3  @const798
+0     14   0    0    409  5.5  @const797
 1    714  21    3    463  5.5  SSP_isr
-0     11   0    0     70  1.8  @const801
+0     11   0    0    409  5.5  @const800
 0     35   1    2    255  4.5  @PRINTF_X_9600_62_63
  Inline         2   3188  6.9  parseI2CCommand
-0      9   0    0     70  1.8  @const806
-0      9   0    0      5  1.0  @const807
-0      9   0    0     56  3.4  @const808
-0     13   0    0     50  1.7  @const809
-0     13   0    0    618  4.2  @const810
-0     12   0    0    154  3.7  @const811
-0     14   0    0    154  3.7  @const812
-0     13   0    0    683  4.3  @const813
-0     14   0    0    154  3.7  @const814
-0     11   0    0     78  1.6  @const815
-0     11   0    0   7748  6.9  @const816
-0     11   0    0    154  3.7  @const817
-0     11   0    0    154  3.7  @const818
-0     11   0    0     70  1.8  @const819
-0     11   0    0     70  1.8  @const820
+0      9   0    0     50  1.7  @const805
+0      9   0    0    618  4.2  @const806
+0      9   0    0     80  2.0  @const807
+0     13   0    0     50  1.7  @const808
+0     13   0    0    618  4.2  @const809
+0     12   0    0    618  4.2  @const810
+0     14   0    0     78  1.6  @const811
+0     13   0    0   8116  5.5  @const812
+0     14   0    0     80  2.0  @const813
+0     11   0    0     78  1.6  @const814
+0     11   0    0   8549  5.5  @const815
+0     11   0    0   7965  5.5  @const816
+0     11   0    0             @const817
+0     11   0    0             @const818
+0     11   0    0             @const819
 0    200   6    1    654  4.3  doTest
-0     10   0    0     70  1.8  @const821
+0     10   0    0    654  4.3  @const820
 0    583  17   21   3282  4.9  parseCommand
-0     16   0    0     70  1.8  @const824
-0     10   0    0    514  3.8  @goto29419
-0      9   0    0   3447  4.9  @const826
-0     13   0    0    154  3.7  @const827
-0     13   0    0    463  3.7  @const828
-0     12   0    0    154  3.7  @const829
-0     14   0    0    154  3.7  @const830
-0     13   0    0    154  3.7  @const831
-0     14   0    0   1046  4.9  @const832
-0     12   0    0    154  3.7  @const833
+0     16   0    0   3282  4.9  @const823
+0     10   0    0             @goto63975
+0      9   0    0             @const825
+0     13   0    0             @const826
+0     13   0    0             @const827
+0     12   0    0             @const828
+0     14   0    0             @const829
+0     13   0    0             @const830
+0     14   0    0             @const831
+0     12   0    0             @const832
+0      4   0    0             @const833
 0      4   0    0             @const834
-1      4   0    0    463  3.7  @const835
-1      4   0    0             @const836
-1      4   0    0     70  1.8  @const837
-1      4   0    0             @const838
-1      4   0    0     70  1.8  @const839
+0      4   0    0             @const835
+0      4   0    0             @const836
+0      4   0    0             @const837
+0      4   0    0             @const838
 0    135   4    6   1046  4.9  showNumber
-0     13   0    0     70  1.8  @goto29584
-0     34   1    6     70  1.8  @WRITEBITA
+0     13   0    0   1046  4.9  @goto64140
+0     34   1    6             @WRITEBITA
 0     64   2    1    463  3.7  char2int
-0     14   0    0     70  1.8  @goto29622
+0     14   0    0    463  3.7  @goto64191
 0     20   1    0     70  1.8  doReset
-1      8   0    0    407  3.8  @const850
- Inline         0     70  1.8  @cinit1
+1      8   0    0     70  1.8  @const849
+ Inline         0    391  4.0  @cinit1
 
 Program metrics:
-    Functions               51
-    Statements              367
-    Comments                225
-    Volume (V)              57048
-    Difficulty (D)          175.4
-    Effort to implement (E) 10004338
-    Time to implement (T)   154 hours, 23 minutes
-    Est Delivered Bugs (B)  15
-    Cyclomatic Complexity   277
-    Maintainability (MI)    96
+    Functions               33
+    Statements              365
+    Comments                224
+    Volume (V)              75683
+    Difficulty (D)          134.5
+    Effort to implement (E) 10182978
+    Time to implement (T)   157 hours, 9 minutes
+    Est Delivered Bugs (B)  16
+    Cyclomatic Complexity   409
+    Maintainability (MI)    50
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
 00004-00059    86  0  
-0005A-007FF  1955  3  
-00800-00FFF  1413  635  
+0005A-007FF  1956  2  
+00800-00FFF  1369  679  
 01000-017FF     0  2048  
 01800-01FFF     0  2048  
 

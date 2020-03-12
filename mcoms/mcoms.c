@@ -1,38 +1,54 @@
 
+/**:COPYRIGHT
+           _ / _ / 
+        _ / _ / _ / _/_/
+         _ / _ / 
+        _ / _ / 
+       _ / _ / _/_ / _ /
+    
+   t1soluciones © 2020
+          PARA
+       Grupo APM
+    
+ */
+ // * AUTOR: Victor Noguedad
+ // * ARCHIVO: mscoms.c
+ // * RESUMEN: Programa principal del modulo de comunicaciones
+ // ::[CABECERAS]::
 #include <mcoms.h>
 #include <string.h>
 #include <stdio.h>
 
+// *FUNCION:      setup()
+// *PARAMETROS:   ninguno
+// *REGRESA:      VOID
+// *RESUMEN:      Configuracion inicial del dispositivo
 void setup()
 {
-   output_a(0x00);
-   output_b(0x00);
-   output_c(0x00);
-   output_d(0x00);
-   output_e(0x00);
+   output_a (0x00) ;
+   output_b (0x00) ;
+   output_c (0x00) ;
+   output_d (0x00) ;
+   output_e (0x00) ;
    
-   delay_ms(DEFAULT_D);
+   delay_ms (DEFAULT_D) ;
    
-   if(DEBUG)
+   IF (DEBUG)
    {
-      fprintf(RS232,"********************************\r");
-      fprintf(RS232,"       Grupo APM (c) 2020       \r");
-      fprintf(RS232,"================================\r");
-      fprintf(RS232,"Bluetooth Basketball Score Board\r");
-      fprintf(RS232,"================================\r");
-      fprintf(RS232, "Version %s - rev %s \r", FW_VERSION, FW_REVISION);
-      fprintf(RS232,"********************************\r");
-      fprintf(RS232,"  DEPURACION :: COMUNICACIONES  \r");
+      fprintf (RS232, "********************************\r") ;
+      fprintf (RS232, " Grupo APM (c) 2020 \r") ;
+      fprintf (RS232, "================================\r");
+      fprintf (RS232, "Bluetooth Basketball Score Board\r") ;
+      fprintf (RS232, "================================\r");
+      fprintf (RS232, "Version %s - rev %s \r", FW_VERSION, FW_REVISION);
+      fprintf (RS232, "********************************\r") ;
+      fprintf (RS232, " DEPURACION :: COMUNICACIONES \r");
    }
-   else
-   {
-      fputs("Grupo APM (c) 2020 :: BBSB 1.0 rev A",RS232);
-   }
+
+   delay_ms (DEFAULT_D) ;
    
-   delay_ms(DEFAULT_D);
+   IF (DEBUG){fputs (" > Configuracion de Puertos", RS232); }
    
-   if(DEBUG) {fputs("> Configuracion de Puertos",RS232);}
-   //TODO: Activar puertos
    pNJugadorU.a = PIN_B0;
    pNJugadorU.b = PIN_B1;
    pNJugadorU.c = PIN_B2;
@@ -52,508 +68,689 @@ void setup()
    pFJugadorD.b = PIN_D5;
    pFJugadorD.c = PIN_D6;
    pFJugadorD.d = PIN_D7;
-   delay_ms(DEFAULT_D);
+   delay_ms (DEFAULT_D) ;
    
-   if(DEBUG) {fputs("> Inicializacion de I2C",RS232);}
-   i2c_speed(100000);
+   IF (DEBUG){fputs (" > Inicializacion de I2C", RS232); }
+   i2c_speed (100000) ;
    
-   if(DEBUG) {fputs("> Inicializacion de modulo tiempo",RS232);}
-   i2c_send(I2C_TIMER, I2C_CMD_INIT);
-   delay_ms(DEFAULT_D);
-
-   if(DEBUG) {fputs("> Inicializacion de modulo puntos",RS232);}
-   i2c_send(I2C_SCORE, I2C_CMD_INIT);
-   delay_ms(DEFAULT_D);
+   IF (DEBUG){fputs (" > Habilitacion de displays", RS232); }
+   output_bit (DISPLAY, ON);
+   delay_ms (DEFAULT_D) ;
+   output_bit (DISPLAY, OFF);
+   delay_ms (DEFAULT_D) ;
+   output_bit (DISPLAY, ON);
+   delay_ms (DEFAULT_D) ;
    
-   if(DEBUG) {fputs("> Habilitacion de displays",RS232);}
-   output_bit(DISPLAY, ON);
-   delay_ms(DEFAULT_D);
-   output_bit(DISPLAY, OFF);
-   delay_ms(DEFAULT_D);
-   output_bit(DISPLAY, ON);
-   
-   delay_ms(DEFAULT_D);
-   
-   if(DEBUG) {fputs("> Habilitacion de interrupciones",RS232);}
-   enable_interrupts(INT_RDA);
-   enable_interrupts(INT_SSP);
-   enable_interrupts(GLOBAL);
+   IF (DEBUG){fputs (" > Habilitacion de interrupciones", RS232); }
+   enable_interrupts (INT_RDA) ;
+   enable_interrupts (GLOBAL) ;
 }
 
 void main()
 {
-   setup();
+   setup () ;
    
-   TICK_TYPE CurrentTick,PreviousTick;
+   TICK_TYPE CurrentTick, PreviousTick;
+   CurrentTick = PreviousTick = get_ticks ();
 
-   CurrentTick = PreviousTick = get_ticks();
-
-   while(TRUE)
+   WHILE (TRUE)
    {
-      if(!pauseTime)
+      IF ( ! pauseTime)
       {
-      CurrentTick = get_ticks();
+         CurrentTick = get_ticks ();
 
-         if(GetTickDifference(CurrentTick, PreviousTick) >= (TICK_TYPE)TICKS_PER_SECOND)
+         IF (GetTickDifference (CurrentTick, PreviousTick) >= (TICK_TYPE) TICKS_PER_SECOND)
          {
-            timeTick();
+            timeTick () ;
             PreviousTick = CurrentTick;
          }
       }
-      //TODO: User Code
    }
-
 }
 
 #INT_RDA
-void  RDA_isr(void) 
+void  RDA_isr(VOID) 
 {
-   char c;
-   c = fgetc(RS232);
-if(cmdGet)
-{
-   if(c == '#' || c == '\r')
+   CHAR c;
+   c = fgetc (RS232);
+
+   IF(cmdGet)
    {
-      cmdGet = false;
-      strcpy(cmd, rcmd);
-      parseCommand();
-   }
-   else
-   {
-   if(cmdIndex < 9)
+      IF (c == '#'||c == '\r')
       {
-         rcmd[cmdIndex] = c;
-         cmdIndex++;
+         cmdGet = false;
+         strcpy (cmd, rcmd);
+         parseCommand () ;
+      }
+
+      ELSE
+      {
+         IF (cmdIndex < 9)
+         {
+            rcmd[cmdIndex] = c;
+            cmdIndex++;
+         }
       }
    }
-}
-      if(c == '-')
+
+   IF (c == '-')
    {
-       cmdGet = true; 
-       rcmd = "\0\0\0\0\0\0\0\0\0";
-       cmdIndex = 0;
+      cmdGet = true;
+      rcmd = "\0\0\0\0\0\0\0\0\0";
+      cmdIndex = 0;
    }
-}
-
-#INT_SSP
-void  SSP_isr(void) 
-{
-
 }
 
 TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick)
 {
-   return(currTick-prevTick);
+   RETURN (currTick - prevTick) ;
 }
 
-void timeTick(void)
+void timeTick(VOID)
 {
-   if(enableTime)
-      timePass();
-   if(enableShot)
-      shotPass();
+   IF (enableTime)
+      timePass () ;
+
+   IF (enableShot)
+      shotPass () ;
 }
 
-void doTest(void)
+void doTest(VOID)
 {
-   if(DEBUG) {fputs("> Rutina de prueba",RS232);}
+   IF (DEBUG){fputs (" > Rutina de prueba", RS232); }
+   IF (DEBUG){fputs (" > Probando modulo tiempo", RS232); }
+      i2c_send (I2C_TIMER, I2C_CMD_TEST);
+   IF (DEBUG){fputs (" > Probando modulo puntos", RS232); }
+      i2c_send (I2C_SCORE, I2C_CMD_TEST);
+   IF (DEBUG){fputs (" > Probando modulo comunicaciones", RS232); }
+   for (INT i = 0; i<10; i++)
+   {
+      showNumber (i, pNJugadorD);
+      showNumber (i, pNJugadorU);
+      showNumber (i, pFJugadorD);
+      showNumber (i, pFJugadorU);
+      delay_ms (I2CWAIT);
+   }
+}
+
+
+void doBuzz(INT t)
+{
+   i2c_start () ;
+   i2c_write (I2C_TIMER) ;
+   i2c_write (0x80 + t);
+   i2c_stop () ;
+}
+
+void parseCommand(VOID)
+{
+   CHAR c[10];
+   strcpy (c, cmd);
+
+   SWITCH (c[0])
+   {
+      case '0':   IF (DEBUG){fputs ("\r > Activacion manual de puerto", RS232); }
+                  SWITCH (c[2])
+                  {
+                     CASE '1': showNumber (char2int (c[3]), pNJugadorD);
+                     BREAK;
+                     CASE '2': showNumber (char2int (c[3]), pNJugadorU);
+                     BREAK;
+                     CASE '3': showNumber (char2int (c[3]), pFJugadorD);
+                     BREAK;
+                     CASE '4': showNumber (char2int (c[3]), pFJugadorU);
+                     BREAK;
+                  }
    
-   if(DEBUG) {fputs("> Probando modulo tiempo",RS232);}
-   i2c_send(I2C_TIMER, I2C_CMD_TEST);
+                  BREAK;
 
-   if(DEBUG) {fputs("> Probando modulo puntos",RS232);}
-   i2c_send(I2C_SCORE, I2C_CMD_TEST);
+      case 'B': SWITCH (c[1])
+      {
+         case '1': IF (DEBUG){fputs ("\r > Toque corto", RS232); }
+         doBuzz (1) ;
+         BREAK;
+         case '2': IF (DEBUG){fputs ("\r > Toque largo", RS232); }
+         doBuzz (2) ;
+         BREAK;
+         case '3': IF (DEBUG){fputs ("\r > Toque doble", RS232); }
+         doBuzz (3) ;
+         BREAK;
+      }
 
-   if(DEBUG) {fputs("> Probando modulo comunicaciones",RS232);}
-   for(int i=0; i<10; i++)
-   {
-      showNumber(i, pNJugadorD);
-      showNumber(i, pNJugadorU);
-      showNumber(i, pFJugadorD);
-      showNumber(i, pFJugadorU);
-      delay_ms(DEFAULT_D);
+      BREAK;
+      case 'F': IF (DEBUG){fputs ("\r > Asignar faltas", RS232); }
+      showNumber (char2int (c[1]), pFJugadorD);
+      showNumber (char2int (c[2]), pFJugadorU);
+      BREAK;
+      case 'J': IF (DEBUG){fputs ("\r > Asignar jugador", RS232); }
+      showNumber (char2int (c[1]), pNJugadorD);
+      showNumber (char2int (c[2]), pNJugadorU);
+      BREAK;
+      case 'L':
+      SWITCH (c[1])
+      {
+         case '0': IF (DEBUG){fputs ("\r > Resetea a 0", RS232); }
+         setScoreL(0,0,0);
+         BREAK;
+         case '1': IF (DEBUG){fputs ("\r > Incrementar por 1", RS232); }
+         addScoreL(1);
+         BREAK;
+         case '2': IF (DEBUG){fputs ("\r > Incrementar por 2", RS232); }
+         addScoreL(2);         
+         BREAK;
+         case '3': IF (DEBUG){fputs ("\r > Incrementar por 3", RS232); }
+         addScoreL(3);         
+         BREAK;
+         case 'D': IF (DEBUG){fputs ("\r > Decrementar por 1", RS232); }
+         resScoreL();         
+         BREAK;
+         case 'F': IF (DEBUG){fputs ("\r > Asignar faltas", RS232); }
+         sendN2Port (char2int(c[2]), I2C_SCORE, PuertoE);
+         BREAK;
+         case 'I': IF (DEBUG){fputs ("\r > Inicializar", RS232); }
+         setScoreL(char2int(c[2]),char2int(c[3]),char2int(c[4]));
+         BREAK;
+         case 'P': IF (DEBUG){fputs ("\r > Asignar posicion", RS232); }
+         i2c_send (I2C_SCORE, I2C_CMD_POSL);
+         BREAK;
+      }
+
+      BREAK;
+      case 'P': IF (DEBUG){fputs ("\r > Pausar tiempo", RS232); }
+      pauseTime = true;
+      BREAK;
+      case 'Q': IF (DEBUG){fputs ("\r > Renudar tiempo", RS232); }
+      pauseTime = false;
+      BREAK;
+
+      CASE 'R':
+      SWITCH (c[1])
+      {
+         case '0': IF (DEBUG){fputs ("\r > Apagar Periodos", RS232); }
+         i2c_send (I2C_TIMER, I2C_CMD_PER0);
+         BREAK;
+         case '1': IF (DEBUG){fputs ("\r > Periodo 1", RS232); }
+         i2c_send (I2C_TIMER, I2C_CMD_PER1);
+         BREAK;
+         case '2': IF (DEBUG){fputs ("\r > Periodo 2", RS232); }
+         i2c_send (I2C_TIMER, I2C_CMD_PER2);
+         BREAK;
+         case '3': IF (DEBUG){fputs ("\r > Periodo 3", RS232); }
+         i2c_send (I2C_TIMER, I2C_CMD_PER3);
+         BREAK;
+         case '4': IF (DEBUG){fputs ("\r > Periodo 4", RS232); }
+         i2c_send (I2C_TIMER, I2C_CMD_PER4);
+         BREAK;
+      }
+      delay_ms (I2CWAIT);
+      BREAK;
+      case 'S': IF (DEBUG){fputs ("\r > Configuracion de tiro", RS232); }
+      shotSet (char2int (c[1]), char2int (c[2])) ;
+      BREAK;
+      case 'T': IF (DEBUG){fputs ("\r > Configuracion de tiempo", RS232); }
+      timeSet (char2int (c[1]), char2int (c[2]), char2int (c[3]), char2int (c[4])) ;
+      BREAK;
+      case 'V':
+      SWITCH (c[1])
+      {
+         case '0': IF (DEBUG){fputs ("\r > Resetea a 0", RS232); }
+         setScoreV(0,0,0);
+         BREAK;
+         case '1': IF (DEBUG){fputs ("\r > Incrementar por 1", RS232); }
+         addScoreV(1);         
+         BREAK;
+         case '2': IF (DEBUG){fputs ("\r > Incrementar por 2", RS232); }
+         addScoreV(2);
+         BREAK;
+         case '3': IF (DEBUG){fputs ("\r > Incrementar por 3", RS232); }
+         addScoreV(3);
+         BREAK;
+         case 'D': IF (DEBUG){fputs ("\r > Decrementar por 1", RS232); }
+         resScoreV();
+         BREAK;
+         case 'F': IF (DEBUG){fputs ("\r > Asignar faltas", RS232); }
+         sendN2Port (char2int(c[2]), I2C_SCORE, PuertoF);
+         BREAK;
+         case 'I': IF (DEBUG){fputs ("\r > Inicializar", RS232); }
+                   setScoreV(char2int(c[2]),char2int(c[3]),char2int(c[4]));
+         BREAK;
+         case 'P': IF (DEBUG){fputs ("\r > Asignar posicion", RS232); }
+         i2c_send (I2C_SCORE, I2C_CMD_POSV);
+         BREAK;
+      }
+
+      BREAK;
+      CASE 'X': doTest (); //Rutina de prueba
+      BREAK;
+      case 'Z': IF (DEBUG){fputs ("\r > Reseteo general... ! ", RS232); }
+      delay_ms (500) ;
+      doReset () ;
+      break;
    }
 }
 
-void doBuzz(int t)
+void setScoreL(int8 c, int8 d, int8 u)
 {
-   i2c_start();
-   i2c_write(I2C_TIMER);
-   i2c_write(0x80 + t);
-   i2c_stop();
+   //TODO: Codigo para mostrar puntos
+   scoreLU = u;
+   scoreLD = d;
+   if(c > 0)
+      scoreLC = true;
+   else
+      scoreLC = false;
+   
+   sendN2Port (scoreLU, I2C_SCORE, PuertoA);
+   delay_ms(I2CWAIT);
+   sendN2Port (scoreLD, I2C_SCORE, PuertoB);
+   delay_ms(I2CWAIT);   
+   if(scoreLC)
+      i2c_send(I2C_SCORE, I2C_CMD_CLON);
+   else
+      i2c_send(I2C_SCORE, I2C_CMD_CLOF);   
 }
-void parseCommand(void)
+
+void setScoreV(int8 c, int8 d, int8 u)
 {
-   char c[10];
-   strcpy(c, cmd);
-   switch(c[0])
+   //TODO: Codigo para mostrar puntos
+   scoreVU = u;
+   scoreVD = d;
+   if(c > 0)
+      scoreVC = true;
+   else
+      scoreVC = false;
+   
+   sendN2Port (scoreVU, I2C_SCORE, PuertoD);
+   delay_ms(I2CWAIT);
+   sendN2Port (scoreVD, I2C_SCORE, PuertoC);
+   delay_ms(I2CWAIT);
+   
+   if(scoreVC)
+      i2c_send(I2C_SCORE, I2C_CMD_CVON);
+   else
+      i2c_send(I2C_SCORE, I2C_CMD_CVOF);   
+
+}
+
+void addScoreV(int8 a)
+{
+   int1 tc = scoreVC;
+   int8 td = scoreVD;
+   int8 tu = scoreVU;
+   
+   scoreVU += a;
+   
+   if(scoreVU > 10)
    {
-      case '0':   if(DEBUG) {fputs("\r> Activacion manual de puerto",RS232);}
-                  switch(c[2])
-                  {
-                     case '1':   showNumber(char2int(c[3]), pNJugadorD);
-                                 break;
-                     case '2':   showNumber(char2int(c[3]), pNJugadorU);
-                                 break;
-                     case '3':   showNumber(char2int(c[3]), pFJugadorD);
-                                 break;
-                     case '4':   showNumber(char2int(c[3]), pFJugadorU);
-                                 break;
-                  }
-                  break;
-      case 'B':   switch(c[1])
-                  {
-                     case '1':   if(DEBUG) {fputs("\r> Toque corto",RS232);}
-                                 doBuzz(1);
-                                 break;
-                     case '2':   if(DEBUG) {fputs("\r> Toque largo",RS232);}
-                                 doBuzz(2);
-                                 break;
-                     case '3':   if(DEBUG) {fputs("\r> Toque doble",RS232);}
-                                 doBuzz(3);
-                                 break;
-                  }
-                  break;
-      case 'F':   if(DEBUG) {fputs("\r> Asignar faltas",RS232);}
-                  showNumber(char2int(c[1]), pFJugadorD);
-                  showNumber(char2int(c[2]), pFJugadorU);
-                  break;
-      case 'J':   if(DEBUG) {fputs("\r> Asignar jugador",RS232);}
-                  showNumber(char2int(c[1]), pNJugadorD);
-                  showNumber(char2int(c[2]), pNJugadorU);
-                  break;
-      case 'L':   if(DEBUG) {fputs("\r> Comando local",RS232);}
-                  switch(c[1])
-                  {
-                     case '0':   if(DEBUG) {fputs("\r> Resetea a 0",RS232);}
-                                 scoreL = 0;
-                                 showScoreL();
-                                 break;
-                     case '1':   if(DEBUG) {fputs("\r> Incrementar por 1",RS232);}
-                                 scoreL++;
-                                 showScoreL();
-                                 break;
-                     case '2':   if(DEBUG) {fputs("\r> Incrementar por 2",RS232);}
-                                 scoreL += 2;
-                                 showScoreL();
-                                 break;
-                     case '3':   if(DEBUG) {fputs("\r> Incrementar por 3",RS232);}
-                                 scoreL += 3;
-                                 showScoreL();
-                                 break;
-                     case 'D':   if(DEBUG) {fputs("\r> Decrementar por 1",RS232);}
-                                 scoreL--;
-                                 showScoreL();
-                                 break;
-                     case 'I':   if(DEBUG) {fputs("\r> Inicializar",RS232);}
-                                 break;
-                     case 'P':   if(DEBUG) {fputs("\r> Asignar posicion",RS232);}
-                                 i2c_send(I2C_SCORE, I2C_CMD_POSL);
-                                 break;
-                  }
-                  break;
-      case 'P':   if(DEBUG) {fputs("\r> Pausar tiempo",RS232);}
-                  pauseTime = true;
-                  break;
-      case 'Q':   if(DEBUG) {fputs("\r> Renudar tiempo",RS232);}
-                  pauseTime = false;
-                  break;
-      case 'R':   
-                  switch(c[1])
-                  {
-                     case '0':   if(DEBUG) {fputs("\r> Apagar Periodos",RS232);}
-                                 i2c_send(I2C_TIMER, I2C_CMD_PER0);
-                                 delay_ms(I2CWAIT);
-                                 break;
-                     case '1':   if(DEBUG) {fputs("\r> Periodo 1",RS232);}
-                                 i2c_send(I2C_TIMER, I2C_CMD_PER1);
-                                 delay_ms(I2CWAIT);
-                                 break;
-                     case '2':   if(DEBUG) {fputs("\r> Periodo 2",RS232);}
-                                 i2c_send(I2C_TIMER, I2C_CMD_PER2);
-                                 delay_ms(I2CWAIT);
-                                 break;
-                     case '3':   if(DEBUG) {fputs("\r> Periodo 3",RS232);}
-                                 i2c_send(I2C_TIMER, I2C_CMD_PER3);
-                                 delay_ms(I2CWAIT);
-                                 break;
-                     case '4':   if(DEBUG) {fputs("\r> Periodo 4",RS232);}
-                                 i2c_send(I2C_TIMER, I2C_CMD_PER4);
-                                 delay_ms(I2CWAIT);
-                                 break;
-                  }
-                  break;
-      case 'S':   if(DEBUG) {fputs("\r> Configuracion de tiro",RS232);}
-                  shotSet(char2int(c[1]),char2int(c[2]));
-                  break;
-      case 'T':   if(DEBUG) {fputs("\r> Configuracion de tiempo",RS232);}
-                  timeSet(char2int(c[1]),char2int(c[2]),char2int(c[3]),char2int(c[4]));
-                  break;
-      case 'V':   if(DEBUG) {fputs("\r> Comando visitante",RS232);}
-                  switch(c[1])
-                  {
-                     case '0':   if(DEBUG) {fputs("\r> Resetea a 0",RS232);}
-                                 scoreV = 0;
-                                 showScoreV();
-                                 break;
-                     case '1':   if(DEBUG) {fputs("\r> Incrementar por 1",RS232);}
-                                 scoreV++;
-                                 showScoreV();
-                                 break;
-                     case '2':   if(DEBUG) {fputs("\r> Incrementar por 2",RS232);}
-                                 scoreV += 2;
-                                 showScoreV();
-                                 break;
-                     case '3':   if(DEBUG) {fputs("\r> Incrementar por 3",RS232);}
-                                 scoreV += 3;
-                                 showScoreV();
-                                 break;
-                     case 'D':   if(DEBUG) {fputs("\r> Decrementar por 1",RS232);}
-                                 scoreV--;
-                                 showScoreV();
-                                 break;
-                     case 'I':   if(DEBUG) {fputs("\r> Inicializar",RS232);}
-                                 break;
-                     case 'P':   if(DEBUG) {fputs("\r> Asignar posicion",RS232);}
-                                 i2c_send(I2C_SCORE, I2C_CMD_POSV);
-                                 delay_ms(I2CWAIT);
-                                 break;
-                  }
-                  break;
-      case 'X':   doTest(); //Rutina de prueba
-                  break;
-      case 'Z':   if(DEBUG) {fputs("\r> Reseteo general...!",RS232);}
-                  delay_ms(500);
-                  doReset();
-                  
+      scoreVD++;
+      scoreVU -=10;
    }
+   if(scoreVD > 10)
+   {
+      scoreVC = true;
+      scoreVD -=10;
+   }
+   
+   if(scoreVC != tc)
+   {
+      if(scoreVC)
+         i2c_send(I2C_SCORE, I2C_CMD_CLON);
+      else
+         i2c_send(I2C_SCORE, I2C_CMD_CLOF);
+   }
+   
+   delay_ms(I2CWAIT);
+   if(scoreVD != td)
+      sendN2Port(scoreVD, I2C_SCORE, PuertoC);
+   delay_ms(I2CWAIT);
+   if(scoreVU != tu)
+      sendN2Port(scoreVU, I2C_SCORE, PuertoD);
 }
 
-void showScoreL()
+void resScoreV()
 {
-   //TODO: Codigo para mostrar puntos
+   int1 tc = scoreVC;
+   int8 td = scoreVD;
+   int8 tu = scoreVU;
+
+   if(scoreVU > 0)
+      scoreVU--;
+   else
+   {
+      if(scoreVD > 0)
+      {
+         scoreVD--;
+         scoreVU = 9;
+      }
+      else
+      {  
+         scoreVC = false;
+         scoreVD = 9;
+         scoreVU = 9;
+      }
+   }
+   
+   if(scoreVC != tc)
+   {
+      if(scoreVC)
+         i2c_send(I2C_SCORE, I2C_CMD_CVON);
+      else
+         i2c_send(I2C_SCORE, I2C_CMD_CVOF);
+   }
+   delay_ms(I2CWAIT);
+   if(scoreVD != td)
+      sendN2Port(scoreVD, I2C_SCORE, PuertoC);
+   delay_ms(I2CWAIT);
+   if(scoreVU != tu)
+      sendN2Port(scoreVU, I2C_SCORE, PuertoD);
 }
 
-void showScoreV()
+void addScoreL(int8 a)
 {
-   //TODO: Codigo para mostrar puntos
+   int1 tc = scoreLC;
+   int8 td = scoreLD;
+   int8 tu = scoreLU;
+   
+   scoreLU += a;
+   
+   if(scoreLU > 10)
+   {
+      scoreLD++;
+      scoreLU -=10;
+   }
+   if(scoreLD > 10)
+   {
+      scoreLC = true;
+      scoreLD -=10;
+   }
+   
+   if(scoreLC != tc)
+   {
+      if(scoreLC)
+         i2c_send(I2C_SCORE, I2C_CMD_CLON);
+      else
+         i2c_send(I2C_SCORE, I2C_CMD_CLOF);
+   }
+   delay_ms(I2CWAIT);   
+   if(scoreLD != td)
+      sendN2Port(scoreLD, I2C_SCORE, PuertoB);
+   delay_ms(I2CWAIT);
+   if(scoreLU != tu)
+      sendN2Port(scoreLU, I2C_SCORE, PuertoA);
+}
+
+void resScoreL()
+{
+   int1 tc = scoreLC;
+   int8 td = scoreLD;
+   int8 tu = scoreLU;
+
+   if(scoreLU > 0)
+      scoreLU--;
+   else
+   {
+      if(scoreLD > 0)
+      {
+         scoreLD--;
+         scoreLU = 9;
+      }
+      else
+      {  
+         scoreLC = false;
+         scoreLD = 9;
+         scoreLU = 9;
+      }
+   }
+   
+   if(scoreLC != tc)
+   {
+      if(scoreLC)
+         i2c_send(I2C_SCORE, I2C_CMD_CLON);
+      else
+         i2c_send(I2C_SCORE, I2C_CMD_CLOF);
+   }
+   delay_ms(I2CWAIT);
+   if(scoreLD != td)
+      sendN2Port(scoreLD, I2C_SCORE, PuertoB);
+   delay_ms(I2CWAIT);
+   if(scoreLU != tu)
+      sendN2Port(scoreLU, I2C_SCORE, PuertoA);
 }
 
 void shotSet(int8 shd, int8 shu)
 {
    sh_u = shu;
    sh_d = shd;
-   sendN2Port(shd, I2C_TIMER, PuertoA);
-   delay_ms(I2CWAIT);
-   sendN2Port(shu, I2C_TIMER, PuertoB);
-   delay_ms(I2CWAIT);
+   sendN2Port (shd, I2C_TIMER, PuertoA);
+   delay_ms (I2CWAIT) ;
+   sendN2Port (shu, I2C_TIMER, PuertoB);
    
    enableShot = true;
 }
 
-void timeSet(int8 md, int8 mu, int8 sd, int8 su)
+void timeSet(INT8 md, int8 mu, int8 sd, int8 su)
 {
    m_u = mu;
    m_d = md;
    s_d = sd;
    s_u = su;
    
-   sendN2Port(su, I2C_TIMER, PuertoD);
-   delay_ms(I2CWAIT);
-   sendN2Port(sd, I2C_TIMER, PuertoC);
-   delay_ms(I2CWAIT);
-   sendN2Port(mu, I2C_TIMER, PuertoE);
-   delay_ms(I2CWAIT);
+   sendN2Port (su, I2C_TIMER, PuertoD);
+   delay_ms (I2CWAIT) ;
+   sendN2Port (sd, I2C_TIMER, PuertoC);
+   delay_ms (I2CWAIT) ;
+   sendN2Port (mu, I2C_TIMER, PuertoE);
+   delay_ms (I2CWAIT) ;
    
-   if(md != 0)
+   IF (md != 0)
    {
-      i2c_send(I2C_TIMER, I2C_CMD_MDON);
-      delay_ms(I2CWAIT);
+      i2c_send (I2C_TIMER, I2C_CMD_MDON);
    }
-   else
+
+   ELSE
    {
-      i2c_send(I2C_TIMER, I2C_CMD_MDOF);
-      delay_ms(I2CWAIT);
-   }  
+      i2c_send (I2C_TIMER, I2C_CMD_MDOF);
+   }
+
    enableTime = true;
 }
 
 void shotPass()
 {
-   int8 shd = sh_d;
-   int8 shu = sh_u;
-   
-   if(sh_u > 0)
-         sh_u--;
-   else
+   INT8 shd = sh_d;
+   INT8 shu = sh_u;
+  
+   IF (sh_u > 0)
+      sh_u--;
+
+   ELSE
    {
-      if(sh_d > 0)
-         {
-            sh_u = 9;
-            sh_d--;
-         }
-         else
-               {
-                  //TODO: End count
-                  sh_d=0;
-                  sh_u=0;
-                  enableShot = false;
-               }
+      IF (sh_d > 0)
+      {
+         sh_u = 9;
+         sh_d--;
+      }
+
+      ELSE
+      {
+         sh_d = 0;
+         sh_u = 0;
+         enableShot = false;
+         i2c_send(I2C_TIMER,I2C_CMD_BUZ1);
+      }
    }
-   if(shu != sh_u)
-         sendN2Port(sh_u, I2C_TIMER, PuertoB);
-         delay_ms(I2CWAIT);
-      if(shd != sh_d)
-         sendN2Port(sh_d, I2C_TIMER, PuertoA);
-         delay_ms(I2CWAIT);
+
+   IF (shu != sh_u)
+      sendN2Port (sh_u, I2C_TIMER, PuertoB);
+
+   delay_ms (I2CWAIT) ;
+
+   IF (shd != sh_d)
+      sendN2Port (sh_d, I2C_TIMER, PuertoA);
+
+   
 }
+
 void timePass()
 {
+   INT8 md = m_d;
+   INT8 mu = m_u;
+   INT8 sd = s_d;
+   INT8 su = s_u;
+   
+   IF (s_u > 0)
+      s_u--;
 
-      int8 md = m_d;
-      int8 mu = m_u;
-      int8 sd = s_d;
-      int8 su = s_u;
-      
-      if(s_u > 0)
-         s_u--;
-      else
+   ELSE
+   {
+      IF (s_d > 0)
       {
-         if(s_d > 0)
+         s_u = 9;
+         s_d--;
+      }
+
+      ELSE
+      {
+         IF (m_u > 0)
          {
+            s_d = 5;
             s_u = 9;
-            s_d--;
+            m_u--;
          }
-         else
+
+         ELSE
          {
-            if(m_u > 0)
+            IF (m_d > 0)
             {
+               m_d = 0;
+               m_u = 9;
                s_d = 5;
                s_u = 9;
-               m_u--; 
             }
-            else
+
+            ELSE
             {
-               if(m_d > 0)
-               {
-                  m_d = 0;
-                  m_u = 9;
-                  s_d = 5;
-                  s_u = 9;
-               }
-               else
-               {
-                  //TODO: End count
-                  m_d=0;
-                  m_u=0;
-                  s_d=0;
-                  s_u=0;
-                  enableTime = false;
-               }
+               //TODO: End count
+               m_d = 0;
+               m_u = 0;
+               s_d = 0;
+               s_u = 0;
+               enableTime = false;
+               i2c_send(I2C_TIMER,I2C_CMD_BUZ2);
             }
          }
       }
-      
-      if(su != s_u)
-         sendN2Port(s_u, I2C_TIMER, PuertoD);
-         delay_ms(I2CWAIT);
-      if(sd != s_d)
-         sendN2Port(s_d, I2C_TIMER, PuertoC);
-         delay_ms(I2CWAIT);
-      if(mu != m_u)
-         sendN2Port(m_u, I2C_TIMER, PuertoE);
-         delay_ms(I2CWAIT);
-      if(md != m_d)
-         if(m_d ==0)
-         {
-            i2c_send(I2C_TIMER, I2C_CMD_MDOF);
-            delay_ms(I2CWAIT);
-         }
-         else
-         {
-            i2c_send(I2C_TIMER, I2C_CMD_MDON);
-            delay_ms(I2CWAIT);
-         }
-
-}
-
-void showNumber(int8 n, tPort p)
-{
-   int1 a=0, b=0, c=0, d=0;
-   switch(n)
-   {
-      case 1:  a=1;
-               break;
-      case 2:  b=1;
-               break;
-      case 3:  a=1; b=1;
-               break;
-      case 4:  c=1;
-               break;
-      case 5:  c=1; a=1;
-               break;
-      case 6:  c=1; b=1;
-               break;
-      case 7:  c=1; b=1; a=1;
-               break;
-      case 8:  d=1;
-               break;
-      case 9:  d=1; a=1;
-               break;
    }
-   output_bit(p.a, a);
-   output_bit(p.b, b);
-   output_bit(p.c, c);
-   output_bit(p.d, d);
-}
 
-int8 char2int(char c)
-{
-   switch(c)
+   
+   IF (su != s_u)
+      sendN2Port (s_u, I2C_TIMER, PuertoD);
+
+   delay_ms (I2CWAIT) ;
+
+   IF (sd != s_d)
+      sendN2Port (s_d, I2C_TIMER, PuertoC);
+
+   delay_ms (I2CWAIT) ;
+
+   IF (mu != m_u)
+      sendN2Port (m_u, I2C_TIMER, PuertoE);
+
+   delay_ms (I2CWAIT) ;
+
+   IF (md != m_d)
+      IF (m_d == 0)
+      {
+         i2c_send (I2C_TIMER, I2C_CMD_MDOF);
+      }
+
+   ELSE
    {
-      case '0':   return 0;
-                  break;
-      case '1':   return 1;
-                  break;
-      case '2':   return 2;
-                  break;
-      case '3':   return 3;
-                  break;
-      case '4':   return 4;
-                  break;
-      case '5':   return 5;
-                  break;
-      case '6':   return 6;
-                  break;
-      case '7':   return 7;
-                  break;
-      case '8':   return 8;
-                  break;
-      case '9':   return 9;
-                  break;
+      i2c_send (I2C_TIMER, I2C_CMD_MDON);
    }
-   return 0;
+   
 }
 
-void doReset(void)
+void showNumber(INT8 n, tPort p)
 {
-   i2c_send(I2C_TIMER, I2C_CMD_RESET);
-   delay_ms(I2CWAIT);
-   i2c_send(I2C_SCORE, I2C_CMD_RESET);
-   delay_ms(I2CWAIT);
-   reset_cpu();
+   INT1 a = 0, b = 0, c = 0, d = 0;
+
+   SWITCH (n)
+   {
+      CASE 1: a = 1;
+      BREAK;
+      CASE 2: b = 1;
+      BREAK;
+      CASE 3: a = 1; b = 1;
+      BREAK;
+      CASE 4: c = 1;
+      BREAK;
+      CASE 5: c = 1; a = 1;
+      BREAK;
+      CASE 6: c = 1; b = 1;
+      BREAK;
+      CASE 7: c = 1; b = 1; a = 1;
+      BREAK;
+      CASE 8: d = 1;
+      BREAK;
+      CASE 9: d = 1; a = 1;
+      BREAK;
+   }
+
+   output_bit (p.a, a);
+   output_bit (p.b, b);
+   output_bit (p.c, c);
+   output_bit (p.d, d);
 }
 
-void sendN2Port(int8 n, int8 a, int8 p)
+int8 char2int(CHAR c)
 {
-   int c = (p * 16) + n;
-   i2c_send(a, c);
+   SWITCH (c)
+   {
+      case '0': RETURN 0;
+      BREAK;
+      case '1': RETURN 1;
+      BREAK;
+      case '2': RETURN 2;
+      BREAK;
+      case '3': RETURN 3;
+      BREAK;
+      case '4': RETURN 4;
+      BREAK;
+      case '5': RETURN 5;
+      BREAK;
+      case '6': RETURN 6;
+      BREAK;
+      case '7': RETURN 7;
+      BREAK;
+      case '8': RETURN 8;
+      BREAK;
+      case '9': RETURN 9;
+      BREAK;
+   }
+
+   RETURN 0;
 }
 
-void i2c_send(int8 a, int8 c)
+void doReset(VOID)
 {
-   i2c_start();
-   i2c_write(a);
-   i2c_write(c);
-   i2c_stop();
+   i2c_send (I2C_TIMER, I2C_CMD_RESET);
+   delay_ms (I2CWAIT) ;
+   i2c_send (I2C_SCORE, I2C_CMD_RESET);
+   reset_cpu () ;
 }
+
+void sendN2Port(INT8 n, int8 a, int8 p)
+{
+   INT c = (p * 16) + n;
+   i2c_send (a, c);
+}
+
+void i2c_send(INT8 a, int8 c)
+{
+   i2c_start () ;
+   i2c_write (a) ;
+   i2c_write (c) ;
+   i2c_stop () ;
+}
+
+
