@@ -11,8 +11,8 @@ Los comandos que acepta deben de tener el formato <b>-[COMANDO]#</b>
 
 La lista de comandos es la siguiente:</br></br>
 <pre><b>Bn</b> :: Activa el buzzer en el modo <b>n</b>: 0 Toque corto, 1 Toque largo.</pre></br>
-<pre><b>Fnn</b> :: Asigna faltas del juganor, <b>nn</b> es el numero de faltas a 2 digitos.</pre></br>
-<pre><b>Jnn</b> :: Asigna numero del juganor, <b>nn</b> es el numero de jugador a 2 digitos.</pre></br>
+<pre><b>Fnn</b> :: Asigna faltas del jugador, <b>nn</b> es el numero de faltas a 2 digitos.</pre></br>
+<pre><b>Jnn</b> :: Asigna numero del jugador, <b>nn</b> es el numero de jugador a 2 digitos.</pre></br>
 <pre><b>L0</b> :: Asigna 0 al puntaje de local.</pre></br>
 <pre><b>L1</b> :: Incrementa 1 al puntaje del local.</pre></br>
 <pre><b>L2</b> :: Incrementa 2 al puntaje del local.</pre></br>
