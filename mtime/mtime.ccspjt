@@ -3,7 +3,7 @@ Target=mtime.hex
 Processor_Text=PIC16F887
 CCSVerions=5.076
 Compiler=PCM
-CCSVersion=5.076
+CCSVersion=5.049
 [Target Data]
 FileList=mtime.c
 [Directories]
@@ -17,7 +17,7 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=2
+Days=4
 D1=09-03-2020
 D1_L=74
 D1_L1=[40734]Project Opened.
@@ -106,18 +106,28 @@ D2_L3=[80326]Stopped Editing.
 D2_E=2
 D2_D=0
 D2_L4=[80326]Project Closed.
+D3=15-11-2021
+D3_L=4
+D3_L1=[86117]Project Opened.
+D3_L2=[86129]Project Closed.
+D3_L3=[86172]Project Opened.
+D3_L4=[86257]Project Closed.
+D4=16-11-2021
+D4_L=2
+D4_L1=[2240]Project Opened.
+D4_L2=[2255]Project Closed.
 
 [Opened Files]
 1=mtime.c
-t1=402
+t1=1
 Count=2
 2=mtime.h
-t2=402
+t2=1
 [mtime.c]
 Type=4
 
 [defines]
-buildcount=44
+buildcount=45
 [Units]
 Count=1
 1=mtime (main)

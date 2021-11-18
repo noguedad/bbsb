@@ -228,10 +228,10 @@ ROM Allocation:
 000106  @const845.call
 000117  @PSTRINGC7_1
 00018D  char2int
-0001CD  @goto17188
+0001CD  @goto40175
 0001DB  @WRITEBITA
 0001FD  showNumber
-000284  @goto17149
+000284  @goto40124
 000291  doBuzz
 0002C7  i2c_send
 0002E2  @I2C_WRITEU_1
@@ -292,8 +292,8 @@ ROM Allocation:
 000DD0  resScoreV
 000EBF  doTest
 000FA9  doReset
-000FC7  @goto16542
-000FCF  @goto16754
+000FC7  @goto39516
+000FCF  @goto39723
 001000  setup
 00117E  timeTick
 001180  timePass
@@ -303,15 +303,15 @@ Project Directory:
     C:\Users\nogue\Documents\GitHub\bbsb\mcoms\
 
 Project Files:
-    mcoms.c                                                 [11-mar.-20 21:59  CRC=B7426E76]
-    mcoms.h                                                 [11-mar.-20 22:15  CRC=43662C5A]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [15-ene.-18 16:53  CRC=9C71CB72]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [26-mar.-15 13:34  CRC=C4814297]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-sep.-14 12:47  CRC=897CEC6C]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 15:55  CRC=2D1F019F]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 15:24  CRC=4E4534F4]
+    mcoms.c                                                 [18-nov.-21 17:30  CRC=FDBA0D9E]
+    mcoms.h                                                 [18-nov.-21 17:30  CRC=9F3DC839]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [15-ene.-18 15:53  CRC=9C71CB72]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [26-mar.-15 12:34  CRC=C4814297]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-sep.-14 11:47  CRC=897CEC6C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 14:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 14:24  CRC=4E4534F4]
 
-Source signature=AEC200CC
+Source signature=51113BD3
 Program memory checksum=0000
 Program memory CRC=0000
 Hex file CRC=1780

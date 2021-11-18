@@ -1,13 +1,12 @@
-F N "i2c_send" 0 748 ""
-D G "__PCM__" 0 758 ""5.076""
-D G "__DEVICE__" 0 758 "887"
-D G "__DATE__" 0 758 ""11-mar.-20""
-D G "__TIME__" 0 758 ""22:15:05""
-D G "_UNICODE" 0 758 ""?""
-D G "__EVAL" 0 758 ""?"" "*:COPYRIGHT"
-C G "" 0 14 1 "*"
+D G "__PCM__" 0 817 ""5.076""
+D G "__DEVICE__" 0 817 "887"
+D G "__DATE__" 0 817 ""18-nov.-21""
+D G "__TIME__" 0 817 ""17:30:40""
+D G "_UNICODE" 0 817 ""?""
+D G "__EVAL" 0 817 ""?"" "*:COPYRIGHT"
 C G "" 0 15 1 "*"
-C G "" 0 16 2 "*"
+C G "" 0 16 1 "*"
+C G "" 0 17 2 "*"
 C G "" 1 1 9 "*:COPYRIGHT"
 C G "" 1 15 1 "*AUTOR"
 C G "" 1 16 1 "*ARCHIVO"
@@ -1178,137 +1177,137 @@ D G "RS232_TX" 1 50 "PIN_C6"
 D G "RS232_RX" 1 51 "PIN_C7"
 D G "DISPLAY" 1 52 "PIN_E0"
 D G "DEBUG" 1 53 "input_state(PIN_C2)"
-D G "TICKS_PER_SECOND" 1 58 "7812"
-D G "TICK_TYPE" 1 61 "unsigned int32"
-D G "I2C_TIMER" 1 62 "0x0A"
-D G "I2C_SCORE" 1 63 "0x0C"
-D G "I2C_CMD_INIT" 1 65 "0xF0"
-D G "I2C_CMD_TEST" 1 66 "0xFF"
-D G "I2C_CMD_RESET" 1 67 "0xFD"
-D G "I2C_CMD_PER0" 1 68 "0x70"
-D G "I2C_CMD_PER1" 1 69 "0x71"
-D G "I2C_CMD_PER2" 1 70 "0x72"
-D G "I2C_CMD_PER3" 1 71 "0x73"
-D G "I2C_CMD_PER4" 1 72 "0x74"
-D G "I2C_CMD_MDON" 1 73 "0x75"
-D G "I2C_CMD_MDOF" 1 74 "0x76"
-D G "I2C_CMD_POS0" 1 75 "0x70"
-D G "I2C_CMD_POSL" 1 76 "0x71"
-D G "I2C_CMD_POSV" 1 77 "0x72"
-D G "I2C_CMD_CLON" 1 78 "0x73"
-D G "I2C_CMD_CLOF" 1 79 "0x74"
-D G "I2C_CMD_CVON" 1 80 "0x75"
-D G "I2C_CMD_CVOF" 1 81 "0x76"
-D G "I2C_CMD_BUZ1" 1 82 "0x81"
-D G "I2C_CMD_BUZ2" 1 83 "0x82"
-D G "I2C_CMD_BUZ3" 1 84 "0x83"
-D G "ON" 1 86 "1"
-D G "OFF" 1 87 "0"
-D G "DEFAULT_D" 1 88 "100"
-D G "I2CWAIT" 1 89 "50"
-D G "PuertoA" 1 91 "1"
-D G "PuertoB" 1 92 "2"
-D G "PuertoC" 1 93 "3"
-D G "PuertoD" 1 94 "4"
-D G "PuertoE" 1 95 "5"
-D G "PuertoF" 1 96 "6"
+D G "TICKS_PER_SECOND" 1 59 "7812"
+D G "TICK_TYPE" 1 62 "unsigned int32"
+D G "I2C_TIMER" 1 63 "0x0A"
+D G "I2C_SCORE" 1 64 "0x0C"
+D G "I2C_CMD_INIT" 1 66 "0xF0"
+D G "I2C_CMD_TEST" 1 67 "0xFF"
+D G "I2C_CMD_RESET" 1 68 "0xFD"
+D G "I2C_CMD_PER0" 1 69 "0x70"
+D G "I2C_CMD_PER1" 1 70 "0x71"
+D G "I2C_CMD_PER2" 1 71 "0x72"
+D G "I2C_CMD_PER3" 1 72 "0x73"
+D G "I2C_CMD_PER4" 1 73 "0x74"
+D G "I2C_CMD_MDON" 1 74 "0x75"
+D G "I2C_CMD_MDOF" 1 75 "0x76"
+D G "I2C_CMD_POS0" 1 76 "0x70"
+D G "I2C_CMD_POSL" 1 77 "0x71"
+D G "I2C_CMD_POSV" 1 78 "0x72"
+D G "I2C_CMD_CLON" 1 79 "0x73"
+D G "I2C_CMD_CLOF" 1 80 "0x74"
+D G "I2C_CMD_CVON" 1 81 "0x75"
+D G "I2C_CMD_CVOF" 1 82 "0x76"
+D G "I2C_CMD_BUZ1" 1 83 "0x81"
+D G "I2C_CMD_BUZ2" 1 84 "0x82"
+D G "I2C_CMD_BUZ3" 1 85 "0x83"
+D G "ON" 1 87 "1"
+D G "OFF" 1 88 "0"
+D G "DEFAULT_D" 1 89 "100"
+D G "I2CWAIT" 1 90 "50"
+D G "PuertoA" 1 92 "1"
+D G "PuertoB" 1 93 "2"
+D G "PuertoC" 1 94 "3"
+D G "PuertoD" 1 95 "4"
+D G "PuertoE" 1 96 "5"
+D G "PuertoF" 1 97 "6"
 C L "jump_to_isr" 1 24 2 "FUNCTION"
-T G "tPort" 1 106 "{int8 a,int8 b,int8 c,int8 d}" `658  "Datos para la captura de comandos del RS232"
-V G "cmd" 1 109 "int8[10]" `659 
-V G "rcmd" 1 110 "int8[10]" `660 
-V G "cmdIndex" 1 111 "int8" `661 
-V G "cmdGet" 1 112 "int1" `662 
+T G "tPort" 1 107 "{int8 a,int8 b,int8 c,int8 d}" `658  "Datos para la captura de comandos del RS232"
+V G "cmd" 1 110 "int8[10]" `659 
+V G "rcmd" 1 111 "int8[10]" `660 
+V G "cmdIndex" 1 112 "int8" `661 
+V G "cmdGet" 1 113 "int1" `662 
 C L "jump_to_isr" 1 24 1 "FUNCTION"
-V G "pNJugadorU" 1 115 "tPort" `663 
-V G "pNJugadorD" 1 116 "tPort" `664 
-V G "pFJugadorU" 1 117 "tPort" `665 
-V G "pFJugadorD" 1 118 "tPort" `666  "Tiempo"
-V G "m_d" 1 121 "int8" `667 
-V G "m_u" 1 122 "int8" `668 
-V G "s_d" 1 123 "int8" `669 
-V G "s_u" 1 124 "int8" `670 
-V G "enableTime" 1 125 "int1" `671 
+V G "pNJugadorU" 1 116 "tPort" `663 
+V G "pNJugadorD" 1 117 "tPort" `664 
+V G "pFJugadorU" 1 118 "tPort" `665 
+V G "pFJugadorD" 1 119 "tPort" `666  "Tiempo"
+V G "m_d" 1 122 "int8" `667 
+V G "m_u" 1 123 "int8" `668 
+V G "s_d" 1 124 "int8" `669 
+V G "s_u" 1 125 "int8" `670 
+V G "enableTime" 1 126 "int1" `671 
 C L "jump_to_isr" 1 24 1 "FUNCTION"
-V G "sh_d" 1 128 "int8" `672 
-V G "sh_u" 1 129 "int8" `673 
-V G "enableShot" 1 130 "int1" `674 
-V G "pauseTime" 1 132 "int1" `675 
-V G "scoreLU" 1 134 "int8" `676 
-V G "scoreLD" 1 135 "int8" `677 
-V G "scoreLC" 1 136 "int1" `678 
-V G "scoreVU" 1 137 "int8" `679 
-V G "scoreVD" 1 138 "int8" `680 
-V G "scoreVC" 1 139 "int1" `681 
+V G "sh_d" 1 129 "int8" `672 
+V G "sh_u" 1 130 "int8" `673 
+V G "enableShot" 1 131 "int1" `674 
+V G "pauseTime" 1 133 "int1" `675 
+V G "scoreLU" 1 135 "int8" `676 
+V G "scoreLD" 1 136 "int8" `677 
+V G "scoreLC" 1 137 "int1" `678 
+V G "scoreVU" 1 138 "int8" `679 
+V G "scoreVD" 1 139 "int8" `680 
+V G "scoreVC" 1 140 "int1" `681 
 C L "jump_to_isr" 1 24 1 "FUNCTION"
-F N "GetTickDifference" 1 143 ""
-V L "currTick" 1 143 "int32" `683 
-V L "prevTick" 1 143 "int32" `684 
-f G "GetTickDifference" 1 143 "int32(int32 currTick,int32 prevTick)" `682 
-F N "RDA_isr" 1 144 ""
-f G "RDA_isr" 1 144 "void()" `685 
-F N "SSP_isr" 1 145 ""
-f G "SSP_isr" 1 145 "void()" `686 
-F N "timeTick" 1 146 ""
-f G "timeTick" 1 146 "void()" `687 
-F N "parseCommand" 1 147 ""
-f G "parseCommand" 1 147 "void()" `688 
-F N "doTest" 1 148 ""
-f G "doTest" 1 148 "void()" `689 
-F N "showNumber" 1 149 ""
-V L "??65535" 1 149 "int8" `691 
-V L "??65535" 1 149 "tPort" `692 
-f G "showNumber" 1 149 "void(int8 ,tPort )" `690 
-F N "char2int" 1 150 ""
-V L "??65535" 1 150 "int8" `694 
-f G "char2int" 1 150 "int8(int8 )" `693 
-F N "doReset" 1 151 ""
-f G "doReset" 1 151 "void()" `695 
-F N "sendN2Port" 1 152 ""
-V L "??65535" 1 152 "int8" `697 
-V L "??65535" 1 152 "int8" `698 
-V L "??65535" 1 152 "int8" `699 
-f G "sendN2Port" 1 152 "void(int8 ,int8 ,int8 )" `696 
-F N "timeSet" 1 153 ""
-V L "??65535" 1 153 "int8" `701 
-V L "??65535" 1 153 "int8" `702 
-V L "??65535" 1 153 "int8" `703 
-V L "??65535" 1 153 "int8" `704 
-f G "timeSet" 1 153 "void(int8 ,int8 ,int8 ,int8 )" `700 
-F N "shotSet" 1 154 ""
-V L "??65535" 1 154 "int8" `706 
-V L "??65535" 1 154 "int8" `707 
-f G "shotSet" 1 154 "void(int8 ,int8 )" `705 
-F N "timePass" 1 155 ""
-f G "timePass" 1 155 "void()" `708 
-F N "shotPass" 1 156 ""
-f G "shotPass" 1 156 "void()" `709 
-F N "doBuzz" 1 157 ""
-V L "??65535" 1 157 "int8" `711 
-f G "doBuzz" 1 157 "void(int8 )" `710 
-F N "setScoreL" 1 158 ""
-V L "??65535" 1 158 "int8" `713 
-V L "??65535" 1 158 "int8" `714 
-V L "??65535" 1 158 "int8" `715 
-f G "setScoreL" 1 158 "void(int8 ,int8 ,int8 )" `712 
-F N "setScoreV" 1 159 ""
-V L "??65535" 1 159 "int8" `717 
-V L "??65535" 1 159 "int8" `718 
-V L "??65535" 1 159 "int8" `719 
-f G "setScoreV" 1 159 "void(int8 ,int8 ,int8 )" `716 
-F N "i2c_send" 1 160 ""
-V L "??65535" 1 160 "int8" `721 
-V L "??65535" 1 160 "int8" `722 
-f G "i2c_send" 1 160 "void(int8 ,int8 )" `720 
-F N "addScoreL" 1 161 ""
-V L "??65535" 1 161 "int8" `724 
-f G "addScoreL" 1 161 "void(int8 )" `723 
-F N "addScoreV" 1 162 ""
-V L "??65535" 1 162 "int8" `726 
-f G "addScoreV" 1 162 "void(int8 )" `725 
-F N "resScoreL" 1 163 ""
-f G "resScoreL" 1 163 "void()" `727 
-F N "resScoreV" 1 164 ""
-f G "resScoreV" 1 164 "void()" `728  "(C) Copyright 1996,2008 Custom Computer Services            ////"
+F N "GetTickDifference" 1 144 ""
+V L "currTick" 1 144 "int32" `683 
+V L "prevTick" 1 144 "int32" `684 
+f G "GetTickDifference" 1 144 "int32(int32 currTick,int32 prevTick)" `682 
+F N "RDA_isr" 1 145 ""
+f G "RDA_isr" 1 145 "void()" `685 
+F N "SSP_isr" 1 146 ""
+f G "SSP_isr" 1 146 "void()" `686 
+F N "timeTick" 1 147 ""
+f G "timeTick" 1 147 "void()" `687 
+F N "parseCommand" 1 148 ""
+f G "parseCommand" 1 148 "void()" `688 
+F N "doTest" 1 149 ""
+f G "doTest" 1 149 "void()" `689 
+F N "showNumber" 1 150 ""
+V L "??65535" 1 150 "int8" `691 
+V L "??65535" 1 150 "tPort" `692 
+f G "showNumber" 1 150 "void(int8 ,tPort )" `690 
+F N "char2int" 1 151 ""
+V L "??65535" 1 151 "int8" `694 
+f G "char2int" 1 151 "int8(int8 )" `693 
+F N "doReset" 1 152 ""
+f G "doReset" 1 152 "void()" `695 
+F N "sendN2Port" 1 153 ""
+V L "??65535" 1 153 "int8" `697 
+V L "??65535" 1 153 "int8" `698 
+V L "??65535" 1 153 "int8" `699 
+f G "sendN2Port" 1 153 "void(int8 ,int8 ,int8 )" `696 
+F N "timeSet" 1 154 ""
+V L "??65535" 1 154 "int8" `701 
+V L "??65535" 1 154 "int8" `702 
+V L "??65535" 1 154 "int8" `703 
+V L "??65535" 1 154 "int8" `704 
+f G "timeSet" 1 154 "void(int8 ,int8 ,int8 ,int8 )" `700 
+F N "shotSet" 1 155 ""
+V L "??65535" 1 155 "int8" `706 
+V L "??65535" 1 155 "int8" `707 
+f G "shotSet" 1 155 "void(int8 ,int8 )" `705 
+F N "timePass" 1 156 ""
+f G "timePass" 1 156 "void()" `708 
+F N "shotPass" 1 157 ""
+f G "shotPass" 1 157 "void()" `709 
+F N "doBuzz" 1 158 ""
+V L "??65535" 1 158 "int8" `711 
+f G "doBuzz" 1 158 "void(int8 )" `710 
+F N "setScoreL" 1 159 ""
+V L "??65535" 1 159 "int8" `713 
+V L "??65535" 1 159 "int8" `714 
+V L "??65535" 1 159 "int8" `715 
+f G "setScoreL" 1 159 "void(int8 ,int8 ,int8 )" `712 
+F N "setScoreV" 1 160 ""
+V L "??65535" 1 160 "int8" `717 
+V L "??65535" 1 160 "int8" `718 
+V L "??65535" 1 160 "int8" `719 
+f G "setScoreV" 1 160 "void(int8 ,int8 ,int8 )" `716 
+F N "i2c_send" 1 161 ""
+V L "??65535" 1 161 "int8" `721 
+V L "??65535" 1 161 "int8" `722 
+f G "i2c_send" 1 161 "void(int8 ,int8 )" `720 
+F N "addScoreL" 1 162 ""
+V L "??65535" 1 162 "int8" `724 
+f G "addScoreL" 1 162 "void(int8 )" `723 
+F N "addScoreV" 1 163 ""
+V L "??65535" 1 163 "int8" `726 
+f G "addScoreV" 1 163 "void(int8 )" `725 
+F N "resScoreL" 1 164 ""
+f G "resScoreL" 1 164 "void()" `727 
+F N "resScoreV" 1 165 ""
+f G "resScoreV" 1 165 "void()" `728  "(C) Copyright 1996,2008 Custom Computer Services            ////"
 D G "_STRING" 3 12 ""
 D G "_STDDEF" 4 13 ""
 D G "ptrdiff_t" 4 18 "unsigned int16"
@@ -1457,111 +1456,111 @@ V L "p" 3 422 "*int8" `823
 D G "_STDIO" 6 12 ""
 C L "setup" 3 2 7 "FUNCTION"
 C L "setup" 6 20 5 "FUNCTION"
-C L "setup" 0 22 1 "*FUNCION"
-C L "setup" 0 23 1 "*PARAMETROS"
-C L "setup" 0 24 1 "*REGRESA"
-C L "setup" 0 25 1 "*RESUMEN"
-F N "setup" 0 26 ""
-F G "setup" 0 27 "void()" `824 
-F N "MAIN" 0 89 ""
-F G "MAIN" 0 90 "void()" `846 
-V L "CurrentTick" 0 93 "int32" `849 
-V L "PreviousTick" 0 93 "int32" `850 
-F N "RDA_isr" 0 112 ""
-F G "RDA_isr" 0 113 "void()" `685 
-V L "c" 0 114 "int8" `851 
-F N "GetTickDifference" 0 144 ""
-V L "currTick" 0 144 "int32" `683 
-V L "prevTick" 0 144 "int32" `855 
+C L "setup" 0 23 1 "*FUNCION"
+C L "setup" 0 24 1 "*PARAMETROS"
+C L "setup" 0 25 1 "*REGRESA"
+C L "setup" 0 26 1 "*RESUMEN"
+F N "setup" 0 28 ""
+F G "setup" 0 28 "void()" `824 
+F N "MAIN" 0 97 ""
+F G "MAIN" 0 97 "void()" `846 
+V L "CurrentTick" 0 100 "int32" `849 
+V L "PreviousTick" 0 100 "int32" `850 
+F N "RDA_isr" 0 118 ""
+F G "RDA_isr" 0 118 "void()" `685 
+V L "c" 0 119 "int8" `851 
+F N "GetTickDifference" 0 145 ""
+V L "currTick" 0 145 "int32" `683 
+V L "prevTick" 0 145 "int32" `855 
 F G "GetTickDifference" 0 145 "int32(int32 currTick,int32 prevTick)" `682 
 F N "timeTick" 0 149 ""
-F G "timeTick" 0 150 "void()" `687 
-F N "doTest" 0 158 ""
-F G "doTest" 0 159 "void()" `689 
-V L "i" 0 166 "int8" `857 
-F N "doBuzz" 0 177 ""
-V L "t" 0 177 "int8" `859 
-F G "doBuzz" 0 178 "void(int8 t)" `710 
-F N "parseCommand" 0 185 ""
-F G "parseCommand" 0 186 "void()" `688 
-V L "c" 0 187 "int8[10]" `858 
-C L "parseCommand" 0 25 1 "FUNCTION"
-F N "setScoreL" 0 332 ""
-V L "c" 0 332 "int8" `713 
-V L "d" 0 332 "int8" `714 
-V L "u" 0 332 "int8" `896 
-F G "setScoreL" 0 333 "void(int8 c,int8 d,int8 u)" `712  "TODO: Codigo para mostrar puntos"
-F N "setScoreV" 0 352 ""
-V L "c" 0 352 "int8" `717 
-V L "d" 0 352 "int8" `718 
-V L "u" 0 352 "int8" `896 
-F G "setScoreV" 0 353 "void(int8 c,int8 d,int8 u)" `716  "TODO: Codigo para mostrar puntos"
-F N "addScoreV" 0 374 ""
-V L "a" 0 374 "int8" `894 
-F G "addScoreV" 0 375 "void(int8 a)" `725 
-V L "tc" 0 376 "int1" `893 
-V L "td" 0 377 "int8" `894 
-V L "tu" 0 378 "int8" `895 
-F N "resScoreV" 0 409 ""
-F G "resScoreV" 0 410 "void()" `728 
-V L "tc" 0 411 "int1" `896 
-V L "td" 0 412 "int8" `897 
-V L "tu" 0 413 "int8" `898 
-F N "addScoreL" 0 447 ""
-V L "a" 0 447 "int8" `900 
-F G "addScoreL" 0 448 "void(int8 a)" `723 
-V L "tc" 0 449 "int1" `899 
-V L "td" 0 450 "int8" `900 
-V L "tu" 0 451 "int8" `901 
-F N "resScoreL" 0 481 ""
-F G "resScoreL" 0 482 "void()" `727 
-V L "tc" 0 483 "int1" `902 
-V L "td" 0 484 "int8" `903 
-V L "tu" 0 485 "int8" `904 
-F N "shotSet" 0 519 ""
-V L "shd" 0 519 "int8" `706 
-V L "shu" 0 519 "int8" `907 
-F G "shotSet" 0 520 "void(int8 shd,int8 shu)" `705 
-F N "timeSet" 0 530 ""
-V L "md" 0 530 "int8" `701 
-V L "mu" 0 530 "int8" `702 
-V L "sd" 0 530 "int8" `703 
-V L "su" 0 530 "int8" `909 
-F G "timeSet" 0 531 "void(int8 md,int8 mu,int8 sd,int8 su)" `700 
-F N "shotPass" 0 557 ""
-F G "shotPass" 0 558 "void()" `709 
-V L "shd" 0 559 "int8" `905 
-V L "shu" 0 560 "int8" `906 
-F N "timePass" 0 593 ""
-F G "timePass" 0 594 "void()" `708 
-V L "md" 0 595 "int8" `907 
-V L "mu" 0 596 "int8" `908 
-V L "sd" 0 597 "int8" `909 
-V L "su" 0 598 "int8" `910 
-C L "timePass" 0 25 1 "FUNCTION"
-F N "showNumber" 0 673 ""
-V L "n" 0 673 "int8" `691 
-V L "p" 0 673 "tPort" `913 
-F G "showNumber" 0 674 "void(int8 n,tPort p)" `690 
-V L "a" 0 675 "int1" `911 
-V L "b" 0 675 "int1" `912 
-V L "c" 0 675 "int1" `913 
-V L "d" 0 675 "int1" `914 
-F N "char2int" 0 705 ""
-V L "c" 0 705 "int8" `921 
-F G "char2int" 0 706 "int8(int8 c)" `693 
-F N "doReset" 0 734 ""
-F G "doReset" 0 735 "void()" `695 
-F N "sendN2Port" 0 742 ""
-V L "n" 0 742 "int8" `697 
-V L "a" 0 742 "int8" `698 
-V L "p" 0 742 "int8" `924 
-F G "sendN2Port" 0 743 "void(int8 n,int8 a,int8 p)" `696 
-V L "c" 0 744 "int8" `921 
-F N "i2c_send" 0 748 ""
-V L "a" 0 748 "int8" `721 
-V L "c" 0 748 "int8" `924 
-F G "i2c_send" 0 749 "void(int8 a,int8 c)" `720 
+F G "timeTick" 0 149 "void()" `687 
+F N "doTest" 0 157 ""
+F G "doTest" 0 157 "void()" `689 
+V L "i" 0 176 "int8" `857 
+F N "doBuzz" 0 185 ""
+V L "t" 0 185 "int8" `859 
+F G "doBuzz" 0 185 "void(int8 t)" `710 
+F N "parseCommand" 0 192 ""
+F G "parseCommand" 0 192 "void()" `688 
+V L "c" 0 193 "int8[10]" `858 
+C L "parseCommand" 0 26 1 "FUNCTION"
+F N "setScoreL" 0 430 ""
+V L "c" 0 430 "int8" `713 
+V L "d" 0 430 "int8" `714 
+V L "u" 0 430 "int8" `896 
+F G "setScoreL" 0 430 "void(int8 c,int8 d,int8 u)" `712  "TODO: Codigo para mostrar puntos"
+F N "setScoreV" 0 449 ""
+V L "c" 0 449 "int8" `717 
+V L "d" 0 449 "int8" `718 
+V L "u" 0 449 "int8" `896 
+F G "setScoreV" 0 449 "void(int8 c,int8 d,int8 u)" `716  "TODO: Codigo para mostrar puntos"
+F N "addScoreV" 0 470 ""
+V L "a" 0 470 "int8" `894 
+F G "addScoreV" 0 470 "void(int8 a)" `725 
+V L "tc" 0 471 "int1" `893 
+V L "td" 0 472 "int8" `894 
+V L "tu" 0 473 "int8" `895 
+F N "resScoreV" 0 501 ""
+F G "resScoreV" 0 501 "void()" `728 
+V L "tc" 0 502 "int1" `896 
+V L "td" 0 503 "int8" `897 
+V L "tu" 0 504 "int8" `898 
+F N "addScoreL" 0 533 ""
+V L "a" 0 533 "int8" `900 
+F G "addScoreL" 0 533 "void(int8 a)" `723 
+V L "tc" 0 534 "int1" `899 
+V L "td" 0 535 "int8" `900 
+V L "tu" 0 536 "int8" `901 
+F N "resScoreL" 0 563 ""
+F G "resScoreL" 0 563 "void()" `727 
+V L "tc" 0 564 "int1" `902 
+V L "td" 0 565 "int8" `903 
+V L "tu" 0 566 "int8" `904 
+F N "shotSet" 0 595 ""
+V L "shd" 0 595 "int8" `706 
+V L "shu" 0 595 "int8" `907 
+F G "shotSet" 0 595 "void(int8 shd,int8 shu)" `705 
+F N "timeSet" 0 605 ""
+V L "md" 0 605 "int8" `701 
+V L "mu" 0 605 "int8" `702 
+V L "sd" 0 605 "int8" `703 
+V L "su" 0 605 "int8" `909 
+F G "timeSet" 0 605 "void(int8 md,int8 mu,int8 sd,int8 su)" `700 
+F N "shotPass" 0 629 ""
+F G "shotPass" 0 629 "void()" `709 
+V L "shd" 0 630 "int8" `905 
+V L "shu" 0 631 "int8" `906 
+F N "timePass" 0 662 ""
+F G "timePass" 0 662 "void()" `708 
+V L "md" 0 663 "int8" `907 
+V L "mu" 0 664 "int8" `908 
+V L "sd" 0 665 "int8" `909 
+V L "su" 0 666 "int8" `910 
+C L "timePass" 0 26 1 "FUNCTION"
+F N "showNumber" 0 734 ""
+V L "n" 0 734 "int8" `691 
+V L "p" 0 734 "tPort" `913 
+F G "showNumber" 0 734 "void(int8 n,tPort p)" `690 
+V L "a" 0 735 "int1" `911 
+V L "b" 0 735 "int1" `912 
+V L "c" 0 735 "int1" `913 
+V L "d" 0 735 "int1" `914 
+F N "char2int" 0 770 ""
+V L "c" 0 770 "int8" `921 
+F G "char2int" 0 770 "int8(int8 c)" `693 
+F N "doReset" 0 798 ""
+F G "doReset" 0 798 "void()" `695 
+F N "sendN2Port" 0 805 ""
+V L "n" 0 805 "int8" `697 
+V L "a" 0 805 "int8" `698 
+V L "p" 0 805 "int8" `924 
+F G "sendN2Port" 0 805 "void(int8 n,int8 a,int8 p)" `696 
+V L "c" 0 806 "int8" `921 
+F N "i2c_send" 0 810 ""
+V L "a" 0 810 "int8" `721 
+V L "c" 0 810 "int8" `924 
+F G "i2c_send" 0 810 "void(int8 a,int8 c)" `720 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep_ulpwu" 1 0

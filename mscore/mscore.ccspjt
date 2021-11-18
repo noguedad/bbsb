@@ -3,7 +3,7 @@ Target=mscore.hex
 Processor_Text=PIC16F887
 CCSVerions=5.076
 Compiler=PCM
-CCSVersion=5.076
+CCSVersion=5.049
 [Target Data]
 FileList=mscore.c
 [Directories]
@@ -17,7 +17,7 @@ Type=4
 forcecoff=0
 
 [ProjectLog]
-Days=2
+Days=4
 D1=09-03-2020
 D1_L=18
 D1_L1=[70584]Project Opened.
@@ -54,18 +54,32 @@ D2_L5=[80112]Project Opened.
 D2_L6=[80127]Started Editing.
 D2_L7=[80224]Stopped Editing.
 D2_L8=[80224]Project Closed.
+D3=15-11-2021
+D3_L=4
+D3_L1=[86085]Project Opened.
+D3_L2=[86117]Project Closed.
+D3_L3=[86257]Project Opened.
+D3_L4=[86287]Project Closed.
+D4=16-11-2021
+D4_L=6
+D4_L1=[396]Project Opened.
+D4_L2=[793]Project Closed.
+D4_L3=[2219]Project Opened.
+D4_L4=[2239]Project Closed.
+D4_L5=[2255]Project Opened.
+D4_L6=[2258]Project Closed.
 
 [Opened Files]
 1=mscore.c
-t1=251
+t1=1
 Count=2
 2=mscore.h
-t2=251
+t2=1
 [mscore.c]
 Type=4
 
 [defines]
-buildcount=9
+buildcount=10
 [Units]
 Count=1
 1=mscore (main)

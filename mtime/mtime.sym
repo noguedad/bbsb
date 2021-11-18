@@ -3,8 +3,8 @@
 015     CCP_1_LOW
 015     CCP_1
 016     CCP_1_HIGH
-01B     CCP_2
 01B     CCP_2_LOW
+01B     CCP_2
 01C     CCP_2_HIGH
 020     @INTERRUPT_AREA
 021     @INTERRUPT_AREA
@@ -38,13 +38,13 @@
 064     @PSTRINGC7_9600_62_63.@SCRATCH4
 066     SSP_isr.state
 066     RDA_isr.c
-067     parseI2CCommand.c
 067-070 parseCommand.c
 067     @I2C_WRITE_1.P1
+067     parseI2CCommand.c
 067     RDA_isr.@SCRATCH1
 067     SSP_isr.@SCRATCH1
-068     @PRINTF_X_9600_62_63.P1
-068     @PSTRINGCN7_9600_62_63.P2
+068     @PSTRINGCN7_9600_62_63.P1
+068     @PRINTF_X_9600_62_63.P2
 068     RDA_isr.@SCRATCH2
 068     SSP_isr.@SCRATCH2
 068     parseI2CCommand.@SCRATCH1
@@ -59,9 +59,9 @@
 071     doTest.i
 071     char2int.c
 071     parseCommand.@SCRATCH1
-072     buzz.t
 072     showNumber.n
 072     showQuarter.n
+072     buzz.t
 072     @PSTRINGC7_1.@SCRATCH1
 072     parseCommand.@SCRATCH2
 073-076 showNumber.p
@@ -121,135 +121,103 @@ E7F     @INTERRUPT_AREA
 EFF     @INTERRUPT_AREA
 F7F     @INTERRUPT_AREA
 FFF     @INTERRUPT_AREA
-107F     @INTERRUPT_AREA
-10FF     @INTERRUPT_AREA
-117F     @INTERRUPT_AREA
-11FF     @INTERRUPT_AREA
-127F     @INTERRUPT_AREA
-12FF     @INTERRUPT_AREA
-137F     @INTERRUPT_AREA
-13FF     @INTERRUPT_AREA
-147F     @INTERRUPT_AREA
-14FF     @INTERRUPT_AREA
-157F     @INTERRUPT_AREA
-15FF     @INTERRUPT_AREA
-167F     @INTERRUPT_AREA
-16FF     @INTERRUPT_AREA
-177F     @INTERRUPT_AREA
-17FF     @INTERRUPT_AREA
-187F     @INTERRUPT_AREA
-18FF     @INTERRUPT_AREA
-197F     @INTERRUPT_AREA
-19FF     @INTERRUPT_AREA
-1A7F     @INTERRUPT_AREA
-1AFF     @INTERRUPT_AREA
-1B7F     @INTERRUPT_AREA
-1BFF     @INTERRUPT_AREA
-1C7F     @INTERRUPT_AREA
-1CFF     @INTERRUPT_AREA
-1D7F     @INTERRUPT_AREA
-1DFF     @INTERRUPT_AREA
-1E7F     @INTERRUPT_AREA
-1EFF     @INTERRUPT_AREA
-1F7F     @INTERRUPT_AREA
-1FFF     @INTERRUPT_AREA
 
 ROM Allocation:
-00005A  @const800.call
-000068  @const775.call
-000079  @const780.call
-00008A  @const781.call
-00009B  @const782.call
-0000AC  @const783.call
-0000BD  @const784.call
-0000C8  @const785.call
-0000CA  @const786.call
-0000CB  @const789.call
-0000DC  @const790.call
-0000ED  @const791.call
-0000F8  @const793.call
-000106  @const794.call
-000114  @const795.call
+00005A  @const756.call
+000068  @const731.call
+000079  @const736.call
+00008A  @const737.call
+00009B  @const738.call
+0000AC  @const739.call
+0000BD  @const740.call
+0000C8  @const741.call
+0000CA  @const742.call
+0000CB  @const745.call
+0000DC  @const746.call
+0000ED  @const747.call
+0000F8  @const749.call
+000106  @const750.call
+000114  @const751.call
 000125  @PSTRINGC7_1
 000177  char2int
-0001A8  @goto25604
+0001A8  @goto11782
 0001B6  @WRITEBITA
 0001D8  showNumber
-000253  @goto25568
+000253  @goto11744
 000260  showQuarter
-000292  @goto25550
+000292  @goto11723
 00029A  @delay_ms1
 0002AE  buzz
 00030F  doTest
 000389  doReset
 00039D  parseCommand
-0005AC  @goto25348
+0005AC  @goto11534
 0005B5  RDA_isr
 000605  @PSTRINGCN7_9600_62_63
 00065E  @PRINTF_X_9600_62_63
-000681  @const803.call
-00068C  @const808.call
-000695  @const809.call
-00069E  @const810.call
-0006A7  @const811.call
-0006B1  @const812.call
-0006BB  @const813.call
-0006C5  @const814.call
-0006CF  @const815.call
-0006DB  @const816.call
-0006E9  @const817.call
-0006F0  @const818.call
-0006F7  @const819.call
-0006FE  @const820.call
-000709  @const821.call
-000714  @const822.call
-00071F  @const823.call
-00072A  @const824.call
-000735  @const825.call
-00073F  @const828.call
-00074F  @const830.call
-000758  @const831.call
-000762  @const832.call
-00076C  @const833.call
-000776  @const834.call
-000780  @const835.call
-00078C  @const836.call
-00079A  @const837.call
-0007A1  @const838.call
-0007A8  @const839.call
-0007AF  @const840.call
-0007BB  @const841.call
-0007BF  @const842.call
-0007C3  @const843.call
-0007C7  @const844.call
-0007CB  @const845.call
-0007CF  @const846.call
-0007D3  @const858.call
+000681  @const759.call
+00068C  @const764.call
+000695  @const765.call
+00069E  @const766.call
+0006A7  @const767.call
+0006B1  @const768.call
+0006BB  @const769.call
+0006C5  @const770.call
+0006CF  @const771.call
+0006DB  @const772.call
+0006E9  @const773.call
+0006F0  @const774.call
+0006F7  @const775.call
+0006FE  @const776.call
+000709  @const777.call
+000714  @const778.call
+00071F  @const779.call
+00072A  @const780.call
+000735  @const781.call
+00073F  @const784.call
+00074F  @const786.call
+000758  @const787.call
+000762  @const788.call
+00076C  @const789.call
+000776  @const790.call
+000780  @const791.call
+00078C  @const792.call
+00079A  @const793.call
+0007A1  @const794.call
+0007A8  @const795.call
+0007AF  @const796.call
+0007BB  @const797.call
+0007BF  @const798.call
+0007C3  @const799.call
+0007C7  @const800.call
+0007CB  @const801.call
+0007CF  @const802.call
+0007D3  @const814.call
 000800  SSP_isr
-000823  @I2C_WRITE_1
-000879  parseI2CCommand
-000AA8  @PSTRINGC7_9600_62_63
-000B00  setup
-000CD3  MAIN
-000CD3  @cinit1
-000D0E  @cinit2
+000821  @I2C_WRITE_1
+000875  parseI2CCommand
+000AA1  @PSTRINGC7_9600_62_63
+000AF9  setup
+000CCC  MAIN
+000CCC  @cinit1
+000D06  @cinit2
 
 Project Directory:
     C:\Users\nogue\Documents\GitHub\bbsb\mtime\
 
 Project Files:
-    mtime.c                                                 [11-mar.-20 22:18  CRC=A35C46CB]
-    mtime.h                                                 [11-mar.-20 22:18  CRC=BB5F1866]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [15-ene.-18 16:53  CRC=9C71CB72]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [26-mar.-15 13:34  CRC=C4814297]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-sep.-14 12:47  CRC=897CEC6C]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 15:55  CRC=2D1F019F]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 15:24  CRC=4E4534F4]
+    mtime.c                                                 [15-nov.-21 23:25  CRC=A35C46CB]
+    mtime.h                                                 [15-nov.-21 23:25  CRC=BB5F1866]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [08-sep.-15 15:15  CRC=E224733F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [26-mar.-15 12:34  CRC=C4814297]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-sep.-14 11:47  CRC=897CEC6C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-ene.-08 14:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdio.h [31-jul.-07 14:24  CRC=4E4534F4]
 
-Source signature=12D4C52D
+Source signature=58876CFA
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=3E3A
+Hex file CRC=782E
 
 Units:
     mtime (main)

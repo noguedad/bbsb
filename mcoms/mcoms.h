@@ -11,11 +11,11 @@
        Grupo  APM
     
  */
- 
- // *AUTOR:    Victor Noguedad
- // *ARCHIVO:  mscoms.c
- // *RESUMEN:  Programa principal del modulo de comunicaciones
- 
+
+// *AUTOR:    Victor Noguedad
+// *ARCHIVO:  mscoms.c
+// *RESUMEN:  Programa principal del modulo de comunicaciones
+
 #include <16F887.h>
 
 #define FW_VERSION   "2.0"
@@ -54,7 +54,8 @@
 
 // ::[CONFIGURACION PUERTOS]::
 #use rs232  (baud=9600,parity=N,xmit=RS232_TX,rcv=RS232_RX,bits=8,stream=RS232)
-#use i2c    (Master,Fast,sda=I2C_SDA,scl=I2C_SCL)
+//#use i2c    (Master,Fast,sda=I2C_SDA,scl=I2C_SCL)
+#use i2c    (master, scl=I2C_SCL, sda=I2C_SDA, fast)
 #use timer  (timer=0,tick=100us,bits=32,NOISR)
 
 // ::[DEFINICIONES]::
@@ -97,19 +98,19 @@
 
 // ::[DECLARACIONES]::
 //Estructura para el puerto
-typedef struct sPort    
-{
-   int a;
-   int b;
-   int c;
-   int d;
+
+typedef struct sPort {
+    int a;
+    int b;
+    int c;
+    int d;
 } tPort;
 
 //Datos para la captura de comandos del RS232
-char  cmd[10]  = "\0\0\0\0\0\0\0\0\0";
-char  rcmd[10] = "\0\0\0\0\0\0\0\0\0";
-int8  cmdIndex = 0;
-int1  cmdGet   = false;
+char cmd[10] = "\0\0\0\0\0\0\0\0\0";
+char rcmd[10] = "\0\0\0\0\0\0\0\0\0";
+int8 cmdIndex = 0;
+int1 cmdGet = false;
 
 //Puertos de Displays
 tPort pNJugadorU;
@@ -118,25 +119,25 @@ tPort pFJugadorU;
 tPort pFJugadorD;
 
 //Tiempo
-int8 m_d=0;
-int8 m_u=0;
-int8 s_d=0;
-int8 s_u=0;
+int8 m_d = 0;
+int8 m_u = 0;
+int8 s_d = 0;
+int8 s_u = 0;
 int1 enableTime = false;
 
 //Tiro
-int8 sh_d=0;
-int8 sh_u=0;
+int8 sh_d = 0;
+int8 sh_u = 0;
 int1 enableShot = false;
 
 int1 pauseTime = false;
 
-int8 scoreLU =0;
-int8 scoreLD =0;
-int1 scoreLC =0;
-int8 scoreVU =0;
-int8 scoreVD =0;
-int1 scoreVC =0;
+int8 scoreLU = 0;
+int8 scoreLD = 0;
+int1 scoreLC = 0;
+int8 scoreVU = 0;
+int8 scoreVD = 0;
+int1 scoreVC = 0;
 
 // ::[PROTOTIPOS]::
 
@@ -147,7 +148,7 @@ void timeTick(void);
 void parseCommand(void);
 void doTest(void);
 void showNumber(int8, tPort);
-int8 char2int(char); 
+int8 char2int(char);
 void doReset(void);
 void sendN2Port(int8, int8, int8);
 void timeSet(int8, int8, int8, int8);
@@ -155,10 +156,10 @@ void shotSet(int8, int8);
 void timePass();
 void shotPass();
 void doBuzz(int);
-void setScoreL (int8, int8, int8);
-void setScoreV (int8, int8, int8);
+void setScoreL(int8, int8, int8);
+void setScoreV(int8, int8, int8);
 void i2c_send(int8, int8);
-void addScoreL (int8);
-void addScoreV (int8);
-void resScoreL (void);
-void resScoreV (void);
+void addScoreL(int8);
+void addScoreV(int8);
+void resScoreL(void);
+void resScoreV(void);

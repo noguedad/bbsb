@@ -4,10 +4,19 @@ Processor_Text=PIC16F887
 CCSVerions=5.015
 Compiler=PCM
 CCSVersion=5.076
+Development_Mode=
+ToolSuite=CCS
 [Target Data]
 FileList=mcoms.c
+BuildTool=C-COMPILER
+OptionString=+FM
+AdditionalOptionString=
+BuildRequired=1
 [Directories]
-Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+Include=<default>
+Library=
+LinkerScript=
+output=
 [C:\Users\Victor Noguedad\Documents\GitHub\bbsb\mcoms\mcoms]
 Type=4
 [mru-list]
@@ -15,25 +24,43 @@ Type=4
 [Opened Files]
 1=mcoms.c
 2=mcoms.h
-3=
+3=..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h
 4=
-t1=1
-t2=1
+t1=641
+t2=641
 Count=2
+t3=1
 [mcoms.c]
 Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
 
 [fileformats]
 forcecoff=0
+debug=4
+error=2
+object=0
+list=0
+scratch=0
+sta=1
+tre=1
+expandtree=1
+allerrors=1
+allwarnings=1
+stayupne=3
+stayupoe=1
 
 [ProjectLog]
-Days=5
+Days=8
 D1=07-03-2020
 D1_L=4
 D1_L1=[82337]Project Opened.
 D1_L2=[82455]Started Editing.
 D1_L3=[82520]Stopped Editing.
-TotalEdit=335
+TotalEdit=364
 TotalDebug=0
 D1_E=2
 D1_D=0
@@ -156,9 +183,47 @@ D5_L11=[79468]Stopped Editing.
 D5_L12=[80089]Started Editing.
 D5_L13=[80111]Stopped Editing.
 D5_L14=[80112]Project Closed.
+D6=15-11-2021
+D6_L=6
+D6_L1=[85729]Project Opened.
+D6_L2=[86085]Project Closed.
+D6_L3=[86129]Project Opened.
+D6_L4=[86172]Project Closed.
+D6_L5=[86287]Project Opened.
+D6_L6=[86327]Started Editing.
+D7=16-11-2021
+D7_L=12
+D7_L1=[396]Stopped Editing.
+D7_E=28
+D7_D=0
+D7_L2=[396]Project Closed.
+D7_L3=[793]Project Opened.
+D7_L4=[1640]Started Editing.
+D7_L5=[1953]Stopped Editing.
+D7_L6=[2219]Project Closed.
+D7_L7=[2258]Project Opened.
+D7_L8=[2338]Started Editing.
+D7_L9=[2774]Stopped Editing.
+D7_L10=[3211]Started Editing.
+D7_L11=[3814]Stopped Editing.
+D7_L12=[5729]Project Closed.
+D8=18-11-2021
+D8_L=6
+D8_L1=[62978]Project Opened.
+D8_L2=[63007]Started Editing.
+D8_L3=[63059]Stopped Editing.
+D8_E=1
+D8_D=0
+D8_L4=[63059]Project Closed.
+D8_L5=[63114]Project Opened.
+D8_L6=[63312]Project Closed.
 
 [defines]
-buildcount=66
+buildcount=69
+enabled=0
+chip=1
+D1=
+V1=
 
 [Documentation]
 1=C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms Notes.txt
@@ -166,6 +231,12 @@ buildcount=66
 1E=
 1W=0
 Count=1
+
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+
+[CompilerVersion]
+Fixed=
 [Units]
 Count=1
 1=mcoms (main)

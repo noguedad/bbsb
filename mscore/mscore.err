@@ -1,4 +1,3 @@
-Compiling C:\Users\nogue\Documents\GitHub\bbsb\mscore\mscore on 11-mar.-20 at 22:16
 >>> Warning 216 "mscore.c" Line 376(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
 >>> Warning 216 "mscore.c" Line 376(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGCN7_9600_62_63)
 >>> Warning 216 "mscore.c" Line 376(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)

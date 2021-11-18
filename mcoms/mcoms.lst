@@ -1,4 +1,4 @@
-CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
+CCS PCM C Compiler, Version 5.076, 56587               18-nov.-21 17:30
 
                Filename:   C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.lst
 
@@ -92,11 +92,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 004F:  BCF    0A.4
 0050:  GOTO   465
 ....................  
+....................  
 .................... /**:COPYRIGHT 
-....................            _ / _ /  
-....................         _ / _ / _ / _/_/ 
-....................          _ / _ /  
-....................         _ / _ /  
+....................             _ /      _ /  
+....................         _ /_ /_ /  _/_/ 
+....................          _ /       _ /  
+....................         _ /       _ /  
 ....................        _ / _ / _/_ / _ / 
 ....................      
 ....................    t1soluciones © 2020 
@@ -104,10 +105,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 ....................        Grupo APM 
 ....................      
 ....................  */ 
-....................  // * AUTOR: Victor Noguedad 
-....................  // * ARCHIVO: mscoms.c 
-....................  // * RESUMEN: Programa principal del modulo de comunicaciones 
-....................  // ::[CABECERAS]:: 
+.................... // * AUTOR: Victor Noguedad 
+.................... // * ARCHIVO: mscoms.c 
+.................... // * RESUMEN: Programa principal del modulo de comunicaciones 
+.................... // ::[CABECERAS]:: 
 .................... #include <mcoms.h> 
 .................... /**:COPYRIGHT 
 ....................  
@@ -122,11 +123,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 ....................        Grupo  APM 
 ....................      
 ....................  */ 
-....................   
-....................  // *AUTOR:    Victor Noguedad 
-....................  // *ARCHIVO:  mscoms.c 
-....................  // *RESUMEN:  Programa principal del modulo de comunicaciones 
-....................   
+....................  
+.................... // *AUTOR:    Victor Noguedad 
+.................... // *ARCHIVO:  mscoms.c 
+.................... // *RESUMEN:  Programa principal del modulo de comunicaciones 
+....................  
 .................... #include <16F887.h> 
 .................... //////////// Standard Header file for the PIC16F887 device //////////////// 
 .................... /////////////////////////////////////////////////////////////////////////// 
@@ -1152,7 +1153,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 ....................  
 .................... // ::[CONFIGURACION PUERTOS]:: 
 .................... #use rs232  (baud=9600,parity=N,xmit=RS232_TX,rcv=RS232_RX,bits=8,stream=RS232) 
-.................... #use i2c    (Master,Fast,sda=I2C_SDA,scl=I2C_SCL) 
+.................... //#use i2c    (Master,Fast,sda=I2C_SDA,scl=I2C_SCL) 
+.................... #use i2c    (master, scl=I2C_SCL, sda=I2C_SDA, fast) 
 *
 0297:  BCF    03.5
 0298:  BCF    14.7
@@ -1300,16 +1302,16 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 ....................  
 .................... // ::[DECLARACIONES]:: 
 .................... //Estructura para el puerto 
-.................... typedef struct sPort     
-.................... { 
-....................    int a; 
-....................    int b; 
-....................    int c; 
-....................    int d; 
+....................  
+.................... typedef struct sPort { 
+....................     int a; 
+....................     int b; 
+....................     int c; 
+....................     int d; 
 .................... } tPort; 
 ....................  
 .................... //Datos para la captura de comandos del RS232 
-.................... char  cmd[10]  = "\0\0\0\0\0\0\0\0\0"; 
+.................... char cmd[10] = "\0\0\0\0\0\0\0\0\0"; 
 *
 076A:  BCF    03.6
 076B:  CLRF   30
@@ -1322,7 +1324,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0772:  CLRF   37
 0773:  CLRF   38
 0774:  CLRF   39
-.................... char  rcmd[10] = "\0\0\0\0\0\0\0\0\0"; 
+.................... char rcmd[10] = "\0\0\0\0\0\0\0\0\0"; 
 0775:  CLRF   3A
 0776:  CLRF   3B
 0777:  CLRF   3C
@@ -1333,8 +1335,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 077C:  CLRF   41
 077D:  CLRF   42
 077E:  CLRF   43
-.................... int8  cmdIndex = 0; 
-.................... int1  cmdGet   = false; 
+.................... int8 cmdIndex = 0; 
+.................... int1 cmdGet = false; 
 ....................  
 .................... //Puertos de Displays 
 .................... tPort pNJugadorU; 
@@ -1343,25 +1345,25 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 .................... tPort pFJugadorD; 
 ....................  
 .................... //Tiempo 
-.................... int8 m_d=0; 
-.................... int8 m_u=0; 
-.................... int8 s_d=0; 
-.................... int8 s_u=0; 
+.................... int8 m_d = 0; 
+.................... int8 m_u = 0; 
+.................... int8 s_d = 0; 
+.................... int8 s_u = 0; 
 .................... int1 enableTime = false; 
 ....................  
 .................... //Tiro 
-.................... int8 sh_d=0; 
-.................... int8 sh_u=0; 
+.................... int8 sh_d = 0; 
+.................... int8 sh_u = 0; 
 .................... int1 enableShot = false; 
 ....................  
 .................... int1 pauseTime = false; 
 ....................  
-.................... int8 scoreLU =0; 
-.................... int8 scoreLD =0; 
-.................... int1 scoreLC =0; 
-.................... int8 scoreVU =0; 
-.................... int8 scoreVD =0; 
-.................... int1 scoreVC =0; 
+.................... int8 scoreLU = 0; 
+.................... int8 scoreLD = 0; 
+.................... int1 scoreLC = 0; 
+.................... int8 scoreVU = 0; 
+.................... int8 scoreVD = 0; 
+.................... int1 scoreVC = 0; 
 ....................  
 .................... // ::[PROTOTIPOS]:: 
 ....................  
@@ -1372,7 +1374,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 .................... void parseCommand(void); 
 .................... void doTest(void); 
 .................... void showNumber(int8, tPort); 
-.................... int8 char2int(char);  
+.................... int8 char2int(char); 
 .................... void doReset(void); 
 .................... void sendN2Port(int8, int8, int8); 
 .................... void timeSet(int8, int8, int8, int8); 
@@ -1380,13 +1382,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 .................... void timePass(); 
 .................... void shotPass(); 
 .................... void doBuzz(int); 
-.................... void setScoreL (int8, int8, int8); 
-.................... void setScoreV (int8, int8, int8); 
+.................... void setScoreL(int8, int8, int8); 
+.................... void setScoreV(int8, int8, int8); 
 .................... void i2c_send(int8, int8); 
-.................... void addScoreL (int8); 
-.................... void addScoreV (int8); 
-.................... void resScoreL (void); 
-.................... void resScoreV (void); 
+.................... void addScoreL(int8); 
+.................... void addScoreV(int8); 
+.................... void resScoreL(void); 
+.................... void resScoreV(void); 
 ....................  
 .................... #include <string.h> 
 .................... //////////////////////////////////////////////////////////////////////////// 
@@ -2364,32 +2366,32 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 .................... // *PARAMETROS:   ninguno 
 .................... // *REGRESA:      VOID 
 .................... // *RESUMEN:      Configuracion inicial del dispositivo 
-.................... void setup() 
-.................... { 
-....................    output_a (0x00) ; 
+....................  
+.................... void setup() { 
+....................     output_a(0x00); 
 *
 1000:  MOVLW  0F
 1001:  BSF    03.5
 1002:  MOVWF  05
 1003:  BCF    03.5
 1004:  CLRF   05
-....................    output_b (0x00) ; 
+....................     output_b(0x00); 
 1005:  BSF    03.5
 1006:  CLRF   06
 1007:  BCF    03.5
 1008:  CLRF   06
-....................    output_c (0x00) ; 
+....................     output_c(0x00); 
 1009:  MOVLW  DF
 100A:  BSF    03.5
 100B:  MOVWF  07
 100C:  BCF    03.5
 100D:  CLRF   07
-....................    output_d (0x00) ; 
+....................     output_d(0x00); 
 100E:  BSF    03.5
 100F:  CLRF   08
 1010:  BCF    03.5
 1011:  CLRF   08
-....................    output_e (0x00) ; 
+....................     output_e(0x00); 
 1012:  BSF    03.5
 1013:  BCF    09.0
 1014:  BCF    09.1
@@ -2401,8 +2403,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 101A:  BTFSC  0B.7
 101B:  BSF    2B.7
 101C:  BCF    0B.7
-....................     
-....................    delay_ms (DEFAULT_D) ; 
+....................  
+....................     delay_ms(DEFAULT_D); 
 101D:  MOVLW  64
 101E:  BSF    03.5
 101F:  MOVWF  32
@@ -2412,12 +2414,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1023:  BSF    0A.4
 1024:  BTFSC  2B.7
 1025:  BSF    0B.7
-....................     
-....................    IF (DEBUG) 
+....................  
+....................     IF(DEBUG) { 
 1026:  BTFSS  07.2
 1027:  GOTO   099
-....................    { 
-....................       fprintf (RS232, "********************************\r") ; 
+....................         fprintf(RS232, "********************************\r"); 
 1028:  MOVLW  5F
 1029:  BSF    03.6
 102A:  MOVWF  0D
@@ -2427,7 +2428,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 102E:  BCF    03.6
 102F:  CALL   631
 1030:  BSF    0A.4
-....................       fprintf (RS232, " Grupo APM (c) 2020 \r") ; 
+....................         fprintf(RS232, " Grupo APM (c) 2020 \r"); 
 1031:  MOVLW  70
 1032:  BSF    03.6
 1033:  MOVWF  0D
@@ -2437,7 +2438,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1037:  BCF    03.6
 1038:  CALL   631
 1039:  BSF    0A.4
-....................       fprintf (RS232, "================================\r"); 
+....................         fprintf(RS232, "================================\r"); 
 103A:  MOVLW  7B
 103B:  BSF    03.6
 103C:  MOVWF  0D
@@ -2447,7 +2448,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1040:  BCF    03.6
 1041:  CALL   631
 1042:  BSF    0A.4
-....................       fprintf (RS232, "Bluetooth Basketball Score Board\r") ; 
+....................         fprintf(RS232, "Bluetooth Basketball Score Board\r"); 
 1043:  MOVLW  8C
 1044:  BSF    03.6
 1045:  MOVWF  0D
@@ -2457,7 +2458,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1049:  BCF    03.6
 104A:  CALL   631
 104B:  BSF    0A.4
-....................       fprintf (RS232, "================================\r"); 
+....................         fprintf(RS232, "================================\r"); 
 104C:  MOVLW  9D
 104D:  BSF    03.6
 104E:  MOVWF  0D
@@ -2467,7 +2468,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1052:  BCF    03.6
 1053:  CALL   631
 1054:  BSF    0A.4
-....................       fprintf (RS232, "Version %s - rev %s \r", FW_VERSION, FW_REVISION); 
+....................         fprintf(RS232, "Version %s - rev %s \r", FW_VERSION, FW_REVISION); 
 1055:  MOVLW  AE
 1056:  BSF    03.6
 1057:  MOVWF  0D
@@ -2518,7 +2519,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1084:  BTFSS  0C.4
 1085:  GOTO   084
 1086:  MOVWF  19
-....................       fprintf (RS232, "********************************\r") ; 
+....................         fprintf(RS232, "********************************\r"); 
 1087:  MOVLW  BC
 1088:  BSF    03.6
 1089:  MOVWF  0D
@@ -2528,7 +2529,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 108D:  BCF    03.6
 108E:  CALL   631
 108F:  BSF    0A.4
-....................       fprintf (RS232, " DEPURACION :: COMUNICACIONES \r"); 
+....................         fprintf(RS232, " DEPURACION :: COMUNICACIONES \r"); 
 1090:  MOVLW  CD
 1091:  BSF    03.6
 1092:  MOVWF  0D
@@ -2542,9 +2543,9 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 109A:  BTFSC  0B.7
 109B:  BSF    2B.7
 109C:  BCF    0B.7
-....................    } 
+....................     } 
 ....................  
-....................    delay_ms (DEFAULT_D) ; 
+....................     delay_ms(DEFAULT_D); 
 109D:  MOVLW  64
 109E:  BSF    03.5
 109F:  MOVWF  32
@@ -2554,10 +2555,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 10A3:  BSF    0A.4
 10A4:  BTFSC  2B.7
 10A5:  BSF    0B.7
-....................     
-....................    IF (DEBUG){fputs (" > Configuracion de Puertos", RS232); } 
+....................  
+....................     IF(DEBUG) { 
 10A6:  BTFSS  07.2
 10A7:  GOTO   0BF
+....................         fputs(" > Configuracion de Puertos", RS232); 
 10A8:  MOVLW  DD
 10A9:  BSF    03.6
 10AA:  MOVWF  0D
@@ -2581,63 +2583,64 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 10BC:  BTFSS  0C.4
 10BD:  GOTO   0BC
 10BE:  MOVWF  19
-....................     
-....................    pNJugadorU.a = PIN_B0; 
+....................     } 
+....................  
+....................     pNJugadorU.a = PIN_B0; 
 10BF:  MOVLW  30
 10C0:  MOVWF  46
-....................    pNJugadorU.b = PIN_B1; 
+....................     pNJugadorU.b = PIN_B1; 
 10C1:  MOVLW  31
 10C2:  MOVWF  47
-....................    pNJugadorU.c = PIN_B2; 
+....................     pNJugadorU.c = PIN_B2; 
 10C3:  MOVLW  32
 10C4:  MOVWF  48
-....................    pNJugadorU.d = PIN_B3; 
+....................     pNJugadorU.d = PIN_B3; 
 10C5:  MOVLW  33
 10C6:  MOVWF  49
-....................     
-....................    pNJugadorD.a = PIN_B4; 
+....................  
+....................     pNJugadorD.a = PIN_B4; 
 10C7:  MOVLW  34
 10C8:  MOVWF  4A
-....................    pNJugadorD.b = PIN_B5; 
+....................     pNJugadorD.b = PIN_B5; 
 10C9:  MOVLW  35
 10CA:  MOVWF  4B
-....................    pNJugadorD.c = PIN_B6; 
+....................     pNJugadorD.c = PIN_B6; 
 10CB:  MOVLW  36
 10CC:  MOVWF  4C
-....................    pNJugadorD.d = PIN_B7; 
+....................     pNJugadorD.d = PIN_B7; 
 10CD:  MOVLW  37
 10CE:  MOVWF  4D
-....................     
-....................    pFJugadorU.a = PIN_D0; 
+....................  
+....................     pFJugadorU.a = PIN_D0; 
 10CF:  MOVLW  40
 10D0:  MOVWF  4E
-....................    pFJugadorU.b = PIN_D1; 
+....................     pFJugadorU.b = PIN_D1; 
 10D1:  MOVLW  41
 10D2:  MOVWF  4F
-....................    pFJugadorU.c = PIN_D2; 
+....................     pFJugadorU.c = PIN_D2; 
 10D3:  MOVLW  42
 10D4:  MOVWF  50
-....................    pFJugadorU.d = PIN_D3; 
+....................     pFJugadorU.d = PIN_D3; 
 10D5:  MOVLW  43
 10D6:  MOVWF  51
-....................     
-....................    pFJugadorD.a = PIN_D4; 
+....................  
+....................     pFJugadorD.a = PIN_D4; 
 10D7:  MOVLW  44
 10D8:  MOVWF  52
-....................    pFJugadorD.b = PIN_D5; 
+....................     pFJugadorD.b = PIN_D5; 
 10D9:  MOVLW  45
 10DA:  MOVWF  53
-....................    pFJugadorD.c = PIN_D6; 
+....................     pFJugadorD.c = PIN_D6; 
 10DB:  MOVLW  46
 10DC:  MOVWF  54
-....................    pFJugadorD.d = PIN_D7; 
+....................     pFJugadorD.d = PIN_D7; 
 10DD:  MOVLW  47
 10DE:  MOVWF  55
 10DF:  CLRF   2B
 10E0:  BTFSC  0B.7
 10E1:  BSF    2B.7
 10E2:  BCF    0B.7
-....................    delay_ms (DEFAULT_D) ; 
+....................     delay_ms(DEFAULT_D); 
 10E3:  MOVLW  64
 10E4:  BSF    03.5
 10E5:  MOVWF  32
@@ -2647,10 +2650,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 10E9:  BSF    0A.4
 10EA:  BTFSC  2B.7
 10EB:  BSF    0B.7
-....................     
-....................    IF (DEBUG){fputs (" > Inicializacion de I2C", RS232); } 
+....................  
+....................     IF(DEBUG) { 
 10EC:  BTFSS  07.2
 10ED:  GOTO   105
+....................         fputs(" > Inicializacion de I2C", RS232); 
 10EE:  MOVLW  EB
 10EF:  BSF    03.6
 10F0:  MOVWF  0D
@@ -2674,7 +2678,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1102:  BTFSS  0C.4
 1103:  GOTO   102
 1104:  MOVWF  19
-....................    i2c_speed (100000) ; 
+....................     } 
+....................     i2c_speed (100000) ; 
 1105:  MOVLW  13
 1106:  BSF    03.5
 1107:  MOVWF  13
@@ -2683,11 +2688,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 110A:  MOVWF  14
 110B:  BSF    03.5
 110C:  BSF    14.7
-....................     
-....................    IF (DEBUG){fputs (" > Habilitacion de displays", RS232); } 
+....................  
+....................     IF(DEBUG) { 
 110D:  BCF    03.5
 110E:  BTFSS  07.2
 110F:  GOTO   127
+....................         fputs(" > Habilitacion de displays", RS232); 
 1110:  MOVLW  F8
 1111:  BSF    03.6
 1112:  MOVWF  0D
@@ -2711,7 +2717,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1124:  BTFSS  0C.4
 1125:  GOTO   124
 1126:  MOVWF  19
-....................    output_bit (DISPLAY, ON); 
+....................     } 
+....................     output_bit(DISPLAY, ON); 
 1127:  BSF    09.0
 1128:  MOVLW  EE
 1129:  BSF    03.5
@@ -2721,7 +2728,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 112D:  BTFSC  0B.7
 112E:  BSF    2B.7
 112F:  BCF    0B.7
-....................    delay_ms (DEFAULT_D) ; 
+....................     delay_ms(DEFAULT_D); 
 1130:  MOVLW  64
 1131:  BSF    03.5
 1132:  MOVWF  32
@@ -2731,7 +2738,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1136:  BSF    0A.4
 1137:  BTFSC  2B.7
 1138:  BSF    0B.7
-....................    output_bit (DISPLAY, OFF); 
+....................     output_bit(DISPLAY, OFF); 
 1139:  BCF    09.0
 113A:  MOVLW  EE
 113B:  BSF    03.5
@@ -2741,7 +2748,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 113F:  BTFSC  0B.7
 1140:  BSF    2B.7
 1141:  BCF    0B.7
-....................    delay_ms (DEFAULT_D) ; 
+....................     delay_ms(DEFAULT_D); 
 1142:  MOVLW  64
 1143:  BSF    03.5
 1144:  MOVWF  32
@@ -2751,7 +2758,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1148:  BSF    0A.4
 1149:  BTFSC  2B.7
 114A:  BSF    0B.7
-....................    output_bit (DISPLAY, ON); 
+....................     output_bit(DISPLAY, ON); 
 114B:  BSF    09.0
 114C:  MOVLW  EE
 114D:  BSF    03.5
@@ -2761,7 +2768,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1151:  BTFSC  0B.7
 1152:  BSF    2B.7
 1153:  BCF    0B.7
-....................    delay_ms (DEFAULT_D) ; 
+....................     delay_ms(DEFAULT_D); 
 1154:  MOVLW  64
 1155:  BSF    03.5
 1156:  MOVWF  32
@@ -2771,10 +2778,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 115A:  BSF    0A.4
 115B:  BTFSC  2B.7
 115C:  BSF    0B.7
-....................     
-....................    IF (DEBUG){fputs (" > Habilitacion de interrupciones", RS232); } 
+....................  
+....................     if (DEBUG) { 
 115D:  BTFSS  07.2
 115E:  GOTO   176
+....................         fputs(" > Habilitacion de interrupciones", RS232); 
 115F:  MOVLW  06
 1160:  BSF    03.6
 1161:  MOVWF  0D
@@ -2798,10 +2806,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1173:  BTFSS  0C.4
 1174:  GOTO   173
 1175:  MOVWF  19
-....................    enable_interrupts (INT_RDA) ; 
+....................     } 
+....................     enable_interrupts(INT_RDA); 
 1176:  BSF    03.5
 1177:  BSF    0C.5
-....................    enable_interrupts (GLOBAL) ; 
+....................     enable_interrupts(GLOBAL); 
 1178:  MOVLW  C0
 1179:  BCF    03.5
 117A:  IORWF  0B,F
@@ -2810,7 +2819,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 117D:  GOTO   783 (RETURN)
 .................... } 
 ....................  
-.................... void main() 
+.................... void main() { 
 *
 071B:  MOVF   03,W
 071C:  ANDLW  1F
@@ -2891,15 +2900,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0767:  CLRF   08
 0768:  CLRF   09
 0769:  BCF    03.7
-.................... { 
-....................    setup () ; 
+....................     setup(); 
 *
 0781:  BSF    0A.4
 0782:  GOTO   000
 0783:  BCF    0A.4
-....................     
-....................    TICK_TYPE CurrentTick, PreviousTick; 
-....................    CurrentTick = PreviousTick = get_ticks (); 
+....................  
+....................     TICK_TYPE CurrentTick, PreviousTick; 
+....................     CurrentTick = PreviousTick = get_ticks(); 
 0784:  CALL   6E7
 0785:  MOVF   7A,W
 0786:  MOVWF  6B
@@ -2918,13 +2926,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0793:  MOVF   68,W
 0794:  MOVWF  64
 ....................  
-....................    WHILE (TRUE) 
-....................    { 
-....................       IF ( ! pauseTime) 
+....................     WHILE(TRUE) { 
+....................  
+....................         IF(!pauseTime) { 
 0795:  BTFSC  45.3
 0796:  GOTO   7D5
-....................       { 
-....................          CurrentTick = get_ticks (); 
+....................             CurrentTick = get_ticks(); 
 0797:  CALL   6E7
 0798:  MOVF   7A,W
 0799:  MOVWF  67
@@ -2935,7 +2942,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 079E:  MOVF   77,W
 079F:  MOVWF  64
 ....................  
-....................          IF (GetTickDifference (CurrentTick, PreviousTick) >= (TICK_TYPE) TICKS_PER_SECOND) 
+....................             IF(GetTickDifference(CurrentTick, PreviousTick) >= (TICK_TYPE) TICKS_PER_SECOND) { 
 07A0:  MOVF   67,W
 07A1:  MOVWF  6F
 07A2:  MOVF   66,W
@@ -2978,12 +2985,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 07C7:  SUBLW  83
 07C8:  BTFSC  03.0
 07C9:  GOTO   7D5
-....................          { 
-....................             timeTick () ; 
+....................                 timeTick(); 
 07CA:  BSF    0A.4
 07CB:  GOTO   17E
 07CC:  BCF    0A.4
-....................             PreviousTick = CurrentTick; 
+....................                 PreviousTick = CurrentTick; 
 07CD:  MOVF   67,W
 07CE:  MOVWF  6B
 07CF:  MOVF   66,W
@@ -2992,29 +2998,29 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 07D2:  MOVWF  69
 07D3:  MOVF   64,W
 07D4:  MOVWF  68
-....................          } 
-....................       } 
+....................             } 
+....................         } 
 07D5:  GOTO   795
-....................    } 
+....................     } 
 .................... } 
 ....................  
 .................... #INT_RDA 
-.................... void  RDA_isr(VOID)  
+....................  
 07D6:  SLEEP
-.................... { 
-....................    CHAR c; 
-....................    c = fgetc (RS232); 
+.................... void RDA_isr(VOID) { 
+....................     CHAR c; 
+....................     c = fgetc(RS232); 
 *
 0465:  BTFSS  0C.5
 0466:  GOTO   465
 0467:  MOVF   1A,W
 0468:  MOVWF  7B
 ....................  
-....................    IF(cmdGet) 
+....................     IF(cmdGet) { 
 0469:  BTFSS  45.0
 046A:  GOTO   49F
-....................    { 
-....................       IF (c == '#'||c == '\r') 
+....................  
+....................         IF(c == '#' || c == '\r') { 
 046B:  MOVF   7B,W
 046C:  SUBLW  23
 046D:  BTFSC  03.2
@@ -3023,10 +3029,9 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0470:  SUBLW  0D
 0471:  BTFSS  03.2
 0472:  GOTO   494
-....................       { 
-....................          cmdGet = false; 
+....................             cmdGet = false; 
 0473:  BCF    45.0
-....................          strcpy (cmd, rcmd); 
+....................             strcpy(cmd, rcmd); 
 0474:  BSF    03.5
 0475:  CLRF   23
 0476:  MOVLW  3A
@@ -3054,44 +3059,41 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 048C:  INCF   20,F
 048D:  INCF   22,F
 048E:  GOTO   47B
-....................          parseCommand () ; 
+....................             parseCommand(); 
 048F:  BSF    0A.3
 0490:  BCF    03.5
 0491:  GOTO   000
 0492:  BCF    0A.3
-....................       } 
+....................         } 
 0493:  GOTO   49F
 ....................  
-....................       ELSE 
-....................       { 
-....................          IF (cmdIndex < 9) 
+....................         ELSE{ 
+....................             IF(cmdIndex < 9) { 
 0494:  MOVF   44,W
 0495:  SUBLW  08
 0496:  BTFSS  03.0
 0497:  GOTO   49F
-....................          { 
-....................             rcmd[cmdIndex] = c; 
+....................                 rcmd[cmdIndex] = c; 
 0498:  MOVLW  3A
 0499:  ADDWF  44,W
 049A:  MOVWF  04
 049B:  BCF    03.7
 049C:  MOVF   7B,W
 049D:  MOVWF  00
-....................             cmdIndex++; 
+....................                 cmdIndex++; 
 049E:  INCF   44,F
-....................          } 
-....................       } 
-....................    } 
+....................             } 
+....................         } 
+....................     } 
 ....................  
-....................    IF (c == '-') 
+....................     IF(c == '-') { 
 049F:  MOVF   7B,W
 04A0:  SUBLW  2D
 04A1:  BTFSS  03.2
 04A2:  GOTO   4B9
-....................    { 
-....................       cmdGet = true; 
+....................         cmdGet = true; 
 04A3:  BSF    45.0
-....................       rcmd = "\0\0\0\0\0\0\0\0\0"; 
+....................         rcmd = "\0\0\0\0\0\0\0\0\0"; 
 04A4:  BSF    03.5
 04A5:  CLRF   20
 04A6:  CLRF   21
@@ -3112,18 +3114,17 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 04B5:  INCF   20,F
 04B6:  GOTO   4A7
 04B7:  BCF    03.5
-....................       cmdIndex = 0; 
+....................         cmdIndex = 0; 
 04B8:  CLRF   44
-....................    } 
+....................     } 
 04B9:  BCF    0C.5
 04BA:  BCF    0A.3
 04BB:  BCF    0A.4
 04BC:  GOTO   02D
 .................... } 
 ....................  
-.................... TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick) 
-.................... { 
-....................    RETURN (currTick - prevTick) ; 
+.................... TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick) { 
+....................     RETURN(currTick - prevTick); 
 *
 0703:  MOVF   70,W
 0704:  SUBWF  6C,W
@@ -3151,31 +3152,31 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 071A:  GOTO   7B1 (RETURN)
 .................... } 
 ....................  
-.................... void timeTick(VOID) 
-.................... { 
-....................    IF (enableTime) 
+.................... void timeTick(VOID) { 
+....................     IF(enableTime) 
 *
 117E:  BTFSS  45.1
 117F:  GOTO   248
-....................       timePass () ; 
+....................     timePass(); 
 ....................  
-....................    IF (enableShot) 
+....................     IF(enableShot) 
 *
 1248:  BTFSS  45.2
 1249:  GOTO   2A3
-....................       shotPass () ; 
+....................     shotPass(); 
 *
 12A3:  BCF    0A.3
 12A4:  BCF    0A.4
 12A5:  GOTO   7CC (RETURN)
 .................... } 
 ....................  
-.................... void doTest(VOID) 
-.................... { 
-....................    IF (DEBUG){fputs (" > Rutina de prueba", RS232); } 
+.................... void doTest(VOID) { 
+....................  
+....................     IF(DEBUG) { 
 *
 0EBF:  BTFSS  07.2
 0EC0:  GOTO   6D2
+....................         fputs(" > Rutina de prueba", RS232); 
 0EC1:  MOVLW  BD
 0EC2:  BSF    03.6
 0EC3:  MOVWF  0D
@@ -3193,9 +3194,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0ECF:  BTFSS  0C.4
 0ED0:  GOTO   6CF
 0ED1:  MOVWF  19
-....................    IF (DEBUG){fputs (" > Probando modulo tiempo", RS232); } 
+....................     } 
+....................  
+....................     IF(DEBUG) { 
 0ED2:  BTFSS  07.2
 0ED3:  GOTO   6E5
+....................         fputs(" > Probando modulo tiempo", RS232); 
 0ED4:  MOVLW  C7
 0ED5:  BSF    03.6
 0ED6:  MOVWF  0D
@@ -3213,7 +3217,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0EE2:  BTFSS  0C.4
 0EE3:  GOTO   6E2
 0EE4:  MOVWF  19
-....................       i2c_send (I2C_TIMER, I2C_CMD_TEST); 
+....................     } 
+....................     i2c_send(I2C_TIMER, I2C_CMD_TEST); 
 0EE5:  MOVLW  0A
 0EE6:  BSF    03.5
 0EE7:  MOVWF  36
@@ -3223,9 +3228,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0EEB:  BCF    03.5
 0EEC:  CALL   2C7
 0EED:  BSF    0A.3
-....................    IF (DEBUG){fputs (" > Probando modulo puntos", RS232); } 
+....................  
+....................     IF(DEBUG) { 
 0EEE:  BTFSS  07.2
 0EEF:  GOTO   701
+....................         fputs(" > Probando modulo puntos", RS232); 
 0EF0:  MOVLW  D4
 0EF1:  BSF    03.6
 0EF2:  MOVWF  0D
@@ -3243,7 +3250,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0EFE:  BTFSS  0C.4
 0EFF:  GOTO   6FE
 0F00:  MOVWF  19
-....................       i2c_send (I2C_SCORE, I2C_CMD_TEST); 
+....................     } 
+....................     i2c_send(I2C_SCORE, I2C_CMD_TEST); 
 0F01:  MOVLW  0C
 0F02:  BSF    03.5
 0F03:  MOVWF  36
@@ -3253,9 +3261,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0F07:  BCF    03.5
 0F08:  CALL   2C7
 0F09:  BSF    0A.3
-....................    IF (DEBUG){fputs (" > Probando modulo comunicaciones", RS232); } 
+....................  
+....................     IF(DEBUG) { 
 0F0A:  BTFSS  07.2
 0F0B:  GOTO   71D
+....................         fputs(" > Probando modulo comunicaciones", RS232); 
 0F0C:  MOVLW  E1
 0F0D:  BSF    03.6
 0F0E:  MOVWF  0D
@@ -3273,15 +3283,15 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0F1A:  BTFSS  0C.4
 0F1B:  GOTO   71A
 0F1C:  MOVWF  19
-....................    for (INT i = 0; i<10; i++) 
+....................     } 
+....................     for (INT i = 0; i < 10; i++) { 
 0F1D:  BSF    03.5
 0F1E:  CLRF   2A
 0F1F:  MOVF   2A,W
 0F20:  SUBLW  09
 0F21:  BTFSS  03.0
 0F22:  GOTO   788
-....................    { 
-....................       showNumber (i, pNJugadorD); 
+....................         showNumber(i, pNJugadorD); 
 0F23:  MOVF   2A,W
 0F24:  MOVWF  2B
 0F25:  BCF    03.5
@@ -3304,7 +3314,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0F36:  BCF    03.5
 0F37:  CALL   1FD
 0F38:  BSF    0A.3
-....................       showNumber (i, pNJugadorU); 
+....................         showNumber(i, pNJugadorU); 
 0F39:  BSF    03.5
 0F3A:  MOVF   2A,W
 0F3B:  MOVWF  2B
@@ -3328,7 +3338,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0F4D:  BCF    03.5
 0F4E:  CALL   1FD
 0F4F:  BSF    0A.3
-....................       showNumber (i, pFJugadorD); 
+....................         showNumber(i, pFJugadorD); 
 0F50:  BSF    03.5
 0F51:  MOVF   2A,W
 0F52:  MOVWF  2B
@@ -3352,7 +3362,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0F64:  BCF    03.5
 0F65:  CALL   1FD
 0F66:  BSF    0A.3
-....................       showNumber (i, pFJugadorU); 
+....................         showNumber(i, pFJugadorU); 
 0F67:  BSF    03.5
 0F68:  MOVF   2A,W
 0F69:  MOVWF  2B
@@ -3376,7 +3386,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0F7B:  BCF    03.5
 0F7C:  CALL   1FD
 0F7D:  BSF    0A.3
-....................       delay_ms (I2CWAIT); 
+....................         delay_ms(I2CWAIT); 
 0F7E:  MOVLW  32
 0F7F:  BSF    03.5
 0F80:  MOVWF  32
@@ -3387,22 +3397,20 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0F85:  BSF    03.5
 0F86:  INCF   2A,F
 0F87:  GOTO   71F
-....................    } 
+....................     } 
 .................... } 
 ....................  
-....................  
-.................... void doBuzz(INT t) 
-.................... { 
-....................    i2c_start () ; 
+.................... void doBuzz(INT t) { 
+....................     i2c_start(); 
 *
 0291:  BSF    03.5
 0292:  BSF    11.0
 0293:  BTFSC  11.0
 0294:  GOTO   293
-....................    i2c_write (I2C_TIMER) ; 
+....................     i2c_write(I2C_TIMER); 
 0295:  MOVLW  0A
 0296:  MOVWF  38
-....................    i2c_write (0x80 + t); 
+....................     i2c_write(0x80 + t); 
 *
 02A9:  MOVLW  80
 02AA:  BSF    03.5
@@ -3410,7 +3418,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 02AC:  MOVWF  2B
 02AD:  MOVF   2B,W
 02AE:  MOVWF  38
-....................    i2c_stop () ; 
+....................     i2c_stop(); 
 *
 02C1:  BSF    03.5
 02C2:  BSF    11.2
@@ -3420,10 +3428,9 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 02C6:  RETURN
 .................... } 
 ....................  
-.................... void parseCommand(VOID) 
-.................... { 
-....................    CHAR c[10]; 
-....................    strcpy (c, cmd); 
+.................... void parseCommand(VOID) { 
+....................     CHAR c[10]; 
+....................     strcpy(c, cmd); 
 *
 0800:  BSF    03.5
 0801:  CLRF   2D
@@ -3453,7 +3460,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0819:  INCF   2C,F
 081A:  GOTO   007
 ....................  
-....................    SWITCH (c[0]) 
+....................     SWITCH(c[0]) { 
 081B:  MOVF   20,W
 081C:  XORLW  30
 081D:  BCF    03.5
@@ -3496,10 +3503,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0842:  BTFSC  03.2
 0843:  GOTO   78A
 0844:  GOTO   7C4
-....................    { 
-....................       case '0':   IF (DEBUG){fputs ("\r > Activacion manual de puerto", RS232); } 
+....................         case '0': IF(DEBUG) 
 0845:  BTFSS  07.2
 0846:  GOTO   058
+....................         { 
+....................             fputs("\r > Activacion manual de puerto", RS232); 
 0847:  MOVLW  F2
 0848:  BSF    03.6
 0849:  MOVWF  0D
@@ -3517,7 +3525,9 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0855:  BTFSS  0C.4
 0856:  GOTO   055
 0857:  MOVWF  19
-....................                   SWITCH (c[2]) 
+....................         } 
+....................  
+....................         SWITCH(c[2]) { 
 0858:  MOVLW  31
 0859:  BSF    03.5
 085A:  SUBWF  22,W
@@ -3527,8 +3537,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 085E:  ADDLW  04
 085F:  BCF    03.5
 0860:  GOTO   7C7
-....................                   { 
-....................                      CASE '1': showNumber (char2int (c[3]), pNJugadorD); 
+....................             CASE '1' : showNumber(char2int(c[3]), pNJugadorD); 
 0861:  BSF    03.5
 0862:  MOVF   23,W
 0863:  MOVWF  2D
@@ -3560,10 +3569,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 087D:  BCF    03.5
 087E:  CALL   1FD
 087F:  BSF    0A.3
-....................                      BREAK; 
+....................             BREAK; 
 0880:  BSF    03.5
 0881:  GOTO   0E6
-....................                      CASE '2': showNumber (char2int (c[3]), pNJugadorU); 
+....................             CASE '2' : showNumber(char2int(c[3]), pNJugadorU); 
 0882:  BSF    03.5
 0883:  MOVF   23,W
 0884:  MOVWF  2D
@@ -3595,10 +3604,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 089E:  BCF    03.5
 089F:  CALL   1FD
 08A0:  BSF    0A.3
-....................                      BREAK; 
+....................             BREAK; 
 08A1:  BSF    03.5
 08A2:  GOTO   0E6
-....................                      CASE '3': showNumber (char2int (c[3]), pFJugadorD); 
+....................             CASE '3' : showNumber(char2int(c[3]), pFJugadorD); 
 08A3:  BSF    03.5
 08A4:  MOVF   23,W
 08A5:  MOVWF  2D
@@ -3630,10 +3639,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 08BF:  BCF    03.5
 08C0:  CALL   1FD
 08C1:  BSF    0A.3
-....................                      BREAK; 
+....................             BREAK; 
 08C2:  BSF    03.5
 08C3:  GOTO   0E6
-....................                      CASE '4': showNumber (char2int (c[3]), pFJugadorU); 
+....................             CASE '4' : showNumber(char2int(c[3]), pFJugadorU); 
 08C4:  BSF    03.5
 08C5:  MOVF   23,W
 08C6:  MOVWF  2D
@@ -3665,17 +3674,17 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 08E0:  BCF    03.5
 08E1:  CALL   1FD
 08E2:  BSF    0A.3
-....................                      BREAK; 
+....................             BREAK; 
 08E3:  BSF    03.5
 08E4:  GOTO   0E6
 08E5:  BSF    03.5
-....................                   } 
-....................     
-....................                   BREAK; 
+....................         } 
+....................  
+....................         BREAK; 
 08E6:  BCF    03.5
 08E7:  GOTO   7C4
 ....................  
-....................       case 'B': SWITCH (c[1]) 
+....................         case 'B': SWITCH(c[1]) 
 08E8:  BSF    03.5
 08E9:  MOVF   21,W
 08EA:  XORLW  31
@@ -3689,10 +3698,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 08F2:  BTFSC  03.2
 08F3:  GOTO   12B
 08F4:  GOTO   146
-....................       { 
-....................          case '1': IF (DEBUG){fputs ("\r > Toque corto", RS232); } 
+....................         { 
+....................             case '1': IF(DEBUG) 
 08F5:  BTFSS  07.2
 08F6:  GOTO   108
+....................             { 
+....................                 fputs("\r > Toque corto", RS232); 
 08F7:  MOVLW  02
 08F8:  BSF    03.6
 08F9:  MOVWF  0D
@@ -3710,7 +3721,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0905:  BTFSS  0C.4
 0906:  GOTO   105
 0907:  MOVWF  19
-....................          doBuzz (1) ; 
+....................             } 
+....................             doBuzz(1); 
 0908:  MOVLW  01
 0909:  BSF    03.5
 090A:  MOVWF  2A
@@ -3718,11 +3730,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 090C:  BCF    03.5
 090D:  CALL   291
 090E:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 090F:  GOTO   146
-....................          case '2': IF (DEBUG){fputs ("\r > Toque largo", RS232); } 
+....................             case '2': IF(DEBUG) 
 0910:  BTFSS  07.2
 0911:  GOTO   123
+....................             { 
+....................                 fputs("\r > Toque largo", RS232); 
 0912:  MOVLW  0A
 0913:  BSF    03.6
 0914:  MOVWF  0D
@@ -3740,7 +3754,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0920:  BTFSS  0C.4
 0921:  GOTO   120
 0922:  MOVWF  19
-....................          doBuzz (2) ; 
+....................             } 
+....................             doBuzz(2); 
 0923:  MOVLW  02
 0924:  BSF    03.5
 0925:  MOVWF  2A
@@ -3748,11 +3763,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0927:  BCF    03.5
 0928:  CALL   291
 0929:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 092A:  GOTO   146
-....................          case '3': IF (DEBUG){fputs ("\r > Toque doble", RS232); } 
+....................             case '3': IF(DEBUG) 
 092B:  BTFSS  07.2
 092C:  GOTO   13E
+....................             { 
+....................                 fputs("\r > Toque doble", RS232); 
 092D:  MOVLW  12
 092E:  BSF    03.6
 092F:  MOVWF  0D
@@ -3770,7 +3787,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 093B:  BTFSS  0C.4
 093C:  GOTO   13B
 093D:  MOVWF  19
-....................          doBuzz (3) ; 
+....................             } 
+....................             doBuzz(3); 
 093E:  MOVLW  03
 093F:  BSF    03.5
 0940:  MOVWF  2A
@@ -3778,15 +3796,17 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0942:  BCF    03.5
 0943:  CALL   291
 0944:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0945:  GOTO   146
-....................       } 
+....................         } 
 ....................  
-....................       BREAK; 
+....................         BREAK; 
 0946:  GOTO   7C4
-....................       case 'F': IF (DEBUG){fputs ("\r > Asignar faltas", RS232); } 
+....................         case 'F': IF(DEBUG) 
 0947:  BTFSS  07.2
 0948:  GOTO   15A
+....................         { 
+....................             fputs("\r > Asignar faltas", RS232); 
 0949:  MOVLW  1A
 094A:  BSF    03.6
 094B:  MOVWF  0D
@@ -3804,7 +3824,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0957:  BTFSS  0C.4
 0958:  GOTO   157
 0959:  MOVWF  19
-....................       showNumber (char2int (c[1]), pFJugadorD); 
+....................         } 
+....................         showNumber(char2int(c[1]), pFJugadorD); 
 095A:  BSF    03.5
 095B:  MOVF   21,W
 095C:  MOVWF  2D
@@ -3836,7 +3857,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0976:  BCF    03.5
 0977:  CALL   1FD
 0978:  BSF    0A.3
-....................       showNumber (char2int (c[2]), pFJugadorU); 
+....................         showNumber(char2int(c[2]), pFJugadorU); 
 0979:  BSF    03.5
 097A:  MOVF   22,W
 097B:  MOVWF  2D
@@ -3868,11 +3889,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0995:  BCF    03.5
 0996:  CALL   1FD
 0997:  BSF    0A.3
-....................       BREAK; 
+....................         BREAK; 
 0998:  GOTO   7C4
-....................       case 'J': IF (DEBUG){fputs ("\r > Asignar jugador", RS232); } 
+....................         case 'J': IF(DEBUG) 
 0999:  BTFSS  07.2
 099A:  GOTO   1AC
+....................         { 
+....................             fputs("\r > Asignar jugador", RS232); 
 099B:  MOVLW  24
 099C:  BSF    03.6
 099D:  MOVWF  0D
@@ -3890,7 +3913,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 09A9:  BTFSS  0C.4
 09AA:  GOTO   1A9
 09AB:  MOVWF  19
-....................       showNumber (char2int (c[1]), pNJugadorD); 
+....................         } 
+....................         showNumber(char2int(c[1]), pNJugadorD); 
 09AC:  BSF    03.5
 09AD:  MOVF   21,W
 09AE:  MOVWF  2D
@@ -3922,7 +3946,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 09C8:  BCF    03.5
 09C9:  CALL   1FD
 09CA:  BSF    0A.3
-....................       showNumber (char2int (c[2]), pNJugadorU); 
+....................         showNumber(char2int(c[2]), pNJugadorU); 
 09CB:  BSF    03.5
 09CC:  MOVF   22,W
 09CD:  MOVWF  2D
@@ -3954,10 +3978,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 09E7:  BCF    03.5
 09E8:  CALL   1FD
 09E9:  BSF    0A.3
-....................       BREAK; 
+....................         BREAK; 
 09EA:  GOTO   7C4
-....................       case 'L': 
-....................       SWITCH (c[1]) 
+....................         case 'L': 
+....................         SWITCH(c[1]) 
 09EB:  BSF    03.5
 09EC:  MOVF   21,W
 09ED:  XORLW  30
@@ -3986,10 +4010,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A04:  BTFSC  03.2
 0A05:  GOTO   358
 0A06:  GOTO   375
-....................       { 
-....................          case '0': IF (DEBUG){fputs ("\r > Resetea a 0", RS232); } 
+....................         { 
+....................             case '0': IF(DEBUG) 
 0A07:  BTFSS  07.2
 0A08:  GOTO   21A
+....................             { 
+....................                 fputs("\r > Resetea a 0", RS232); 
 0A09:  MOVLW  2E
 0A0A:  BSF    03.6
 0A0B:  MOVWF  0D
@@ -4007,7 +4033,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A17:  BTFSS  0C.4
 0A18:  GOTO   217
 0A19:  MOVWF  19
-....................          setScoreL(0,0,0); 
+....................             } 
+....................             setScoreL(0, 0, 0); 
 0A1A:  BSF    03.5
 0A1B:  CLRF   2D
 0A1C:  CLRF   2E
@@ -4016,11 +4043,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A1F:  BCF    03.5
 0A20:  CALL   31D
 0A21:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0A22:  GOTO   375
-....................          case '1': IF (DEBUG){fputs ("\r > Incrementar por 1", RS232); } 
+....................             case '1': IF(DEBUG) 
 0A23:  BTFSS  07.2
 0A24:  GOTO   236
+....................             { 
+....................                 fputs("\r > Incrementar por 1", RS232); 
 0A25:  MOVLW  36
 0A26:  BSF    03.6
 0A27:  MOVWF  0D
@@ -4038,7 +4067,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A33:  BTFSS  0C.4
 0A34:  GOTO   233
 0A35:  MOVWF  19
-....................          addScoreL(1); 
+....................             } 
+....................             addScoreL(1); 
 0A36:  MOVLW  01
 0A37:  BSF    03.5
 0A38:  MOVWF  2A
@@ -4046,11 +4076,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A3A:  BCF    03.5
 0A3B:  CALL   35D
 0A3C:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0A3D:  GOTO   375
-....................          case '2': IF (DEBUG){fputs ("\r > Incrementar por 2", RS232); } 
+....................             case '2': IF(DEBUG) 
 0A3E:  BTFSS  07.2
 0A3F:  GOTO   251
+....................             { 
+....................                 fputs("\r > Incrementar por 2", RS232); 
 0A40:  MOVLW  41
 0A41:  BSF    03.6
 0A42:  MOVWF  0D
@@ -4068,7 +4100,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A4E:  BTFSS  0C.4
 0A4F:  GOTO   24E
 0A50:  MOVWF  19
-....................          addScoreL(2);          
+....................             } 
+....................             addScoreL(2); 
 0A51:  MOVLW  02
 0A52:  BSF    03.5
 0A53:  MOVWF  2A
@@ -4076,11 +4109,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A55:  BCF    03.5
 0A56:  CALL   35D
 0A57:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0A58:  GOTO   375
-....................          case '3': IF (DEBUG){fputs ("\r > Incrementar por 3", RS232); } 
+....................             case '3': IF(DEBUG) 
 0A59:  BTFSS  07.2
 0A5A:  GOTO   26C
+....................             { 
+....................                 fputs("\r > Incrementar por 3", RS232); 
 0A5B:  MOVLW  4C
 0A5C:  BSF    03.6
 0A5D:  MOVWF  0D
@@ -4098,7 +4133,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A69:  BTFSS  0C.4
 0A6A:  GOTO   269
 0A6B:  MOVWF  19
-....................          addScoreL(3);          
+....................             } 
+....................             addScoreL(3); 
 0A6C:  MOVLW  03
 0A6D:  BSF    03.5
 0A6E:  MOVWF  2A
@@ -4106,11 +4142,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A70:  BCF    03.5
 0A71:  CALL   35D
 0A72:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0A73:  GOTO   375
-....................          case 'D': IF (DEBUG){fputs ("\r > Decrementar por 1", RS232); } 
+....................             case 'D': IF(DEBUG) 
 0A74:  BTFSS  07.2
 0A75:  GOTO   287
+....................             { 
+....................                 fputs("\r > Decrementar por 1", RS232); 
 0A76:  MOVLW  57
 0A77:  BSF    03.6
 0A78:  MOVWF  0D
@@ -4128,13 +4166,16 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A84:  BTFSS  0C.4
 0A85:  GOTO   284
 0A86:  MOVWF  19
-....................          resScoreL();          
-....................          BREAK; 
+....................             } 
+....................             resScoreL(); 
+....................             BREAK; 
 *
 0AF6:  GOTO   375
-....................          case 'F': IF (DEBUG){fputs ("\r > Asignar faltas", RS232); } 
+....................             case 'F': IF(DEBUG) 
 0AF7:  BTFSS  07.2
 0AF8:  GOTO   30A
+....................             { 
+....................                 fputs("\r > Asignar faltas", RS232); 
 0AF9:  MOVLW  62
 0AFA:  BSF    03.6
 0AFB:  MOVWF  0D
@@ -4152,7 +4193,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0B07:  BTFSS  0C.4
 0B08:  GOTO   307
 0B09:  MOVWF  19
-....................          sendN2Port (char2int(c[2]), I2C_SCORE, PuertoE); 
+....................             } 
+....................             sendN2Port(char2int(c[2]), I2C_SCORE, PuertoE); 
 0B0A:  BSF    03.5
 0B0B:  MOVF   22,W
 0B0C:  MOVWF  2D
@@ -4172,11 +4214,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0B1A:  BCF    03.5
 0B1B:  CALL   2FA
 0B1C:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0B1D:  GOTO   375
-....................          case 'I': IF (DEBUG){fputs ("\r > Inicializar", RS232); } 
+....................             case 'I': IF(DEBUG) 
 0B1E:  BTFSS  07.2
 0B1F:  GOTO   331
+....................             { 
+....................                 fputs("\r > Inicializar", RS232); 
 0B20:  MOVLW  6C
 0B21:  BSF    03.6
 0B22:  MOVWF  0D
@@ -4194,7 +4238,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0B2E:  BTFSS  0C.4
 0B2F:  GOTO   32E
 0B30:  MOVWF  19
-....................          setScoreL(char2int(c[2]),char2int(c[3]),char2int(c[4])); 
+....................             } 
+....................             setScoreL(char2int(c[2]), char2int(c[3]), char2int(c[4])); 
 0B31:  BSF    03.5
 0B32:  MOVF   22,W
 0B33:  MOVWF  2D
@@ -4233,11 +4278,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0B54:  BCF    03.5
 0B55:  CALL   31D
 0B56:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0B57:  GOTO   375
-....................          case 'P': IF (DEBUG){fputs ("\r > Asignar posicion", RS232); } 
+....................             case 'P': IF(DEBUG) 
 0B58:  BTFSS  07.2
 0B59:  GOTO   36B
+....................             { 
+....................                 fputs("\r > Asignar posicion", RS232); 
 0B5A:  MOVLW  74
 0B5B:  BSF    03.6
 0B5C:  MOVWF  0D
@@ -4255,7 +4302,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0B68:  BTFSS  0C.4
 0B69:  GOTO   368
 0B6A:  MOVWF  19
-....................          i2c_send (I2C_SCORE, I2C_CMD_POSL); 
+....................             } 
+....................             i2c_send(I2C_SCORE, I2C_CMD_POSL); 
 0B6B:  MOVLW  0C
 0B6C:  BSF    03.5
 0B6D:  MOVWF  36
@@ -4265,15 +4313,16 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0B71:  BCF    03.5
 0B72:  CALL   2C7
 0B73:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0B74:  GOTO   375
-....................       } 
-....................  
-....................       BREAK; 
+....................         } 
+....................         BREAK; 
 0B75:  GOTO   7C4
-....................       case 'P': IF (DEBUG){fputs ("\r > Pausar tiempo", RS232); } 
+....................         case 'P': IF(DEBUG) 
 0B76:  BTFSS  07.2
 0B77:  GOTO   389
+....................         { 
+....................             fputs("\r > Pausar tiempo", RS232); 
 0B78:  MOVLW  7F
 0B79:  BSF    03.6
 0B7A:  MOVWF  0D
@@ -4291,13 +4340,16 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0B86:  BTFSS  0C.4
 0B87:  GOTO   386
 0B88:  MOVWF  19
-....................       pauseTime = true; 
+....................         } 
+....................         pauseTime = true; 
 0B89:  BSF    45.3
-....................       BREAK; 
+....................         BREAK; 
 0B8A:  GOTO   7C4
-....................       case 'Q': IF (DEBUG){fputs ("\r > Renudar tiempo", RS232); } 
+....................         case 'Q': IF(DEBUG) 
 0B8B:  BTFSS  07.2
 0B8C:  GOTO   39E
+....................         { 
+....................             fputs("\r > Renudar tiempo", RS232); 
 0B8D:  MOVLW  88
 0B8E:  BSF    03.6
 0B8F:  MOVWF  0D
@@ -4315,13 +4367,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0B9B:  BTFSS  0C.4
 0B9C:  GOTO   39B
 0B9D:  MOVWF  19
-....................       pauseTime = false; 
+....................         } 
+....................         pauseTime = false; 
 0B9E:  BCF    45.3
-....................       BREAK; 
+....................         BREAK; 
 0B9F:  GOTO   7C4
 ....................  
-....................       CASE 'R': 
-....................       SWITCH (c[1]) 
+....................         CASE 'R' : 
+....................                 SWITCH(c[1]) { 
 0BA0:  MOVLW  30
 0BA1:  BSF    03.5
 0BA2:  SUBWF  21,W
@@ -4331,10 +4384,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0BA6:  ADDLW  05
 0BA7:  BCF    03.5
 0BA8:  GOTO   7CF
-....................       { 
-....................          case '0': IF (DEBUG){fputs ("\r > Apagar Periodos", RS232); } 
+....................             case '0': IF(DEBUG) 
 0BA9:  BTFSS  07.2
 0BAA:  GOTO   3BC
+....................             { 
+....................                 fputs("\r > Apagar Periodos", RS232); 
 0BAB:  MOVLW  92
 0BAC:  BSF    03.6
 0BAD:  MOVWF  0D
@@ -4352,7 +4406,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0BB9:  BTFSS  0C.4
 0BBA:  GOTO   3B9
 0BBB:  MOVWF  19
-....................          i2c_send (I2C_TIMER, I2C_CMD_PER0); 
+....................             } 
+....................             i2c_send(I2C_TIMER, I2C_CMD_PER0); 
 0BBC:  MOVLW  0A
 0BBD:  BSF    03.5
 0BBE:  MOVWF  36
@@ -4362,12 +4417,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0BC2:  BCF    03.5
 0BC3:  CALL   2C7
 0BC4:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0BC5:  BSF    03.5
 0BC6:  GOTO   440
-....................          case '1': IF (DEBUG){fputs ("\r > Periodo 1", RS232); } 
+....................             case '1': IF(DEBUG) 
 0BC7:  BTFSS  07.2
 0BC8:  GOTO   3DA
+....................             { 
+....................                 fputs("\r > Periodo 1", RS232); 
 0BC9:  MOVLW  9C
 0BCA:  BSF    03.6
 0BCB:  MOVWF  0D
@@ -4385,7 +4442,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0BD7:  BTFSS  0C.4
 0BD8:  GOTO   3D7
 0BD9:  MOVWF  19
-....................          i2c_send (I2C_TIMER, I2C_CMD_PER1); 
+....................             } 
+....................             i2c_send(I2C_TIMER, I2C_CMD_PER1); 
 0BDA:  MOVLW  0A
 0BDB:  BSF    03.5
 0BDC:  MOVWF  36
@@ -4395,12 +4453,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0BE0:  BCF    03.5
 0BE1:  CALL   2C7
 0BE2:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0BE3:  BSF    03.5
 0BE4:  GOTO   440
-....................          case '2': IF (DEBUG){fputs ("\r > Periodo 2", RS232); } 
+....................             case '2': IF(DEBUG) 
 0BE5:  BTFSS  07.2
 0BE6:  GOTO   3F8
+....................             { 
+....................                 fputs("\r > Periodo 2", RS232); 
 0BE7:  MOVLW  A3
 0BE8:  BSF    03.6
 0BE9:  MOVWF  0D
@@ -4418,7 +4478,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0BF5:  BTFSS  0C.4
 0BF6:  GOTO   3F5
 0BF7:  MOVWF  19
-....................          i2c_send (I2C_TIMER, I2C_CMD_PER2); 
+....................             } 
+....................             i2c_send(I2C_TIMER, I2C_CMD_PER2); 
 0BF8:  MOVLW  0A
 0BF9:  BSF    03.5
 0BFA:  MOVWF  36
@@ -4428,12 +4489,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0BFE:  BCF    03.5
 0BFF:  CALL   2C7
 0C00:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0C01:  BSF    03.5
 0C02:  GOTO   440
-....................          case '3': IF (DEBUG){fputs ("\r > Periodo 3", RS232); } 
+....................             case '3': IF(DEBUG) 
 0C03:  BTFSS  07.2
 0C04:  GOTO   416
+....................             { 
+....................                 fputs("\r > Periodo 3", RS232); 
 0C05:  MOVLW  AA
 0C06:  BSF    03.6
 0C07:  MOVWF  0D
@@ -4451,7 +4514,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C13:  BTFSS  0C.4
 0C14:  GOTO   413
 0C15:  MOVWF  19
-....................          i2c_send (I2C_TIMER, I2C_CMD_PER3); 
+....................             } 
+....................             i2c_send(I2C_TIMER, I2C_CMD_PER3); 
 0C16:  MOVLW  0A
 0C17:  BSF    03.5
 0C18:  MOVWF  36
@@ -4461,12 +4525,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C1C:  BCF    03.5
 0C1D:  CALL   2C7
 0C1E:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0C1F:  BSF    03.5
 0C20:  GOTO   440
-....................          case '4': IF (DEBUG){fputs ("\r > Periodo 4", RS232); } 
+....................             case '4': IF(DEBUG) 
 0C21:  BTFSS  07.2
 0C22:  GOTO   434
+....................             { 
+....................                 fputs("\r > Periodo 4", RS232); 
 0C23:  MOVLW  B1
 0C24:  BSF    03.6
 0C25:  MOVWF  0D
@@ -4484,7 +4550,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C31:  BTFSS  0C.4
 0C32:  GOTO   431
 0C33:  MOVWF  19
-....................          i2c_send (I2C_TIMER, I2C_CMD_PER4); 
+....................             } 
+....................             i2c_send(I2C_TIMER, I2C_CMD_PER4); 
 0C34:  MOVLW  0A
 0C35:  BSF    03.5
 0C36:  MOVWF  36
@@ -4494,23 +4561,25 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C3A:  BCF    03.5
 0C3B:  CALL   2C7
 0C3C:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0C3D:  BSF    03.5
 0C3E:  GOTO   440
 0C3F:  BSF    03.5
-....................       } 
-....................       delay_ms (I2CWAIT); 
+....................         } 
+....................         delay_ms(I2CWAIT); 
 0C40:  MOVLW  32
 0C41:  MOVWF  32
 0C42:  BCF    0A.3
 0C43:  BCF    03.5
 0C44:  CALL   309
 0C45:  BSF    0A.3
-....................       BREAK; 
+....................         BREAK; 
 0C46:  GOTO   7C4
-....................       case 'S': IF (DEBUG){fputs ("\r > Configuracion de tiro", RS232); } 
+....................         case 'S': IF(DEBUG) 
 0C47:  BTFSS  07.2
 0C48:  GOTO   45A
+....................         { 
+....................             fputs("\r > Configuracion de tiro", RS232); 
 0C49:  MOVLW  B8
 0C4A:  BSF    03.6
 0C4B:  MOVWF  0D
@@ -4528,7 +4597,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C57:  BTFSS  0C.4
 0C58:  GOTO   457
 0C59:  MOVWF  19
-....................       shotSet (char2int (c[1]), char2int (c[2])) ; 
+....................         } 
+....................         shotSet(char2int(c[1]), char2int(c[2])); 
 0C5A:  BSF    03.5
 0C5B:  MOVF   21,W
 0C5C:  MOVWF  2D
@@ -4552,12 +4622,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C6E:  MOVWF  2C
 0C6F:  MOVF   2B,W
 0C70:  MOVWF  2D
-....................       BREAK; 
+....................         BREAK; 
 *
 0C96:  GOTO   7C4
-....................       case 'T': IF (DEBUG){fputs ("\r > Configuracion de tiempo", RS232); } 
+....................         case 'T': IF(DEBUG) 
 0C97:  BTFSS  07.2
 0C98:  GOTO   4AA
+....................         { 
+....................             fputs("\r > Configuracion de tiempo", RS232); 
 0C99:  MOVLW  C5
 0C9A:  BSF    03.6
 0C9B:  MOVWF  0D
@@ -4575,7 +4647,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0CA7:  BTFSS  0C.4
 0CA8:  GOTO   4A7
 0CA9:  MOVWF  19
-....................       timeSet (char2int (c[1]), char2int (c[2]), char2int (c[3]), char2int (c[4])) ; 
+....................         } 
+....................         timeSet(char2int(c[1]), char2int(c[2]), char2int(c[3]), char2int(c[4])); 
 0CAA:  BSF    03.5
 0CAB:  MOVF   21,W
 0CAC:  MOVWF  2D
@@ -4621,11 +4694,11 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0CD4:  MOVWF  30
 0CD5:  MOVF   2D,W
 0CD6:  MOVWF  31
-....................       BREAK; 
+....................         BREAK; 
 *
 0D33:  GOTO   7C4
-....................       case 'V': 
-....................       SWITCH (c[1]) 
+....................         case 'V': 
+....................         SWITCH(c[1]) 
 0D34:  BSF    03.5
 0D35:  MOVF   21,W
 0D36:  XORLW  30
@@ -4654,10 +4727,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D4D:  BTFSC  03.2
 0D4E:  GOTO   6A1
 0D4F:  GOTO   6BE
-....................       { 
-....................          case '0': IF (DEBUG){fputs ("\r > Resetea a 0", RS232); } 
+....................         { 
+....................             case '0': IF(DEBUG) 
 0D50:  BTFSS  07.2
 0D51:  GOTO   563
+....................             { 
+....................                 fputs("\r > Resetea a 0", RS232); 
 0D52:  MOVLW  D3
 0D53:  BSF    03.6
 0D54:  MOVWF  0D
@@ -4675,7 +4750,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D60:  BTFSS  0C.4
 0D61:  GOTO   560
 0D62:  MOVWF  19
-....................          setScoreV(0,0,0); 
+....................             } 
+....................             setScoreV(0, 0, 0); 
 0D63:  BSF    03.5
 0D64:  CLRF   2D
 0D65:  CLRF   2E
@@ -4684,11 +4760,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D68:  BCF    03.5
 0D69:  CALL   3C1
 0D6A:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0D6B:  GOTO   6BE
-....................          case '1': IF (DEBUG){fputs ("\r > Incrementar por 1", RS232); } 
+....................             case '1': IF(DEBUG) 
 0D6C:  BTFSS  07.2
 0D6D:  GOTO   57F
+....................             { 
+....................                 fputs("\r > Incrementar por 1", RS232); 
 0D6E:  MOVLW  DB
 0D6F:  BSF    03.6
 0D70:  MOVWF  0D
@@ -4706,7 +4784,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D7C:  BTFSS  0C.4
 0D7D:  GOTO   57C
 0D7E:  MOVWF  19
-....................          addScoreV(1);          
+....................             } 
+....................             addScoreV(1); 
 0D7F:  MOVLW  01
 0D80:  BSF    03.5
 0D81:  MOVWF  2A
@@ -4714,11 +4793,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D83:  BCF    03.5
 0D84:  CALL   401
 0D85:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0D86:  GOTO   6BE
-....................          case '2': IF (DEBUG){fputs ("\r > Incrementar por 2", RS232); } 
+....................             case '2': IF(DEBUG) 
 0D87:  BTFSS  07.2
 0D88:  GOTO   59A
+....................             { 
+....................                 fputs("\r > Incrementar por 2", RS232); 
 0D89:  MOVLW  E6
 0D8A:  BSF    03.6
 0D8B:  MOVWF  0D
@@ -4736,7 +4817,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D97:  BTFSS  0C.4
 0D98:  GOTO   597
 0D99:  MOVWF  19
-....................          addScoreV(2); 
+....................             } 
+....................             addScoreV(2); 
 0D9A:  MOVLW  02
 0D9B:  BSF    03.5
 0D9C:  MOVWF  2A
@@ -4744,11 +4826,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D9E:  BCF    03.5
 0D9F:  CALL   401
 0DA0:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0DA1:  GOTO   6BE
-....................          case '3': IF (DEBUG){fputs ("\r > Incrementar por 3", RS232); } 
+....................             case '3': IF(DEBUG) 
 0DA2:  BTFSS  07.2
 0DA3:  GOTO   5B5
+....................             { 
+....................                 fputs("\r > Incrementar por 3", RS232); 
 0DA4:  MOVLW  F1
 0DA5:  BSF    03.6
 0DA6:  MOVWF  0D
@@ -4766,7 +4850,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0DB2:  BTFSS  0C.4
 0DB3:  GOTO   5B2
 0DB4:  MOVWF  19
-....................          addScoreV(3); 
+....................             } 
+....................             addScoreV(3); 
 0DB5:  MOVLW  03
 0DB6:  BSF    03.5
 0DB7:  MOVWF  2A
@@ -4774,11 +4859,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0DB9:  BCF    03.5
 0DBA:  CALL   401
 0DBB:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0DBC:  GOTO   6BE
-....................          case 'D': IF (DEBUG){fputs ("\r > Decrementar por 1", RS232); } 
+....................             case 'D': IF(DEBUG) 
 0DBD:  BTFSS  07.2
 0DBE:  GOTO   5D0
+....................             { 
+....................                 fputs("\r > Decrementar por 1", RS232); 
 0DBF:  MOVLW  FC
 0DC0:  BSF    03.6
 0DC1:  MOVWF  0D
@@ -4796,13 +4883,16 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0DCD:  BTFSS  0C.4
 0DCE:  GOTO   5CD
 0DCF:  MOVWF  19
-....................          resScoreV(); 
-....................          BREAK; 
+....................             } 
+....................             resScoreV(); 
+....................             BREAK; 
 *
 0E3F:  GOTO   6BE
-....................          case 'F': IF (DEBUG){fputs ("\r > Asignar faltas", RS232); } 
+....................             case 'F': IF(DEBUG) 
 0E40:  BTFSS  07.2
 0E41:  GOTO   653
+....................             { 
+....................                 fputs("\r > Asignar faltas", RS232); 
 0E42:  MOVLW  07
 0E43:  BSF    03.6
 0E44:  MOVWF  0D
@@ -4820,7 +4910,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E50:  BTFSS  0C.4
 0E51:  GOTO   650
 0E52:  MOVWF  19
-....................          sendN2Port (char2int(c[2]), I2C_SCORE, PuertoF); 
+....................             } 
+....................             sendN2Port(char2int(c[2]), I2C_SCORE, PuertoF); 
 0E53:  BSF    03.5
 0E54:  MOVF   22,W
 0E55:  MOVWF  2D
@@ -4840,11 +4931,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E63:  BCF    03.5
 0E64:  CALL   2FA
 0E65:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0E66:  GOTO   6BE
-....................          case 'I': IF (DEBUG){fputs ("\r > Inicializar", RS232); } 
+....................             case 'I': IF(DEBUG) 
 0E67:  BTFSS  07.2
 0E68:  GOTO   67A
+....................             { 
+....................                 fputs("\r > Inicializar", RS232); 
 0E69:  MOVLW  11
 0E6A:  BSF    03.6
 0E6B:  MOVWF  0D
@@ -4862,7 +4955,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E77:  BTFSS  0C.4
 0E78:  GOTO   677
 0E79:  MOVWF  19
-....................                    setScoreV(char2int(c[2]),char2int(c[3]),char2int(c[4])); 
+....................             } 
+....................             setScoreV(char2int(c[2]), char2int(c[3]), char2int(c[4])); 
 0E7A:  BSF    03.5
 0E7B:  MOVF   22,W
 0E7C:  MOVWF  2D
@@ -4901,11 +4995,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E9D:  BCF    03.5
 0E9E:  CALL   3C1
 0E9F:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0EA0:  GOTO   6BE
-....................          case 'P': IF (DEBUG){fputs ("\r > Asignar posicion", RS232); } 
+....................             case 'P': IF(DEBUG) 
 0EA1:  BTFSS  07.2
 0EA2:  GOTO   6B4
+....................             { 
+....................                 fputs("\r > Asignar posicion", RS232); 
 0EA3:  MOVLW  19
 0EA4:  BSF    03.6
 0EA5:  MOVWF  0D
@@ -4923,7 +5019,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0EB1:  BTFSS  0C.4
 0EB2:  GOTO   6B1
 0EB3:  MOVWF  19
-....................          i2c_send (I2C_SCORE, I2C_CMD_POSV); 
+....................             } 
+....................             i2c_send(I2C_SCORE, I2C_CMD_POSV); 
 0EB4:  MOVLW  0C
 0EB5:  BSF    03.5
 0EB6:  MOVWF  36
@@ -4933,20 +5030,21 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0EBA:  BCF    03.5
 0EBB:  CALL   2C7
 0EBC:  BSF    0A.3
-....................          BREAK; 
+....................             BREAK; 
 0EBD:  GOTO   6BE
-....................       } 
-....................  
-....................       BREAK; 
+....................         } 
+....................         BREAK; 
 0EBE:  GOTO   7C4
-....................       CASE 'X': doTest (); //Rutina de prueba 
-....................       BREAK; 
+....................         CASE 'X' : doTest(); //Rutina de prueba 
+....................         BREAK; 
 *
 0F88:  BCF    03.5
 0F89:  GOTO   7C4
-....................       case 'Z': IF (DEBUG){fputs ("\r > Reseteo general... ! ", RS232); } 
+....................         case 'Z': IF(DEBUG) 
 0F8A:  BTFSS  07.2
 0F8B:  GOTO   79D
+....................         { 
+....................             fputs("\r > Reseteo general... ! ", RS232); 
 0F8C:  MOVLW  24
 0F8D:  BSF    03.6
 0F8E:  MOVWF  0D
@@ -4964,7 +5062,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0F9A:  BTFSS  0C.4
 0F9B:  GOTO   79A
 0F9C:  MOVWF  19
-....................       delay_ms (500) ; 
+....................         } 
+....................         delay_ms(500); 
 0F9D:  MOVLW  02
 0F9E:  BSF    03.5
 0F9F:  MOVWF  2A
@@ -4977,46 +5076,45 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0FA6:  BSF    03.5
 0FA7:  DECFSZ 2A,F
 0FA8:  GOTO   7A0
-....................       doReset () ; 
-....................       break; 
+....................         doReset(); 
+....................         BREAK; 
 *
 0FC3:  GOTO   7C4
-....................    } 
+....................     } 
 0FC4:  BCF    0A.3
 0FC5:  BCF    0A.4
 0FC6:  GOTO   492 (RETURN)
 .................... } 
 ....................  
-.................... void setScoreL(int8 c, int8 d, int8 u) 
-.................... { 
-....................    //TODO: Codigo para mostrar puntos 
-....................    scoreLU = u; 
+.................... void setScoreL(int8 c, int8 d, int8 u) { 
+....................     //TODO: Codigo para mostrar puntos 
+....................     scoreLU = u; 
 *
 031D:  BSF    03.5
 031E:  MOVF   2F,W
 031F:  BCF    03.5
 0320:  MOVWF  5C
-....................    scoreLD = d; 
+....................     scoreLD = d; 
 0321:  BSF    03.5
 0322:  MOVF   2E,W
 0323:  BCF    03.5
 0324:  MOVWF  5D
-....................    if(c > 0) 
+....................     if (c > 0) 
 0325:  BSF    03.5
 0326:  MOVF   2D,F
 0327:  BTFSC  03.2
 0328:  GOTO   32D
-....................       scoreLC = true; 
+....................         scoreLC = true; 
 0329:  BCF    03.5
 032A:  BSF    45.4
 032B:  GOTO   32F
 032C:  BSF    03.5
-....................    else 
-....................       scoreLC = false; 
+....................     else 
+....................         scoreLC = false; 
 032D:  BCF    03.5
 032E:  BCF    45.4
-....................     
-....................    sendN2Port (scoreLU, I2C_SCORE, PuertoA); 
+....................  
+....................     sendN2Port(scoreLU, I2C_SCORE, PuertoA); 
 032F:  MOVF   5C,W
 0330:  BSF    03.5
 0331:  MOVWF  32
@@ -5026,13 +5124,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0335:  MOVWF  34
 0336:  BCF    03.5
 0337:  CALL   2FA
-....................    delay_ms(I2CWAIT); 
+....................     delay_ms(I2CWAIT); 
 0338:  MOVLW  32
 0339:  BSF    03.5
 033A:  MOVWF  32
 033B:  BCF    03.5
 033C:  CALL   309
-....................    sendN2Port (scoreLD, I2C_SCORE, PuertoB); 
+....................     sendN2Port(scoreLD, I2C_SCORE, PuertoB); 
 033D:  MOVF   5D,W
 033E:  BSF    03.5
 033F:  MOVWF  32
@@ -5042,16 +5140,16 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0343:  MOVWF  34
 0344:  BCF    03.5
 0345:  CALL   2FA
-....................    delay_ms(I2CWAIT);    
+....................     delay_ms(I2CWAIT); 
 0346:  MOVLW  32
 0347:  BSF    03.5
 0348:  MOVWF  32
 0349:  BCF    03.5
 034A:  CALL   309
-....................    if(scoreLC) 
+....................     if (scoreLC) 
 034B:  BTFSS  45.4
 034C:  GOTO   355
-....................       i2c_send(I2C_SCORE, I2C_CMD_CLON); 
+....................         i2c_send(I2C_SCORE, I2C_CMD_CLON); 
 034D:  MOVLW  0C
 034E:  BSF    03.5
 034F:  MOVWF  36
@@ -5060,8 +5158,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0352:  BCF    03.5
 0353:  CALL   2C7
 0354:  GOTO   35C
-....................    else 
-....................       i2c_send(I2C_SCORE, I2C_CMD_CLOF);    
+....................     else 
+....................         i2c_send(I2C_SCORE, I2C_CMD_CLOF); 
 0355:  MOVLW  0C
 0356:  BSF    03.5
 0357:  MOVWF  36
@@ -5072,36 +5170,35 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 035C:  RETURN
 .................... } 
 ....................  
-.................... void setScoreV(int8 c, int8 d, int8 u) 
-.................... { 
-....................    //TODO: Codigo para mostrar puntos 
-....................    scoreVU = u; 
+.................... void setScoreV(int8 c, int8 d, int8 u) { 
+....................     //TODO: Codigo para mostrar puntos 
+....................     scoreVU = u; 
 *
 03C1:  BSF    03.5
 03C2:  MOVF   2F,W
 03C3:  BCF    03.5
 03C4:  MOVWF  5E
-....................    scoreVD = d; 
+....................     scoreVD = d; 
 03C5:  BSF    03.5
 03C6:  MOVF   2E,W
 03C7:  BCF    03.5
 03C8:  MOVWF  5F
-....................    if(c > 0) 
+....................     if (c > 0) 
 03C9:  BSF    03.5
 03CA:  MOVF   2D,F
 03CB:  BTFSC  03.2
 03CC:  GOTO   3D1
-....................       scoreVC = true; 
+....................         scoreVC = true; 
 03CD:  BCF    03.5
 03CE:  BSF    45.5
 03CF:  GOTO   3D3
 03D0:  BSF    03.5
-....................    else 
-....................       scoreVC = false; 
+....................     else 
+....................         scoreVC = false; 
 03D1:  BCF    03.5
 03D2:  BCF    45.5
-....................     
-....................    sendN2Port (scoreVU, I2C_SCORE, PuertoD); 
+....................  
+....................     sendN2Port(scoreVU, I2C_SCORE, PuertoD); 
 03D3:  MOVF   5E,W
 03D4:  BSF    03.5
 03D5:  MOVWF  32
@@ -5111,13 +5208,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 03D9:  MOVWF  34
 03DA:  BCF    03.5
 03DB:  CALL   2FA
-....................    delay_ms(I2CWAIT); 
+....................     delay_ms(I2CWAIT); 
 03DC:  MOVLW  32
 03DD:  BSF    03.5
 03DE:  MOVWF  32
 03DF:  BCF    03.5
 03E0:  CALL   309
-....................    sendN2Port (scoreVD, I2C_SCORE, PuertoC); 
+....................     sendN2Port(scoreVD, I2C_SCORE, PuertoC); 
 03E1:  MOVF   5F,W
 03E2:  BSF    03.5
 03E3:  MOVWF  32
@@ -5127,17 +5224,17 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 03E7:  MOVWF  34
 03E8:  BCF    03.5
 03E9:  CALL   2FA
-....................    delay_ms(I2CWAIT); 
+....................     delay_ms(I2CWAIT); 
 03EA:  MOVLW  32
 03EB:  BSF    03.5
 03EC:  MOVWF  32
 03ED:  BCF    03.5
 03EE:  CALL   309
-....................     
-....................    if(scoreVC) 
+....................  
+....................     if (scoreVC) 
 03EF:  BTFSS  45.5
 03F0:  GOTO   3F9
-....................       i2c_send(I2C_SCORE, I2C_CMD_CVON); 
+....................         i2c_send(I2C_SCORE, I2C_CMD_CVON); 
 03F1:  MOVLW  0C
 03F2:  BSF    03.5
 03F3:  MOVWF  36
@@ -5146,8 +5243,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 03F6:  BCF    03.5
 03F7:  CALL   2C7
 03F8:  GOTO   400
-....................    else 
-....................       i2c_send(I2C_SCORE, I2C_CMD_CVOF);    
+....................     else 
+....................         i2c_send(I2C_SCORE, I2C_CMD_CVOF); 
 03F9:  MOVLW  0C
 03FA:  BSF    03.5
 03FB:  MOVWF  36
@@ -5159,7 +5256,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 ....................  
 .................... } 
 ....................  
-.................... void addScoreV(int8 a) 
+.................... void addScoreV(int8 a) { 
 0401:  BSF    03.5
 0402:  BCF    2B.0
 0403:  BCF    03.5
@@ -5175,42 +5272,39 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 040D:  MOVF   5E,W
 040E:  BSF    03.5
 040F:  MOVWF  2D
-.................... { 
-....................    int1 tc = scoreVC; 
-....................    int8 td = scoreVD; 
-....................    int8 tu = scoreVU; 
-....................     
-....................    scoreVU += a; 
+....................     int1 tc = scoreVC; 
+....................     int8 td = scoreVD; 
+....................     int8 tu = scoreVU; 
+....................  
+....................     scoreVU += a; 
 0410:  MOVF   2A,W
 0411:  BCF    03.5
 0412:  ADDWF  5E,F
-....................     
-....................    if(scoreVU > 10) 
+....................  
+....................     if (scoreVU > 10) { 
 0413:  MOVF   5E,W
 0414:  SUBLW  0A
 0415:  BTFSC  03.0
 0416:  GOTO   41A
-....................    { 
-....................       scoreVD++; 
+....................         scoreVD++; 
 0417:  INCF   5F,F
-....................       scoreVU -=10; 
+....................         scoreVU -= 10; 
 0418:  MOVLW  0A
 0419:  SUBWF  5E,F
-....................    } 
-....................    if(scoreVD > 10) 
+....................     } 
+....................     if (scoreVD > 10) { 
 041A:  MOVF   5F,W
 041B:  SUBLW  0A
 041C:  BTFSC  03.0
 041D:  GOTO   421
-....................    { 
-....................       scoreVC = true; 
+....................         scoreVC = true; 
 041E:  BSF    45.5
-....................       scoreVD -=10; 
+....................         scoreVD -= 10; 
 041F:  MOVLW  0A
 0420:  SUBWF  5F,F
-....................    } 
-....................     
-....................    if(scoreVC != tc) 
+....................     } 
+....................  
+....................     if (scoreVC != tc) { 
 0421:  CLRF   77
 0422:  BSF    03.5
 0423:  BTFSC  2B.0
@@ -5221,11 +5315,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0428:  ANDLW  20
 0429:  BTFSC  03.2
 042A:  GOTO   43C
-....................    { 
-....................       if(scoreVC) 
+....................         if (scoreVC) 
 042B:  BTFSS  45.5
 042C:  GOTO   435
-....................          i2c_send(I2C_SCORE, I2C_CMD_CLON); 
+....................             i2c_send(I2C_SCORE, I2C_CMD_CLON); 
 042D:  MOVLW  0C
 042E:  BSF    03.5
 042F:  MOVWF  36
@@ -5234,8 +5327,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0432:  BCF    03.5
 0433:  CALL   2C7
 0434:  GOTO   43C
-....................       else 
-....................          i2c_send(I2C_SCORE, I2C_CMD_CLOF); 
+....................         else 
+....................             i2c_send(I2C_SCORE, I2C_CMD_CLOF); 
 0435:  MOVLW  0C
 0436:  BSF    03.5
 0437:  MOVWF  36
@@ -5243,22 +5336,22 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0439:  MOVWF  37
 043A:  BCF    03.5
 043B:  CALL   2C7
-....................    } 
-....................     
-....................    delay_ms(I2CWAIT); 
+....................     } 
+....................  
+....................     delay_ms(I2CWAIT); 
 043C:  MOVLW  32
 043D:  BSF    03.5
 043E:  MOVWF  32
 043F:  BCF    03.5
 0440:  CALL   309
-....................    if(scoreVD != td) 
+....................     if (scoreVD != td) 
 0441:  BSF    03.5
 0442:  MOVF   2C,W
 0443:  BCF    03.5
 0444:  SUBWF  5F,W
 0445:  BTFSC  03.2
 0446:  GOTO   450
-....................       sendN2Port(scoreVD, I2C_SCORE, PuertoC); 
+....................         sendN2Port(scoreVD, I2C_SCORE, PuertoC); 
 0447:  MOVF   5F,W
 0448:  BSF    03.5
 0449:  MOVWF  32
@@ -5268,20 +5361,20 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 044D:  MOVWF  34
 044E:  BCF    03.5
 044F:  CALL   2FA
-....................    delay_ms(I2CWAIT); 
+....................     delay_ms(I2CWAIT); 
 0450:  MOVLW  32
 0451:  BSF    03.5
 0452:  MOVWF  32
 0453:  BCF    03.5
 0454:  CALL   309
-....................    if(scoreVU != tu) 
+....................     if (scoreVU != tu) 
 0455:  BSF    03.5
 0456:  MOVF   2D,W
 0457:  BCF    03.5
 0458:  SUBWF  5E,W
 0459:  BTFSC  03.2
 045A:  GOTO   464
-....................       sendN2Port(scoreVU, I2C_SCORE, PuertoD); 
+....................         sendN2Port(scoreVU, I2C_SCORE, PuertoD); 
 045B:  MOVF   5E,W
 045C:  BSF    03.5
 045D:  MOVWF  32
@@ -5294,7 +5387,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0464:  RETURN
 .................... } 
 ....................  
-.................... void resScoreV() 
+.................... void resScoreV() { 
 *
 0DD0:  BSF    03.5
 0DD1:  BCF    2A.0
@@ -5311,46 +5404,41 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0DDC:  MOVF   5E,W
 0DDD:  BSF    03.5
 0DDE:  MOVWF  2C
-.................... { 
-....................    int1 tc = scoreVC; 
-....................    int8 td = scoreVD; 
-....................    int8 tu = scoreVU; 
+....................     int1 tc = scoreVC; 
+....................     int8 td = scoreVD; 
+....................     int8 tu = scoreVU; 
 ....................  
-....................    if(scoreVU > 0) 
+....................     if (scoreVU > 0) 
 0DDF:  BCF    03.5
 0DE0:  MOVF   5E,F
 0DE1:  BTFSC  03.2
 0DE2:  GOTO   5E5
-....................       scoreVU--; 
+....................         scoreVU--; 
 0DE3:  DECF   5E,F
 0DE4:  GOTO   5F0
-....................    else 
-....................    { 
-....................       if(scoreVD > 0) 
+....................     else { 
+....................         if (scoreVD > 0) { 
 0DE5:  MOVF   5F,F
 0DE6:  BTFSC  03.2
 0DE7:  GOTO   5EC
-....................       { 
-....................          scoreVD--; 
+....................             scoreVD--; 
 0DE8:  DECF   5F,F
-....................          scoreVU = 9; 
+....................             scoreVU = 9; 
 0DE9:  MOVLW  09
 0DEA:  MOVWF  5E
-....................       } 
+....................         } else { 
 0DEB:  GOTO   5F0
-....................       else 
-....................       {   
-....................          scoreVC = false; 
+....................             scoreVC = false; 
 0DEC:  BCF    45.5
-....................          scoreVD = 9; 
+....................             scoreVD = 9; 
 0DED:  MOVLW  09
 0DEE:  MOVWF  5F
-....................          scoreVU = 9; 
+....................             scoreVU = 9; 
 0DEF:  MOVWF  5E
-....................       } 
-....................    } 
-....................     
-....................    if(scoreVC != tc) 
+....................         } 
+....................     } 
+....................  
+....................     if (scoreVC != tc) { 
 0DF0:  CLRF   77
 0DF1:  BSF    03.5
 0DF2:  BTFSC  2A.0
@@ -5361,11 +5449,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0DF7:  ANDLW  20
 0DF8:  BTFSC  03.2
 0DF9:  GOTO   60F
-....................    { 
-....................       if(scoreVC) 
+....................         if (scoreVC) 
 0DFA:  BTFSS  45.5
 0DFB:  GOTO   606
-....................          i2c_send(I2C_SCORE, I2C_CMD_CVON); 
+....................             i2c_send(I2C_SCORE, I2C_CMD_CVON); 
 0DFC:  MOVLW  0C
 0DFD:  BSF    03.5
 0DFE:  MOVWF  36
@@ -5376,8 +5463,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E03:  CALL   2C7
 0E04:  BSF    0A.3
 0E05:  GOTO   60F
-....................       else 
-....................          i2c_send(I2C_SCORE, I2C_CMD_CVOF); 
+....................         else 
+....................             i2c_send(I2C_SCORE, I2C_CMD_CVOF); 
 0E06:  MOVLW  0C
 0E07:  BSF    03.5
 0E08:  MOVWF  36
@@ -5387,8 +5474,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E0C:  BCF    03.5
 0E0D:  CALL   2C7
 0E0E:  BSF    0A.3
-....................    } 
-....................    delay_ms(I2CWAIT); 
+....................     } 
+....................     delay_ms(I2CWAIT); 
 0E0F:  MOVLW  32
 0E10:  BSF    03.5
 0E11:  MOVWF  32
@@ -5396,14 +5483,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E13:  BCF    03.5
 0E14:  CALL   309
 0E15:  BSF    0A.3
-....................    if(scoreVD != td) 
+....................     if (scoreVD != td) 
 0E16:  BSF    03.5
 0E17:  MOVF   2B,W
 0E18:  BCF    03.5
 0E19:  SUBWF  5F,W
 0E1A:  BTFSC  03.2
 0E1B:  GOTO   627
-....................       sendN2Port(scoreVD, I2C_SCORE, PuertoC); 
+....................         sendN2Port(scoreVD, I2C_SCORE, PuertoC); 
 0E1C:  MOVF   5F,W
 0E1D:  BSF    03.5
 0E1E:  MOVWF  32
@@ -5415,7 +5502,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E24:  BCF    03.5
 0E25:  CALL   2FA
 0E26:  BSF    0A.3
-....................    delay_ms(I2CWAIT); 
+....................     delay_ms(I2CWAIT); 
 0E27:  MOVLW  32
 0E28:  BSF    03.5
 0E29:  MOVWF  32
@@ -5423,14 +5510,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E2B:  BCF    03.5
 0E2C:  CALL   309
 0E2D:  BSF    0A.3
-....................    if(scoreVU != tu) 
+....................     if (scoreVU != tu) 
 0E2E:  BSF    03.5
 0E2F:  MOVF   2C,W
 0E30:  BCF    03.5
 0E31:  SUBWF  5E,W
 0E32:  BTFSC  03.2
 0E33:  GOTO   63F
-....................       sendN2Port(scoreVU, I2C_SCORE, PuertoD); 
+....................         sendN2Port(scoreVU, I2C_SCORE, PuertoD); 
 0E34:  MOVF   5E,W
 0E35:  BSF    03.5
 0E36:  MOVWF  32
@@ -5444,7 +5531,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0E3E:  BSF    0A.3
 .................... } 
 ....................  
-.................... void addScoreL(int8 a) 
+.................... void addScoreL(int8 a) { 
 *
 035D:  BSF    03.5
 035E:  BCF    2B.0
@@ -5461,42 +5548,39 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0369:  MOVF   5C,W
 036A:  BSF    03.5
 036B:  MOVWF  2D
-.................... { 
-....................    int1 tc = scoreLC; 
-....................    int8 td = scoreLD; 
-....................    int8 tu = scoreLU; 
-....................     
-....................    scoreLU += a; 
+....................     int1 tc = scoreLC; 
+....................     int8 td = scoreLD; 
+....................     int8 tu = scoreLU; 
+....................  
+....................     scoreLU += a; 
 036C:  MOVF   2A,W
 036D:  BCF    03.5
 036E:  ADDWF  5C,F
-....................     
-....................    if(scoreLU > 10) 
+....................  
+....................     if (scoreLU > 10) { 
 036F:  MOVF   5C,W
 0370:  SUBLW  0A
 0371:  BTFSC  03.0
 0372:  GOTO   376
-....................    { 
-....................       scoreLD++; 
+....................         scoreLD++; 
 0373:  INCF   5D,F
-....................       scoreLU -=10; 
+....................         scoreLU -= 10; 
 0374:  MOVLW  0A
 0375:  SUBWF  5C,F
-....................    } 
-....................    if(scoreLD > 10) 
+....................     } 
+....................     if (scoreLD > 10) { 
 0376:  MOVF   5D,W
 0377:  SUBLW  0A
 0378:  BTFSC  03.0
 0379:  GOTO   37D
-....................    { 
-....................       scoreLC = true; 
+....................         scoreLC = true; 
 037A:  BSF    45.4
-....................       scoreLD -=10; 
+....................         scoreLD -= 10; 
 037B:  MOVLW  0A
 037C:  SUBWF  5D,F
-....................    } 
-....................     
-....................    if(scoreLC != tc) 
+....................     } 
+....................  
+....................     if (scoreLC != tc) { 
 037D:  CLRF   77
 037E:  BSF    03.5
 037F:  BTFSC  2B.0
@@ -5507,11 +5591,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0384:  ANDLW  10
 0385:  BTFSC  03.2
 0386:  GOTO   398
-....................    { 
-....................       if(scoreLC) 
+....................         if (scoreLC) 
 0387:  BTFSS  45.4
 0388:  GOTO   391
-....................          i2c_send(I2C_SCORE, I2C_CMD_CLON); 
+....................             i2c_send(I2C_SCORE, I2C_CMD_CLON); 
 0389:  MOVLW  0C
 038A:  BSF    03.5
 038B:  MOVWF  36
@@ -5520,8 +5603,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 038E:  BCF    03.5
 038F:  CALL   2C7
 0390:  GOTO   398
-....................       else 
-....................          i2c_send(I2C_SCORE, I2C_CMD_CLOF); 
+....................         else 
+....................             i2c_send(I2C_SCORE, I2C_CMD_CLOF); 
 0391:  MOVLW  0C
 0392:  BSF    03.5
 0393:  MOVWF  36
@@ -5529,21 +5612,21 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0395:  MOVWF  37
 0396:  BCF    03.5
 0397:  CALL   2C7
-....................    } 
-....................    delay_ms(I2CWAIT);    
+....................     } 
+....................     delay_ms(I2CWAIT); 
 0398:  MOVLW  32
 0399:  BSF    03.5
 039A:  MOVWF  32
 039B:  BCF    03.5
 039C:  CALL   309
-....................    if(scoreLD != td) 
+....................     if (scoreLD != td) 
 039D:  BSF    03.5
 039E:  MOVF   2C,W
 039F:  BCF    03.5
 03A0:  SUBWF  5D,W
 03A1:  BTFSC  03.2
 03A2:  GOTO   3AC
-....................       sendN2Port(scoreLD, I2C_SCORE, PuertoB); 
+....................         sendN2Port(scoreLD, I2C_SCORE, PuertoB); 
 03A3:  MOVF   5D,W
 03A4:  BSF    03.5
 03A5:  MOVWF  32
@@ -5553,20 +5636,20 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 03A9:  MOVWF  34
 03AA:  BCF    03.5
 03AB:  CALL   2FA
-....................    delay_ms(I2CWAIT); 
+....................     delay_ms(I2CWAIT); 
 03AC:  MOVLW  32
 03AD:  BSF    03.5
 03AE:  MOVWF  32
 03AF:  BCF    03.5
 03B0:  CALL   309
-....................    if(scoreLU != tu) 
+....................     if (scoreLU != tu) 
 03B1:  BSF    03.5
 03B2:  MOVF   2D,W
 03B3:  BCF    03.5
 03B4:  SUBWF  5C,W
 03B5:  BTFSC  03.2
 03B6:  GOTO   3C0
-....................       sendN2Port(scoreLU, I2C_SCORE, PuertoA); 
+....................         sendN2Port(scoreLU, I2C_SCORE, PuertoA); 
 03B7:  MOVF   5C,W
 03B8:  BSF    03.5
 03B9:  MOVWF  32
@@ -5579,7 +5662,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 03C0:  RETURN
 .................... } 
 ....................  
-.................... void resScoreL() 
+.................... void resScoreL() { 
 *
 0A87:  BSF    03.5
 0A88:  BCF    2A.0
@@ -5596,46 +5679,41 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0A93:  MOVF   5C,W
 0A94:  BSF    03.5
 0A95:  MOVWF  2C
-.................... { 
-....................    int1 tc = scoreLC; 
-....................    int8 td = scoreLD; 
-....................    int8 tu = scoreLU; 
+....................     int1 tc = scoreLC; 
+....................     int8 td = scoreLD; 
+....................     int8 tu = scoreLU; 
 ....................  
-....................    if(scoreLU > 0) 
+....................     if (scoreLU > 0) 
 0A96:  BCF    03.5
 0A97:  MOVF   5C,F
 0A98:  BTFSC  03.2
 0A99:  GOTO   29C
-....................       scoreLU--; 
+....................         scoreLU--; 
 0A9A:  DECF   5C,F
 0A9B:  GOTO   2A7
-....................    else 
-....................    { 
-....................       if(scoreLD > 0) 
+....................     else { 
+....................         if (scoreLD > 0) { 
 0A9C:  MOVF   5D,F
 0A9D:  BTFSC  03.2
 0A9E:  GOTO   2A3
-....................       { 
-....................          scoreLD--; 
+....................             scoreLD--; 
 0A9F:  DECF   5D,F
-....................          scoreLU = 9; 
+....................             scoreLU = 9; 
 0AA0:  MOVLW  09
 0AA1:  MOVWF  5C
-....................       } 
+....................         } else { 
 0AA2:  GOTO   2A7
-....................       else 
-....................       {   
-....................          scoreLC = false; 
+....................             scoreLC = false; 
 0AA3:  BCF    45.4
-....................          scoreLD = 9; 
+....................             scoreLD = 9; 
 0AA4:  MOVLW  09
 0AA5:  MOVWF  5D
-....................          scoreLU = 9; 
+....................             scoreLU = 9; 
 0AA6:  MOVWF  5C
-....................       } 
-....................    } 
-....................     
-....................    if(scoreLC != tc) 
+....................         } 
+....................     } 
+....................  
+....................     if (scoreLC != tc) { 
 0AA7:  CLRF   77
 0AA8:  BSF    03.5
 0AA9:  BTFSC  2A.0
@@ -5646,11 +5724,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0AAE:  ANDLW  10
 0AAF:  BTFSC  03.2
 0AB0:  GOTO   2C6
-....................    { 
-....................       if(scoreLC) 
+....................         if (scoreLC) 
 0AB1:  BTFSS  45.4
 0AB2:  GOTO   2BD
-....................          i2c_send(I2C_SCORE, I2C_CMD_CLON); 
+....................             i2c_send(I2C_SCORE, I2C_CMD_CLON); 
 0AB3:  MOVLW  0C
 0AB4:  BSF    03.5
 0AB5:  MOVWF  36
@@ -5661,8 +5738,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0ABA:  CALL   2C7
 0ABB:  BSF    0A.3
 0ABC:  GOTO   2C6
-....................       else 
-....................          i2c_send(I2C_SCORE, I2C_CMD_CLOF); 
+....................         else 
+....................             i2c_send(I2C_SCORE, I2C_CMD_CLOF); 
 0ABD:  MOVLW  0C
 0ABE:  BSF    03.5
 0ABF:  MOVWF  36
@@ -5672,8 +5749,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0AC3:  BCF    03.5
 0AC4:  CALL   2C7
 0AC5:  BSF    0A.3
-....................    } 
-....................    delay_ms(I2CWAIT); 
+....................     } 
+....................     delay_ms(I2CWAIT); 
 0AC6:  MOVLW  32
 0AC7:  BSF    03.5
 0AC8:  MOVWF  32
@@ -5681,14 +5758,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0ACA:  BCF    03.5
 0ACB:  CALL   309
 0ACC:  BSF    0A.3
-....................    if(scoreLD != td) 
+....................     if (scoreLD != td) 
 0ACD:  BSF    03.5
 0ACE:  MOVF   2B,W
 0ACF:  BCF    03.5
 0AD0:  SUBWF  5D,W
 0AD1:  BTFSC  03.2
 0AD2:  GOTO   2DE
-....................       sendN2Port(scoreLD, I2C_SCORE, PuertoB); 
+....................         sendN2Port(scoreLD, I2C_SCORE, PuertoB); 
 0AD3:  MOVF   5D,W
 0AD4:  BSF    03.5
 0AD5:  MOVWF  32
@@ -5700,7 +5777,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0ADB:  BCF    03.5
 0ADC:  CALL   2FA
 0ADD:  BSF    0A.3
-....................    delay_ms(I2CWAIT); 
+....................     delay_ms(I2CWAIT); 
 0ADE:  MOVLW  32
 0ADF:  BSF    03.5
 0AE0:  MOVWF  32
@@ -5708,14 +5785,14 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0AE2:  BCF    03.5
 0AE3:  CALL   309
 0AE4:  BSF    0A.3
-....................    if(scoreLU != tu) 
+....................     if (scoreLU != tu) 
 0AE5:  BSF    03.5
 0AE6:  MOVF   2C,W
 0AE7:  BCF    03.5
 0AE8:  SUBWF  5C,W
 0AE9:  BTFSC  03.2
 0AEA:  GOTO   2F6
-....................       sendN2Port(scoreLU, I2C_SCORE, PuertoA); 
+....................         sendN2Port(scoreLU, I2C_SCORE, PuertoA); 
 0AEB:  MOVF   5C,W
 0AEC:  BSF    03.5
 0AED:  MOVWF  32
@@ -5729,19 +5806,18 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0AF5:  BSF    0A.3
 .................... } 
 ....................  
-.................... void shotSet(int8 shd, int8 shu) 
-.................... { 
-....................    sh_u = shu; 
+.................... void shotSet(int8 shd, int8 shu) { 
+....................     sh_u = shu; 
 *
 0C71:  MOVF   2D,W
 0C72:  BCF    03.5
 0C73:  MOVWF  5B
-....................    sh_d = shd; 
+....................     sh_d = shd; 
 0C74:  BSF    03.5
 0C75:  MOVF   2C,W
 0C76:  BCF    03.5
 0C77:  MOVWF  5A
-....................    sendN2Port (shd, I2C_TIMER, PuertoA); 
+....................     sendN2Port(shd, I2C_TIMER, PuertoA); 
 0C78:  BSF    03.5
 0C79:  MOVF   2C,W
 0C7A:  MOVWF  32
@@ -5753,7 +5829,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C80:  BCF    03.5
 0C81:  CALL   2FA
 0C82:  BSF    0A.3
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 0C83:  MOVLW  32
 0C84:  BSF    03.5
 0C85:  MOVWF  32
@@ -5761,7 +5837,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C87:  BCF    03.5
 0C88:  CALL   309
 0C89:  BSF    0A.3
-....................    sendN2Port (shu, I2C_TIMER, PuertoB); 
+....................     sendN2Port(shu, I2C_TIMER, PuertoB); 
 0C8A:  BSF    03.5
 0C8B:  MOVF   2D,W
 0C8C:  MOVWF  32
@@ -5773,35 +5849,34 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0C92:  BCF    03.5
 0C93:  CALL   2FA
 0C94:  BSF    0A.3
-....................     
-....................    enableShot = true; 
+....................  
+....................     enableShot = true; 
 0C95:  BSF    45.2
 .................... } 
 ....................  
-.................... void timeSet(INT8 md, int8 mu, int8 sd, int8 su) 
-.................... { 
-....................    m_u = mu; 
+.................... void timeSet(INT8 md, int8 mu, int8 sd, int8 su) { 
+....................     m_u = mu; 
 *
 0CD7:  MOVF   2F,W
 0CD8:  BCF    03.5
 0CD9:  MOVWF  57
-....................    m_d = md; 
+....................     m_d = md; 
 0CDA:  BSF    03.5
 0CDB:  MOVF   2E,W
 0CDC:  BCF    03.5
 0CDD:  MOVWF  56
-....................    s_d = sd; 
+....................     s_d = sd; 
 0CDE:  BSF    03.5
 0CDF:  MOVF   30,W
 0CE0:  BCF    03.5
 0CE1:  MOVWF  58
-....................    s_u = su; 
+....................     s_u = su; 
 0CE2:  BSF    03.5
 0CE3:  MOVF   31,W
 0CE4:  BCF    03.5
 0CE5:  MOVWF  59
-....................     
-....................    sendN2Port (su, I2C_TIMER, PuertoD); 
+....................  
+....................     sendN2Port(su, I2C_TIMER, PuertoD); 
 0CE6:  BSF    03.5
 0CE7:  MOVF   31,W
 0CE8:  MOVWF  32
@@ -5813,7 +5888,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0CEE:  BCF    03.5
 0CEF:  CALL   2FA
 0CF0:  BSF    0A.3
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 0CF1:  MOVLW  32
 0CF2:  BSF    03.5
 0CF3:  MOVWF  32
@@ -5821,7 +5896,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0CF5:  BCF    03.5
 0CF6:  CALL   309
 0CF7:  BSF    0A.3
-....................    sendN2Port (sd, I2C_TIMER, PuertoC); 
+....................     sendN2Port(sd, I2C_TIMER, PuertoC); 
 0CF8:  BSF    03.5
 0CF9:  MOVF   30,W
 0CFA:  MOVWF  32
@@ -5833,7 +5908,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D00:  BCF    03.5
 0D01:  CALL   2FA
 0D02:  BSF    0A.3
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 0D03:  MOVLW  32
 0D04:  BSF    03.5
 0D05:  MOVWF  32
@@ -5841,7 +5916,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D07:  BCF    03.5
 0D08:  CALL   309
 0D09:  BSF    0A.3
-....................    sendN2Port (mu, I2C_TIMER, PuertoE); 
+....................     sendN2Port(mu, I2C_TIMER, PuertoE); 
 0D0A:  BSF    03.5
 0D0B:  MOVF   2F,W
 0D0C:  MOVWF  32
@@ -5853,7 +5928,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D12:  BCF    03.5
 0D13:  CALL   2FA
 0D14:  BSF    0A.3
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 0D15:  MOVLW  32
 0D16:  BSF    03.5
 0D17:  MOVWF  32
@@ -5861,14 +5936,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D19:  BCF    03.5
 0D1A:  CALL   309
 0D1B:  BSF    0A.3
-....................     
-....................    IF (md != 0) 
+....................  
+....................     IF(md != 0) { 
 0D1C:  BSF    03.5
 0D1D:  MOVF   2E,F
 0D1E:  BTFSC  03.2
 0D1F:  GOTO   52A
-....................    { 
-....................       i2c_send (I2C_TIMER, I2C_CMD_MDON); 
+....................         i2c_send(I2C_TIMER, I2C_CMD_MDON); 
 0D20:  MOVLW  0A
 0D21:  MOVWF  36
 0D22:  MOVLW  75
@@ -5877,13 +5951,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D25:  BCF    03.5
 0D26:  CALL   2C7
 0D27:  BSF    0A.3
-....................    } 
+....................     } 
 0D28:  GOTO   532
 0D29:  BSF    03.5
 ....................  
-....................    ELSE 
-....................    { 
-....................       i2c_send (I2C_TIMER, I2C_CMD_MDOF); 
+....................     ELSE{ 
+....................         i2c_send(I2C_TIMER, I2C_CMD_MDOF); 
 0D2A:  MOVLW  0A
 0D2B:  MOVWF  36
 0D2C:  MOVLW  76
@@ -5892,58 +5965,55 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0D2F:  BCF    03.5
 0D30:  CALL   2C7
 0D31:  BSF    0A.3
-....................    } 
+....................     } 
 ....................  
-....................    enableTime = true; 
+....................     enableTime = true; 
 0D32:  BSF    45.1
 .................... } 
 ....................  
-.................... void shotPass() 
+.................... void shotPass() { 
 *
 124A:  MOVF   5A,W
 124B:  MOVWF  6C
 124C:  MOVF   5B,W
 124D:  MOVWF  6D
-.................... { 
-....................    INT8 shd = sh_d; 
-....................    INT8 shu = sh_u; 
-....................    
-....................    IF (sh_u > 0) 
+....................     INT8 shd = sh_d; 
+....................     INT8 shu = sh_u; 
+....................  
+....................     IF(sh_u > 0) 
 124E:  MOVF   5B,F
 124F:  BTFSC  03.2
 1250:  GOTO   253
-....................       sh_u--; 
+....................     sh_u--; 
 1251:  DECF   5B,F
 1252:  GOTO   26C
 ....................  
-....................    ELSE 
-....................    { 
-....................       IF (sh_d > 0) 
+....................     ELSE{ 
+....................         IF(sh_d > 0) { 
 1253:  MOVF   5A,F
 1254:  BTFSC  03.2
 1255:  GOTO   25A
-....................       { 
-....................          sh_u = 9; 
+....................             sh_u = 9; 
 1256:  MOVLW  09
 1257:  MOVWF  5B
-....................          sh_d--; 
+....................             sh_d--; 
 1258:  DECF   5A,F
-....................       } 
+....................         } 
 1259:  GOTO   26C
 ....................  
-....................       ELSE 
-....................       { 
-....................          sh_d = 0; 
+....................         ELSE 
+....................         { 
+....................             sh_d = 0; 
 125A:  CLRF   5A
-....................          sh_u = 0; 
+....................             sh_u = 0; 
 125B:  CLRF   5B
-....................          enableShot = false; 
+....................             enableShot = false; 
 125C:  BCF    45.2
 125D:  CLRF   2B
 125E:  BTFSC  0B.7
 125F:  BSF    2B.7
 1260:  BCF    0B.7
-....................          i2c_send(I2C_TIMER,I2C_CMD_BUZ1); 
+....................             i2c_send(I2C_TIMER, I2C_CMD_BUZ1); 
 1261:  MOVLW  0A
 1262:  BSF    03.5
 1263:  MOVWF  36
@@ -5955,10 +6025,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1269:  BSF    0A.4
 126A:  BTFSC  2B.7
 126B:  BSF    0B.7
-....................       } 
-....................    } 
+....................         } 
+....................     } 
 ....................  
-....................    IF (shu != sh_u) 
+....................     IF(shu != sh_u) 
 126C:  MOVF   5B,W
 126D:  SUBWF  6D,W
 126E:  BTFSC  03.2
@@ -5967,7 +6037,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1271:  BTFSC  0B.7
 1272:  BSF    2B.7
 1273:  BCF    0B.7
-....................       sendN2Port (sh_u, I2C_TIMER, PuertoB); 
+....................     sendN2Port(sh_u, I2C_TIMER, PuertoB); 
 1274:  MOVF   5B,W
 1275:  BSF    03.5
 1276:  MOVWF  32
@@ -5986,7 +6056,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1283:  BSF    2B.7
 1284:  BCF    0B.7
 ....................  
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 1285:  MOVLW  32
 1286:  BSF    03.5
 1287:  MOVWF  32
@@ -5997,7 +6067,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 128C:  BTFSC  2B.7
 128D:  BSF    0B.7
 ....................  
-....................    IF (shd != sh_d) 
+....................     IF(shd != sh_d) 
 128E:  MOVF   5A,W
 128F:  SUBWF  6C,W
 1290:  BTFSC  03.2
@@ -6006,7 +6076,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1293:  BTFSC  0B.7
 1294:  BSF    2B.7
 1295:  BCF    0B.7
-....................       sendN2Port (sh_d, I2C_TIMER, PuertoA); 
+....................     sendN2Port(sh_d, I2C_TIMER, PuertoA); 
 1296:  MOVF   5A,W
 1297:  BSF    03.5
 1298:  MOVWF  32
@@ -6021,10 +6091,10 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 12A1:  BTFSC  2B.7
 12A2:  BSF    0B.7
 ....................  
-....................     
+....................  
 .................... } 
 ....................  
-.................... void timePass() 
+.................... void timePass() { 
 *
 1180:  MOVF   56,W
 1181:  MOVWF  6C
@@ -6034,92 +6104,87 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1185:  MOVWF  6E
 1186:  MOVF   59,W
 1187:  MOVWF  6F
-.................... { 
-....................    INT8 md = m_d; 
-....................    INT8 mu = m_u; 
-....................    INT8 sd = s_d; 
-....................    INT8 su = s_u; 
-....................     
-....................    IF (s_u > 0) 
+....................     INT8 md = m_d; 
+....................     INT8 mu = m_u; 
+....................     INT8 sd = s_d; 
+....................     INT8 su = s_u; 
+....................  
+....................     IF(s_u > 0) 
 1188:  MOVF   59,F
 1189:  BTFSC  03.2
 118A:  GOTO   18D
-....................       s_u--; 
+....................     s_u--; 
 118B:  DECF   59,F
 118C:  GOTO   1BC
 ....................  
-....................    ELSE 
-....................    { 
-....................       IF (s_d > 0) 
+....................     ELSE{ 
+....................         IF(s_d > 0) { 
 118D:  MOVF   58,F
 118E:  BTFSC  03.2
 118F:  GOTO   194
-....................       { 
-....................          s_u = 9; 
+....................             s_u = 9; 
 1190:  MOVLW  09
 1191:  MOVWF  59
-....................          s_d--; 
+....................             s_d--; 
 1192:  DECF   58,F
-....................       } 
+....................         } 
 1193:  GOTO   1BC
 ....................  
-....................       ELSE 
-....................       { 
-....................          IF (m_u > 0) 
+....................         ELSE 
+....................         { 
+....................             IF(m_u > 0) { 
 1194:  MOVF   57,F
 1195:  BTFSC  03.2
 1196:  GOTO   19D
-....................          { 
-....................             s_d = 5; 
+....................                 s_d = 5; 
 1197:  MOVLW  05
 1198:  MOVWF  58
-....................             s_u = 9; 
+....................                 s_u = 9; 
 1199:  MOVLW  09
 119A:  MOVWF  59
-....................             m_u--; 
+....................                 m_u--; 
 119B:  DECF   57,F
-....................          } 
-119C:  GOTO   1BC
-....................  
-....................          ELSE 
-....................          { 
-....................             IF (m_d > 0) 
-119D:  MOVF   56,F
-119E:  BTFSC  03.2
-119F:  GOTO   1A8
-....................             { 
-....................                m_d = 0; 
-11A0:  CLRF   56
-....................                m_u = 9; 
-11A1:  MOVLW  09
-11A2:  MOVWF  57
-....................                s_d = 5; 
-11A3:  MOVLW  05
-11A4:  MOVWF  58
-....................                s_u = 9; 
-11A5:  MOVLW  09
-11A6:  MOVWF  59
 ....................             } 
-11A7:  GOTO   1BC
+119C:  GOTO   1BC
 ....................  
 ....................             ELSE 
 ....................             { 
-....................                //TODO: End count 
-....................                m_d = 0; 
+....................                 IF(m_d > 0) { 
+119D:  MOVF   56,F
+119E:  BTFSC  03.2
+119F:  GOTO   1A8
+....................                     m_d = 0; 
+11A0:  CLRF   56
+....................                     m_u = 9; 
+11A1:  MOVLW  09
+11A2:  MOVWF  57
+....................                     s_d = 5; 
+11A3:  MOVLW  05
+11A4:  MOVWF  58
+....................                     s_u = 9; 
+11A5:  MOVLW  09
+11A6:  MOVWF  59
+....................                 } 
+11A7:  GOTO   1BC
+....................  
+....................                 ELSE 
+....................                 { 
+....................                     //TODO: End count 
+....................                     m_d = 0; 
 11A8:  CLRF   56
-....................                m_u = 0; 
+....................                     m_u = 0; 
 11A9:  CLRF   57
-....................                s_d = 0; 
+....................                     s_d = 0; 
 11AA:  CLRF   58
-....................                s_u = 0; 
+....................                     s_u = 0; 
 11AB:  CLRF   59
-....................                enableTime = false; 
+....................                     enableTime = false; 
 11AC:  BCF    45.1
 11AD:  CLRF   2B
 11AE:  BTFSC  0B.7
 11AF:  BSF    2B.7
 11B0:  BCF    0B.7
-....................                i2c_send(I2C_TIMER,I2C_CMD_BUZ2); 
+....................                     i2c_send(I2C_TIMER, I2C_CMD_BUZ2); 
 11B1:  MOVLW  0A
 11B2:  BSF    03.5
 11B3:  MOVWF  36
@@ -6131,13 +6196,13 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 11B9:  BSF    0A.4
 11BA:  BTFSC  2B.7
 11BB:  BSF    0B.7
+....................                 } 
 ....................             } 
-....................          } 
-....................       } 
-....................    } 
+....................         } 
+....................     } 
 ....................  
-....................     
-....................    IF (su != s_u) 
+....................  
+....................     IF(su != s_u) 
 11BC:  MOVF   59,W
 11BD:  SUBWF  6F,W
 11BE:  BTFSC  03.2
@@ -6146,7 +6211,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 11C1:  BTFSC  0B.7
 11C2:  BSF    2B.7
 11C3:  BCF    0B.7
-....................       sendN2Port (s_u, I2C_TIMER, PuertoD); 
+....................     sendN2Port(s_u, I2C_TIMER, PuertoD); 
 11C4:  MOVF   59,W
 11C5:  BSF    03.5
 11C6:  MOVWF  32
@@ -6165,7 +6230,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 11D3:  BSF    2B.7
 11D4:  BCF    0B.7
 ....................  
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 11D5:  MOVLW  32
 11D6:  BSF    03.5
 11D7:  MOVWF  32
@@ -6176,7 +6241,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 11DC:  BTFSC  2B.7
 11DD:  BSF    0B.7
 ....................  
-....................    IF (sd != s_d) 
+....................     IF(sd != s_d) 
 11DE:  MOVF   58,W
 11DF:  SUBWF  6E,W
 11E0:  BTFSC  03.2
@@ -6185,7 +6250,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 11E3:  BTFSC  0B.7
 11E4:  BSF    2B.7
 11E5:  BCF    0B.7
-....................       sendN2Port (s_d, I2C_TIMER, PuertoC); 
+....................     sendN2Port(s_d, I2C_TIMER, PuertoC); 
 11E6:  MOVF   58,W
 11E7:  BSF    03.5
 11E8:  MOVWF  32
@@ -6204,7 +6269,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 11F5:  BSF    2B.7
 11F6:  BCF    0B.7
 ....................  
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 11F7:  MOVLW  32
 11F8:  BSF    03.5
 11F9:  MOVWF  32
@@ -6215,7 +6280,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 11FE:  BTFSC  2B.7
 11FF:  BSF    0B.7
 ....................  
-....................    IF (mu != m_u) 
+....................     IF(mu != m_u) 
 1200:  MOVF   57,W
 1201:  SUBWF  6D,W
 1202:  BTFSC  03.2
@@ -6224,7 +6289,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1205:  BTFSC  0B.7
 1206:  BSF    2B.7
 1207:  BCF    0B.7
-....................       sendN2Port (m_u, I2C_TIMER, PuertoE); 
+....................     sendN2Port(m_u, I2C_TIMER, PuertoE); 
 1208:  MOVF   57,W
 1209:  BSF    03.5
 120A:  MOVWF  32
@@ -6243,7 +6308,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1217:  BSF    2B.7
 1218:  BCF    0B.7
 ....................  
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 1219:  MOVLW  32
 121A:  BSF    03.5
 121B:  MOVWF  32
@@ -6254,12 +6319,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1220:  BTFSC  2B.7
 1221:  BSF    0B.7
 ....................  
-....................    IF (md != m_d) 
+....................     IF(md != m_d) 
 1222:  MOVF   56,W
 1223:  SUBWF  6C,W
 1224:  BTFSC  03.2
 1225:  GOTO   248
-....................       IF (m_d == 0) 
+....................     IF(m_d == 0) { 
 1226:  MOVF   56,F
 1227:  BTFSS  03.2
 1228:  GOTO   239
@@ -6267,8 +6332,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 122A:  BTFSC  0B.7
 122B:  BSF    2B.7
 122C:  BCF    0B.7
-....................       { 
-....................          i2c_send (I2C_TIMER, I2C_CMD_MDOF); 
+....................         i2c_send(I2C_TIMER, I2C_CMD_MDOF); 
 122D:  MOVLW  0A
 122E:  BSF    03.5
 122F:  MOVWF  36
@@ -6280,16 +6344,15 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1235:  BSF    0A.4
 1236:  BTFSC  2B.7
 1237:  BSF    0B.7
-....................       } 
+....................     } 
 1238:  GOTO   248
 1239:  CLRF   2B
 123A:  BTFSC  0B.7
 123B:  BSF    2B.7
 123C:  BCF    0B.7
 ....................  
-....................    ELSE 
-....................    { 
-....................       i2c_send (I2C_TIMER, I2C_CMD_MDON); 
+....................     ELSE{ 
+....................         i2c_send(I2C_TIMER, I2C_CMD_MDON); 
 123D:  MOVLW  0A
 123E:  BSF    03.5
 123F:  MOVWF  36
@@ -6301,21 +6364,19 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 1245:  BSF    0A.4
 1246:  BTFSC  2B.7
 1247:  BSF    0B.7
-....................    } 
-....................     
+....................     } 
 .................... } 
 ....................  
-.................... void showNumber(INT8 n, tPort p) 
+.................... void showNumber(INT8 n, tPort p) { 
 *
 01FD:  BSF    03.5
 01FE:  BCF    30.0
 01FF:  BCF    30.1
 0200:  BCF    30.2
 0201:  BCF    30.3
-.................... { 
-....................    INT1 a = 0, b = 0, c = 0, d = 0; 
+....................     INT1 a = 0, b = 0, c = 0, d = 0; 
 ....................  
-....................    SWITCH (n) 
+....................     SWITCH(n) { 
 0202:  MOVLW  01
 0203:  SUBWF  2B,W
 0204:  ADDLW  F7
@@ -6324,62 +6385,67 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0207:  ADDLW  09
 0208:  BCF    03.5
 0209:  GOTO   284
-....................    { 
-....................       CASE 1: a = 1; 
+....................         CASE 1 : a = 1; 
 020A:  BSF    03.5
 020B:  BSF    30.0
-....................       BREAK; 
+....................         BREAK; 
 020C:  GOTO   22C
-....................       CASE 2: b = 1; 
+....................         CASE 2 : b = 1; 
 020D:  BSF    03.5
 020E:  BSF    30.1
-....................       BREAK; 
+....................         BREAK; 
 020F:  GOTO   22C
-....................       CASE 3: a = 1; b = 1; 
+....................         CASE 3 : a = 1; 
 0210:  BSF    03.5
 0211:  BSF    30.0
+....................         b = 1; 
 0212:  BSF    30.1
-....................       BREAK; 
+....................         BREAK; 
 0213:  GOTO   22C
-....................       CASE 4: c = 1; 
+....................         CASE 4 : c = 1; 
 0214:  BSF    03.5
 0215:  BSF    30.2
-....................       BREAK; 
+....................         BREAK; 
 0216:  GOTO   22C
-....................       CASE 5: c = 1; a = 1; 
+....................         CASE 5 : c = 1; 
 0217:  BSF    03.5
 0218:  BSF    30.2
+....................         a = 1; 
 0219:  BSF    30.0
-....................       BREAK; 
+....................         BREAK; 
 021A:  GOTO   22C
-....................       CASE 6: c = 1; b = 1; 
+....................         CASE 6 : c = 1; 
 021B:  BSF    03.5
 021C:  BSF    30.2
+....................         b = 1; 
 021D:  BSF    30.1
-....................       BREAK; 
+....................         BREAK; 
 021E:  GOTO   22C
-....................       CASE 7: c = 1; b = 1; a = 1; 
+....................         CASE 7 : c = 1; 
 021F:  BSF    03.5
 0220:  BSF    30.2
+....................         b = 1; 
 0221:  BSF    30.1
+....................         a = 1; 
 0222:  BSF    30.0
-....................       BREAK; 
+....................         BREAK; 
 0223:  GOTO   22C
-....................       CASE 8: d = 1; 
+....................         CASE 8 : d = 1; 
 0224:  BSF    03.5
 0225:  BSF    30.3
-....................       BREAK; 
+....................         BREAK; 
 0226:  GOTO   22C
-....................       CASE 9: d = 1; a = 1; 
+....................         CASE 9 : d = 1; 
 0227:  BSF    03.5
 0228:  BSF    30.3
+....................         a = 1; 
 0229:  BSF    30.0
-....................       BREAK; 
+....................         BREAK; 
 022A:  GOTO   22C
 022B:  BSF    03.5
-....................    } 
+....................     } 
 ....................  
-....................    output_bit (p.a, a); 
+....................     output_bit(p.a, a); 
 022C:  MOVLW  00
 022D:  BTFSC  30.0
 022E:  MOVLW  01
@@ -6401,7 +6467,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 023E:  MOVWF  33
 023F:  BCF    03.5
 0240:  CALL   1DB
-....................    output_bit (p.b, b); 
+....................     output_bit(p.b, b); 
 0241:  MOVLW  00
 0242:  BSF    03.5
 0243:  BTFSC  30.1
@@ -6424,7 +6490,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0254:  MOVWF  33
 0255:  BCF    03.5
 0256:  CALL   1DB
-....................    output_bit (p.c, c); 
+....................     output_bit(p.c, c); 
 0257:  MOVLW  00
 0258:  BSF    03.5
 0259:  BTFSC  30.2
@@ -6447,7 +6513,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 026A:  MOVWF  33
 026B:  BCF    03.5
 026C:  CALL   1DB
-....................    output_bit (p.d, d); 
+....................     output_bit(p.d, d); 
 026D:  MOVLW  00
 026E:  BSF    03.5
 026F:  BTFSC  30.3
@@ -6473,9 +6539,9 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0283:  RETURN
 .................... } 
 ....................  
-.................... int8 char2int(CHAR c) 
-.................... { 
-....................    SWITCH (c) 
+.................... int8 char2int(CHAR c) { 
+....................  
+....................     SWITCH(c) { 
 *
 018D:  MOVLW  30
 018E:  BSF    03.5
@@ -6486,90 +6552,88 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0193:  ADDLW  0A
 0194:  BCF    03.5
 0195:  GOTO   1CD
-....................    { 
-....................       case '0': RETURN 0; 
+....................         case '0': RETURN 0; 
 0196:  MOVLW  00
 0197:  MOVWF  78
 0198:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 0199:  BSF    03.5
 019A:  GOTO   1C9
-....................       case '1': RETURN 1; 
+....................         case '1': RETURN 1; 
 019B:  MOVLW  01
 019C:  MOVWF  78
 019D:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 019E:  BSF    03.5
 019F:  GOTO   1C9
-....................       case '2': RETURN 2; 
+....................         case '2': RETURN 2; 
 01A0:  MOVLW  02
 01A1:  MOVWF  78
 01A2:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 01A3:  BSF    03.5
 01A4:  GOTO   1C9
-....................       case '3': RETURN 3; 
+....................         case '3': RETURN 3; 
 01A5:  MOVLW  03
 01A6:  MOVWF  78
 01A7:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 01A8:  BSF    03.5
 01A9:  GOTO   1C9
-....................       case '4': RETURN 4; 
+....................         case '4': RETURN 4; 
 01AA:  MOVLW  04
 01AB:  MOVWF  78
 01AC:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 01AD:  BSF    03.5
 01AE:  GOTO   1C9
-....................       case '5': RETURN 5; 
+....................         case '5': RETURN 5; 
 01AF:  MOVLW  05
 01B0:  MOVWF  78
 01B1:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 01B2:  BSF    03.5
 01B3:  GOTO   1C9
-....................       case '6': RETURN 6; 
+....................         case '6': RETURN 6; 
 01B4:  MOVLW  06
 01B5:  MOVWF  78
 01B6:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 01B7:  BSF    03.5
 01B8:  GOTO   1C9
-....................       case '7': RETURN 7; 
+....................         case '7': RETURN 7; 
 01B9:  MOVLW  07
 01BA:  MOVWF  78
 01BB:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 01BC:  BSF    03.5
 01BD:  GOTO   1C9
-....................       case '8': RETURN 8; 
+....................         case '8': RETURN 8; 
 01BE:  MOVLW  08
 01BF:  MOVWF  78
 01C0:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 01C1:  BSF    03.5
 01C2:  GOTO   1C9
-....................       case '9': RETURN 9; 
+....................         case '9': RETURN 9; 
 01C3:  MOVLW  09
 01C4:  MOVWF  78
 01C5:  GOTO   1CC
-....................       BREAK; 
+....................         BREAK; 
 01C6:  BSF    03.5
 01C7:  GOTO   1C9
 01C8:  BSF    03.5
-....................    } 
+....................     } 
 ....................  
-....................    RETURN 0; 
+....................     RETURN 0; 
 01C9:  MOVLW  00
 01CA:  MOVWF  78
 01CB:  BCF    03.5
 01CC:  RETURN
 .................... } 
 ....................  
-.................... void doReset(VOID) 
-.................... { 
-....................    i2c_send (I2C_TIMER, I2C_CMD_RESET); 
+.................... void doReset(VOID) { 
+....................     i2c_send(I2C_TIMER, I2C_CMD_RESET); 
 *
 0FA9:  MOVLW  0A
 0FAA:  MOVWF  36
@@ -6579,7 +6643,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0FAE:  BCF    03.5
 0FAF:  CALL   2C7
 0FB0:  BSF    0A.3
-....................    delay_ms (I2CWAIT) ; 
+....................     delay_ms(I2CWAIT); 
 0FB1:  MOVLW  32
 0FB2:  BSF    03.5
 0FB3:  MOVWF  32
@@ -6587,7 +6651,7 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0FB5:  BCF    03.5
 0FB6:  CALL   309
 0FB7:  BSF    0A.3
-....................    i2c_send (I2C_SCORE, I2C_CMD_RESET); 
+....................     i2c_send(I2C_SCORE, I2C_CMD_RESET); 
 0FB8:  MOVLW  0C
 0FB9:  BSF    03.5
 0FBA:  MOVWF  36
@@ -6597,12 +6661,12 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0FBE:  BCF    03.5
 0FBF:  CALL   2C7
 0FC0:  BSF    0A.3
-....................    reset_cpu () ; 
+....................     reset_cpu(); 
 0FC1:  CLRF   0A
 0FC2:  GOTO   000
 .................... } 
 ....................  
-.................... void sendN2Port(INT8 n, int8 a, int8 p) 
+.................... void sendN2Port(INT8 n, int8 a, int8 p) { 
 *
 02FA:  BSF    03.5
 02FB:  SWAPF  34,W
@@ -6612,9 +6676,8 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 02FF:  MOVF   77,W
 0300:  ADDWF  32,W
 0301:  MOVWF  35
-.................... { 
-....................    INT c = (p * 16) + n; 
-....................    i2c_send (a, c); 
+....................     INT c = (p * 16) + n; 
+....................     i2c_send(a, c); 
 0302:  MOVF   33,W
 0303:  MOVWF  36
 0304:  MOVF   35,W
@@ -6624,23 +6687,22 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 0308:  RETURN
 .................... } 
 ....................  
-.................... void i2c_send(INT8 a, int8 c) 
-.................... { 
-....................    i2c_start () ; 
+.................... void i2c_send(INT8 a, int8 c) { 
+....................     i2c_start(); 
 *
 02C7:  BSF    03.5
 02C8:  BSF    11.0
 02C9:  BTFSC  11.0
 02CA:  GOTO   2C9
-....................    i2c_write (a) ; 
+....................     i2c_write(a); 
 02CB:  MOVF   36,W
 02CC:  MOVWF  38
-....................    i2c_write (c) ; 
+....................     i2c_write(c); 
 *
 02DF:  BSF    03.5
 02E0:  MOVF   37,W
 02E1:  MOVWF  38
-....................    i2c_stop () ; 
+....................     i2c_stop(); 
 *
 02F4:  BSF    03.5
 02F5:  BSF    11.2
@@ -6649,8 +6711,6 @@ CCS PCM C Compiler, Version 5.076, 56587               11-mar.-20 22:15
 02F8:  BCF    03.5
 02F9:  RETURN
 .................... } 
-....................  
-....................  
 
 Configuration Fuses:
    Word  1: 2CD4   INTRC_IO NOWDT NOPUT NOMCLR NOPROTECT NOCPD NOBROWNOUT IESO FCMEN NOLVP NODEBUG
