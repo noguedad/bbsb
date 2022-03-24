@@ -323,6 +323,18 @@ void parseCommand(VOID) {
         }
         delay_ms(I2CWAIT);
         BREAK;
+        case 'S': IF(DEBUG)
+        {
+            fputs("\r > Configuracion de tiro", RS232);
+        }
+        shotSet(char2int(c[1]), char2int(c[2]));
+        BREAK;
+        case 'T': IF(DEBUG)
+        {
+            fputs("\r > Configuracion de tiempo", RS232);
+        }
+        timeSet(char2int(c[1]), char2int(c[2]), char2int(c[3]), char2int(c[4]));
+        BREAK;
         case 'V':
         SWITCH(c[1])
         {
@@ -384,18 +396,6 @@ void parseCommand(VOID) {
         }
         delay_ms(500);
         doReset();
-        BREAK;
-        case 'S': IF(DEBUG)
-        {
-            fputs("\r > Configuracion de tiro", RS232);
-        }
-        shotSet(char2int(c[1]), char2int(c[2]));
-        BREAK;
-        case 'T': IF(DEBUG)
-        {
-            fputs("\r > Configuracion de tiempo", RS232);
-        }
-        timeSet(char2int(c[1]), char2int(c[2]), char2int(c[3]), char2int(c[4]));
         BREAK;
     }
 }

@@ -1,9 +1,6 @@
-Compiling C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms on 18-nov.-21 at 17:30
---- Info 300 "C:\Users\nogue\Documents\GitHub\bbsb\mcoms\mcoms.h" Line 59(1,1): More info:   Timer 0 tick time is 128.00 us
->>> Warning 216 "mcoms.c" Line 815(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
->>> Warning 216 "mcoms.c" Line 815(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
->>> Warning 216 "mcoms.c" Line 815(1,2): Interrupts disabled during call to prevent re-entrancy:  (i2c_send)
->>> Warning 216 "mcoms.c" Line 815(1,2): Interrupts disabled during call to prevent re-entrancy:  (sendN2Port)
-      Memory usage:   ROM=57%      RAM=23% - 33%
-      0 Errors,  4 Warnings.
+Compiling C:\Users\nogue\Proyectos\bbsb\mcoms\mcoms on 23-mar.-22 at 19:13
+>>> Warning 216 "mcoms.c" Line 680(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
+>>> Warning 216 "mcoms.c" Line 680(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
+      Memory usage:   ROM=45%      RAM=19% - 27%
+      0 Errors,  2 Warnings.
 Build Successful.

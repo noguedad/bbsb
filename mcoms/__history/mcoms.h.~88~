@@ -126,6 +126,8 @@ int8 s_u = 0;
 int8 sh_d = 0;
 int8 sh_u = 0;
 
+int1 pauseTime = false;
+
 int8 scoreLU = 0;
 int8 scoreLD = 0;
 int1 scoreLC = 0;

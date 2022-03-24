@@ -97,11 +97,24 @@ void setup() {
 void main() {
     setup();
 
+    TICK_TYPE CurrentTick, PreviousTick;
+    CurrentTick = PreviousTick = get_ticks();
+
     WHILE(TRUE) {
+
+        IF(!pauseTime) {
+            CurrentTick = get_ticks();
+
+            IF(GetTickDifference(CurrentTick, PreviousTick) >= (TICK_TYPE) TICKS_PER_SECOND) {
+                timeTick();
+                PreviousTick = CurrentTick;
+            }
+        }
     }
 }
 
 #INT_RDA
+
 void RDA_isr(VOID) {
     CHAR c;
     c = fgetc(RS232);
@@ -127,6 +140,18 @@ void RDA_isr(VOID) {
         rcmd = "\0\0\0\0\0\0\0\0\0";
         cmdIndex = 0;
     }
+}
+
+TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick) {
+    RETURN(currTick - prevTick);
+}
+
+void timeTick(VOID) {
+    IF(enableTime)
+    timePass();
+
+    IF(enableShot)
+    shotPass();
 }
 
 void doTest(VOID) {
@@ -281,11 +306,13 @@ void parseCommand(VOID) {
         {
             fputs("\r > Pausar tiempo", RS232);
         }
+        pauseTime = true;
         BREAK;
         case 'Q': IF(DEBUG)
         {
             fputs("\r > Renudar tiempo", RS232);
         }
+        pauseTime = false;
         BREAK;
 
         CASE 'R' :
@@ -322,6 +349,18 @@ void parseCommand(VOID) {
             BREAK;
         }
         delay_ms(I2CWAIT);
+        BREAK;
+        case 'S': IF(DEBUG)
+        {
+            fputs("\r > Configuracion de tiro", RS232);
+        }
+        shotSet(char2int(c[1]), char2int(c[2]));
+        BREAK;
+        case 'T': IF(DEBUG)
+        {
+            fputs("\r > Configuracion de tiempo", RS232);
+        }
+        timeSet(char2int(c[1]), char2int(c[2]), char2int(c[3]), char2int(c[4]));
         BREAK;
         case 'V':
         SWITCH(c[1])
@@ -384,18 +423,6 @@ void parseCommand(VOID) {
         }
         delay_ms(500);
         doReset();
-        BREAK;
-        case 'S': IF(DEBUG)
-        {
-            fputs("\r > Configuracion de tiro", RS232);
-        }
-        shotSet(char2int(c[1]), char2int(c[2]));
-        BREAK;
-        case 'T': IF(DEBUG)
-        {
-            fputs("\r > Configuracion de tiempo", RS232);
-        }
-        timeSet(char2int(c[1]), char2int(c[2]), char2int(c[3]), char2int(c[4]));
         BREAK;
     }
 }
@@ -571,6 +598,8 @@ void shotSet(int8 shd, int8 shu) {
     sendN2Port(shd, I2C_TIMER, PuertoA);
     delay_ms(I2CWAIT);
     sendN2Port(shu, I2C_TIMER, PuertoB);
+
+    enableShot = true;
 }
 
 void timeSet(INT8 md, int8 mu, int8 sd, int8 su) {
@@ -594,6 +623,112 @@ void timeSet(INT8 md, int8 mu, int8 sd, int8 su) {
         i2c_send(I2C_TIMER, I2C_CMD_MDOF);
     }
 
+    enableTime = true;
+}
+
+void shotPass() {
+    INT8 shd = sh_d;
+    INT8 shu = sh_u;
+
+    IF(sh_u > 0)
+    sh_u--;
+
+    ELSE{
+        IF(sh_d > 0) {
+            sh_u = 9;
+            sh_d--;
+        }
+
+        ELSE
+        {
+            sh_d = 0;
+            sh_u = 0;
+            enableShot = false;
+            i2c_send(I2C_TIMER, I2C_CMD_BUZ1);
+        }
+    }
+
+    IF(shu != sh_u)
+    sendN2Port(sh_u, I2C_TIMER, PuertoB);
+
+    delay_ms(I2CWAIT);
+
+    IF(shd != sh_d)
+    sendN2Port(sh_d, I2C_TIMER, PuertoA);
+
+
+}
+
+void timePass() {
+    INT8 md = m_d;
+    INT8 mu = m_u;
+    INT8 sd = s_d;
+    INT8 su = s_u;
+
+    IF(s_u > 0)
+    s_u--;
+
+    ELSE{
+        IF(s_d > 0) {
+            s_u = 9;
+            s_d--;
+        }
+
+        ELSE
+        {
+            IF(m_u > 0) {
+                s_d = 5;
+                s_u = 9;
+                m_u--;
+            }
+
+            ELSE
+            {
+                IF(m_d > 0) {
+                    m_d = 0;
+                    m_u = 9;
+                    s_d = 5;
+                    s_u = 9;
+                }
+
+                ELSE
+                {
+                    //TODO: End count
+                    m_d = 0;
+                    m_u = 0;
+                    s_d = 0;
+                    s_u = 0;
+                    enableTime = false;
+                    i2c_send(I2C_TIMER, I2C_CMD_BUZ2);
+                }
+            }
+        }
+    }
+
+
+    IF(su != s_u)
+    sendN2Port(s_u, I2C_TIMER, PuertoD);
+
+    delay_ms(I2CWAIT);
+
+    IF(sd != s_d)
+    sendN2Port(s_d, I2C_TIMER, PuertoC);
+
+    delay_ms(I2CWAIT);
+
+    IF(mu != m_u)
+    sendN2Port(m_u, I2C_TIMER, PuertoE);
+
+    delay_ms(I2CWAIT);
+
+    IF(md != m_d)
+    IF(m_d == 0) {
+        i2c_send(I2C_TIMER, I2C_CMD_MDOF);
+    }
+
+    ELSE{
+        i2c_send(I2C_TIMER, I2C_CMD_MDON);
+    }
 }
 
 void showNumber(INT8 n, tPort p) {

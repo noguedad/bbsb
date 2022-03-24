@@ -85,7 +85,7 @@
 #define ON              1
 #define OFF             0
 #define DEFAULT_D       10
-#define I2CWAIT         50
+#define I2CWAIT         20
 
 #define   PuertoA    1
 #define   PuertoB    2
@@ -125,6 +125,8 @@ int8 s_u = 0;
 //Tiro
 int8 sh_d = 0;
 int8 sh_u = 0;
+
+int1 pauseTime = false;
 
 int8 scoreLU = 0;
 int8 scoreLD = 0;

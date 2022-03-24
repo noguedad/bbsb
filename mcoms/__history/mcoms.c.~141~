@@ -385,7 +385,7 @@ void parseCommand(VOID) {
         delay_ms(500);
         doReset();
         BREAK;
-        case 'S': IF(DEBUG)
+                case 'S': IF(DEBUG)
         {
             fputs("\r > Configuracion de tiro", RS232);
         }

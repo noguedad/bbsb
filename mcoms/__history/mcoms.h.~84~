@@ -56,8 +56,10 @@
 #use rs232  (baud=9600,parity=N,xmit=RS232_TX,rcv=RS232_RX,bits=8,stream=RS232)
 //#use i2c    (Master,Fast,sda=I2C_SDA,scl=I2C_SCL)
 #use i2c    (master, scl=I2C_SCL, sda=I2C_SDA, fast)
+#use timer  (timer=0,tick=100us,bits=32,NOISR)
 
 // ::[DEFINICIONES]::
+#define TICK_TYPE       unsigned int32
 #define I2C_TIMER       0x0A
 #define I2C_SCORE       0x0C
 
@@ -84,7 +86,7 @@
 
 #define ON              1
 #define OFF             0
-#define DEFAULT_D       10
+#define DEFAULT_D       100
 #define I2CWAIT         50
 
 #define   PuertoA    1
@@ -121,10 +123,14 @@ int8 m_d = 0;
 int8 m_u = 0;
 int8 s_d = 0;
 int8 s_u = 0;
+int1 enableTime = false;
 
 //Tiro
 int8 sh_d = 0;
 int8 sh_u = 0;
+int1 enableShot = false;
+
+int1 pauseTime = false;
 
 int8 scoreLU = 0;
 int8 scoreLD = 0;
@@ -135,8 +141,10 @@ int1 scoreVC = 0;
 
 // ::[PROTOTIPOS]::
 
+TICK_TYPE GetTickDifference(TICK_TYPE currTick, TICK_TYPE prevTick);
 void RDA_isr(void);
 void SSP_isr(void);
+void timeTick(void);
 void parseCommand(void);
 void doTest(void);
 void showNumber(int8, tPort);
@@ -145,6 +153,8 @@ void doReset(void);
 void sendN2Port(int8, int8, int8);
 void timeSet(int8, int8, int8, int8);
 void shotSet(int8, int8);
+void timePass();
+void shotPass();
 void doBuzz(int);
 void setScoreL(int8, int8, int8);
 void setScoreV(int8, int8, int8);
