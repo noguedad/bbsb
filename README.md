@@ -1,4 +1,4 @@
-# Basketball Bluetooth Score Board
+# Bluetooth Basketball Score Board
 Codigo fuente del firmware para BBSB
 
 El codigo se divide en 3 firmwares para tres modulos:</br></br>
