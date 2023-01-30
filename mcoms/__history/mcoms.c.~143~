@@ -449,11 +449,11 @@ void addScoreV(int8 a) {
 
     if (scoreVU > 10) {
         scoreVD++;
-        scoreVU-=10;
+        scoreVU=0;
     }
     if (scoreVD > 10) {
         scoreVC = true;
-        scoreVD-=10;
+        scoreVD= 0;
     }
 
     if (scoreVC != tc) {
@@ -512,11 +512,11 @@ void addScoreL(int8 a) {
 
     if (scoreLU > 10) {
         scoreLD++;
-        scoreLU -=10;
+        scoreLU = 0;
     }
     if (scoreLD > 10) {
         scoreLC = true;
-        scoreLD -= 10;
+        scoreLD = 0;
     }
 
     if (scoreLC != tc) {

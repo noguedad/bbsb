@@ -1,9 +1,10 @@
-D G "__PCM__" 0 0 ""5.076""
-D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""23-mar.-22""
-D G "__TIME__" 0 0 ""19:13:40""
-D G "_UNICODE" 0 0 ""?""
-D G "__EVAL" 0 0 ""?"" "*:COPYRIGHT"
+F N "i2c_send" 0 675 ""
+D G "__PCM__" 0 682 ""5.076""
+D G "__DEVICE__" 0 682 "887"
+D G "__DATE__" 0 682 ""29-ene.-23""
+D G "__TIME__" 0 682 ""18:46:20""
+D G "_UNICODE" 0 682 ""?""
+D G "__EVAL" 0 682 ""?"" "*:COPYRIGHT"
 C G "" 0 15 1 "*"
 C G "" 0 16 1 "*"
 C G "" 0 17 2 "*"
@@ -458,9 +459,9 @@ f N "read_adc" 2 465 ""
 f G "read_adc" 2 465 "int16()" `199 
 f N "read_adc" 2 466 ""
 v L "mode" 2 466 "int8" `200 
-f G "read_adc" 2 466 "int16(int8 mode)" `199 
+f G "read_adc" 2 466 "int16(int8 mode,int32 pins)" `199 
 f N "adc_done" 2 467 ""
-f B "adc_done" 2 467 "int8(int8 mode)" `199  "Constants used for SETUP_ADC() are:"
+f B "adc_done" 2 467 "int8(int8 mode,int32 pins)" `199  "Constants used for SETUP_ADC() are:"
 d G "ADC_OFF" 2 469 "0" "ADC Off"
 d G "ADC_CLOCK_DIV_2" 2 470 "0x100"
 d G "ADC_CLOCK_DIV_8" 2 471 "0x40"
@@ -860,9 +861,9 @@ f B "i2c_transfer_in" 2 621 "void(int8 stream,int8 address,*int8 rData,int8 rCou
 f N "spi_xfer" 2 624 ""
 f B "spi_xfer" 2 624 "int8()" `470 
 f N "spi_xfer" 2 625 ""
-f G "spi_xfer" 2 625 "int16()" `471 
+f G "spi_xfer" 2 625 "int16(int8 data)" `471 
 f N "spi_xfer" 2 626 ""
-f G "spi_xfer" 2 626 "int32()" `471 
+f G "spi_xfer" 2 626 "int32(int8 data)" `471 
 f N "spi_xfer" 2 627 ""
 v L "data" 2 627 "int8" `472 
 f B "spi_xfer" 2 627 "int8(int8 data)" `471 
@@ -942,18 +943,18 @@ f B "spi_prewrite" 2 646 "void(int8 ,int32 data)" `524
 f N "spi_xfer_in" 2 647 ""
 f B "spi_xfer_in" 2 647 "int8()" `527 
 f N "spi_xfer_in" 2 648 ""
-f G "spi_xfer_in" 2 648 "int16()" `528 
+f G "spi_xfer_in" 2 648 "int16(int8 bits)" `528 
 f N "spi_xfer_in" 2 649 ""
-f G "spi_xfer_in" 2 649 "int32()" `528 
+f G "spi_xfer_in" 2 649 "int32(int8 bits)" `528 
 f N "spi_xfer_in" 2 650 ""
 v L "bits" 2 650 "int8" `529 
 f B "spi_xfer_in" 2 650 "int8(int8 bits)" `528 
 f N "spi_xfer_in" 2 651 ""
 v L "bits" 2 651 "int8" `531 
-f G "spi_xfer_in" 2 651 "int16(int8 bits)" `530 
+f G "spi_xfer_in" 2 651 "int16(int8 bits,int8 bits)" `530 
 f N "spi_xfer_in" 2 652 ""
 v L "bits" 2 652 "int8" `531 
-f G "spi_xfer_in" 2 652 "int32(int8 bits)" `530 
+f G "spi_xfer_in" 2 652 "int32(int8 bits,int8 bits)" `530 
 f N "spi_xfer_in" 2 653 ""
 v L "stream" 2 653 "int8" `531 
 v L "bits" 2 653 "int8" `532 
@@ -961,15 +962,15 @@ f B "spi_xfer_in" 2 653 "int8(int8 stream,int8 bits)" `530
 f N "spi_xfer_in" 2 654 ""
 v L "stream" 2 654 "int8" `531 
 v L "bits" 2 654 "int8" `535 
-f G "spi_xfer_in" 2 654 "int16(int8 stream,int8 bits)" `533 
+f G "spi_xfer_in" 2 654 "int16(int8 stream,int8 bits,int8 task)" `533 
 f N "spi_xfer_in" 2 655 ""
 v L "stream" 2 655 "int8" `531 
 v L "bits" 2 655 "int8" `535 
-f G "spi_xfer_in" 2 655 "int32(int8 stream,int8 bits)" `533  "#use rtos() Prototypes:"
+f G "spi_xfer_in" 2 655 "int32(int8 stream,int8 bits,int8 task)" `533  "#use rtos() Prototypes:"
 f N "rtos_run" 2 658 ""
-f B "rtos_run" 2 658 "void(int8 stream,int8 bits)" `533 
+f B "rtos_run" 2 658 "void(int8 stream,int8 bits,int8 task)" `533 
 f N "rtos_yield" 2 659 ""
-f B "rtos_yield" 2 659 "void(int8 bits)" `534 
+f B "rtos_yield" 2 659 "void(int8 bits,int8 task)" `534 
 f N "rtos_enable" 2 660 ""
 v L "task" 2 660 "int8" `536 
 f B "rtos_enable" 2 660 "void(int8 task)" `535 
@@ -1005,9 +1006,9 @@ f B "rtos_stats" 2 670 "void(int8 task,*int8 stat)" `553  "#use timer() Prototyp
 f N "get_ticks" 2 673 ""
 f B "get_ticks" 2 673 "int8()" `556 
 f N "get_ticks" 2 674 ""
-f G "get_ticks" 2 674 "int16()" `557 
+f G "get_ticks" 2 674 "int16(int8 stream)" `557 
 f N "get_ticks" 2 675 ""
-f G "get_ticks" 2 675 "int32()" `557 
+f G "get_ticks" 2 675 "int32(int8 stream)" `557 
 f N "get_ticks" 2 676 ""
 v L "stream" 2 676 "int8" `558 
 f B "get_ticks" 2 676 "int8(int8 stream)" `557 
@@ -1211,8 +1212,8 @@ D G "PuertoE" 1 94 "5"
 D G "PuertoF" 1 95 "6"
 C L "jump_to_isr" 1 24 2 "FUNCTION"
 T G "tPort" 1 105 "{int8 a,int8 b,int8 c,int8 d}" `654  "Datos para la captura de comandos del RS232"
-V G "cmd" 1 108 "int8[10]" `655 
-V G "rcmd" 1 109 "int8[10]" `656 
+V G "cmd" 1 108 "int8[20]" `655 
+V G "rcmd" 1 109 "int8[20]" `656 
 V G "cmdIndex" 1 110 "int8" `657 
 V G "cmdGet" 1 111 "int1" `658 
 C L "jump_to_isr" 1 24 1 "FUNCTION"
@@ -1460,7 +1461,7 @@ V L "t" 0 160 "int8" `844
 F G "doBuzz" 0 160 "void(int8 t)" `697 
 F N "parseCommand" 0 167 ""
 F G "parseCommand" 0 167 "void()" `677 
-V L "c" 0 168 "int8[10]" `843 
+V L "c" 0 168 "int8[20]" `843 
 C L "parseCommand" 0 26 1 "FUNCTION"
 F N "setScoreL" 0 403 ""
 V L "c" 0 403 "int8" `700 

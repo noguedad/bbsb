@@ -1,12 +1,12 @@
 
-ROM used:   3669/8192 (45%)
-            3749/8192 (46%) including unused fragments
+ROM used:   4174/8192 (51%)
+            4478/8192 (55%) including unused fragments
 
-            1.7 Average locations per line
-            7.8 Average locations per statement
+            1.9 Average locations per line
+            8.9 Average locations per statement
 
-RAM used:   69/368 (19%) at main() level
-            100/368 (27%) worst case
+RAM used:   89/368 (24%) at main() level
+            135/368 (37%) worst case
 
 Stack used: 6 worst case (1 in main + 5 for interrupts)
 Stack size: 8
@@ -25,11 +25,11 @@ Lines Stmts  %   Files
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
-0     20   1    1             @delay_ms1
+0     20   0    1             @delay_ms1
 0     18   0    1             @I2C_WRITEU_1
-0    328   9    0   1990  3.4  setup
+2    382   9    0   1990  3.4  setup
 0     17   0    0             @const812
-0     88   2    4             @PSTRINGC7_9600_62_63
+0     82   2    7             @PSTRINGC7_9600_62_63
 0     11   0    0             @const817
 0     17   0    0             @const818
 0     17   0    0             @const819
@@ -37,26 +37,26 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0     11   0    0             @const821
 0      2   0    0             @const822
 0      1   0    0             @const823
-0     89   2    5             @PSTRINGCN7_9600_62_63
+0     88   2    7             @PSTRINGCN7_9600_62_63
 0     17   0    0             @const826
 0     16   0    0             @const827
 0     14   0    0             @const828
-0     82   2    4             @PSTRINGC7_1
+0    118   3    4             @PSTRINGC7_1
 0     13   0    0             @const830
 0     14   0    0             @const831
 0     17   0    0             @const832
-0     90   2    0     27  1.0  MAIN
-0     82   2    6    409  5.5  RDA_isr
-0     14   0    0             @const837
+0     76   2    0     27  1.0  MAIN
+0    100   2    6    409  5.5  RDA_isr
+0      6   0    0             @const837
  Inline         1    618  4.2  doTest
 0     10   0    0             @const838
 0     13   0    0             @const839
 0     13   0    0             @const840
 0     17   0    0             @const841
 0     21   1    2     78  1.6  doBuzz
-1   1684  46   15   8030  5.0  parseCommand
+1   1987  48   25   8030  5.0  parseCommand
 0     16   0    0             @const844
-1      8   0    0             @goto53721
+1      8   0    0             @goto60222
 0      8   0    0             @const846
 0      8   0    0             @const847
 0      8   0    0             @const848
@@ -77,7 +77,7 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0      7   0    0             @const863
 0      7   0    0             @const864
 0      7   0    0             @const865
-1      9   0    0             @goto53932
+1      9   0    0             @goto60429
 0      8   0    0             @const867
 0     11   0    0             @const868
 0     11   0    0             @const869
@@ -89,22 +89,22 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0     13   0    0             @const875
 0     13   0    0             @const876
 0     14   0    0             @const877
-0     48   1    3    391  4.0  setScoreL
-0     48   1    3    391  4.0  setScoreV
-0     77   2    5    629  6.0  addScoreV
+0     64   2    3    391  4.0  setScoreL
+0     64   2    3    391  4.0  setScoreV
+0    100   2    5    629  6.0  addScoreV
  Inline         4    647  4.9  resScoreV
-0     77   2    5    629  6.0  addScoreL
+0    100   2    5    629  6.0  addScoreL
  Inline         4    647  4.9  resScoreL
  Inline         2    160  2.4  shotSet
  Inline         4    477  4.1  timeSet
-0    107   3    6   1046  4.9  showNumber
-0     13   0    0             @goto54248
-0     32   1    6             @WRITEBITA
-0     49   1    1    463  3.7  char2int
-0     14   0    0             @goto54287
+0    135   3    6   1046  4.9  showNumber
+0     13   0    0             @goto60750
+0     34   1    6             @WRITEBITA
+0     64   2    1    463  3.7  char2int
+0     14   0    0             @goto60786
  Inline         0     88  1.7  doReset
 0     15   0    5    112  3.8  sendN2Port
-0     19   1    2     80  2.0  i2c_send
+0     19   0    2     80  2.0  i2c_send
  Inline         0             @cinit1
 
 Program metrics:
@@ -123,9 +123,9 @@ Program metrics:
 -----------  ----  ----
 00000-00003     4  0  
 00004-00050    77  0  
-00051-007FF  1887  80  
-00800-00FFF  1701  347  
-01000-017FF     0  2048  
+00051-007FF  1707  260  
+00800-00FFF  2004  44  
+01000-017FF   382  1666  
 01800-01FFF     0  2048  
 
 

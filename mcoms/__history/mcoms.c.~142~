@@ -115,7 +115,7 @@ void RDA_isr(VOID) {
         }
 
         ELSE{
-            IF(cmdIndex < 20) {
+            IF(cmdIndex < 9) {
                 rcmd[cmdIndex] = c;
                 cmdIndex++;
             }
@@ -124,7 +124,7 @@ void RDA_isr(VOID) {
 
     IF(c == '-') {
         cmdGet = true;
-        rcmd = "\0";
+        rcmd = "\0\0\0\0\0\0\0\0\0";
         cmdIndex = 0;
     }
 }
@@ -165,7 +165,7 @@ void doBuzz(INT t) {
 }
 
 void parseCommand(VOID) {
-    CHAR c[20];
+    CHAR c[10];
     strcpy(c, cmd);
 
     SWITCH(c[0]) {
@@ -449,11 +449,11 @@ void addScoreV(int8 a) {
 
     if (scoreVU > 10) {
         scoreVD++;
-        scoreVU-=10;
+        scoreVU -= 10;
     }
     if (scoreVD > 10) {
         scoreVC = true;
-        scoreVD-=10;
+        scoreVD -= 10;
     }
 
     if (scoreVC != tc) {
@@ -512,7 +512,7 @@ void addScoreL(int8 a) {
 
     if (scoreLU > 10) {
         scoreLD++;
-        scoreLU -=10;
+        scoreLU -= 10;
     }
     if (scoreLD > 10) {
         scoreLC = true;
