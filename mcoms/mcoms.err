@@ -1,6 +1,0 @@
-Compiling C:\Users\nogue\Proyectos\bbsb\mcoms\mcoms on 29-ene.-23 at 18:46
->>> Warning 216 "mcoms.c" Line 680(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
->>> Warning 216 "mcoms.c" Line 680(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_1)
-      Memory usage:   ROM=51%      RAM=24% - 37%
-      0 Errors,  2 Warnings.
-Build Successful.

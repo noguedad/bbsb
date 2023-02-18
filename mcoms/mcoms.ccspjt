@@ -24,12 +24,12 @@ Type=4
 [Opened Files]
 1=mcoms.c
 2=mcoms.h
-3=..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h
+3=..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h
 4=
-t1=1
-t2=21
+t1=87
+t2=87
 Count=2
-t3=1
+t3=485
 [mcoms.c]
 Type=4
 Path=
@@ -54,7 +54,7 @@ stayupne=3
 stayupoe=1
 
 [ProjectLog]
-Days=12
+Days=13
 D1=07-03-2020
 D1_L=4
 D1_L1=[82337]Project Opened.
@@ -257,9 +257,17 @@ D12_L3=[67589]Stopped Editing.
 D12_E=10
 D12_D=0
 D12_L4=[67589]Project Closed.
+D13=18-02-2023
+D13_L=6
+D13_L1=[50859]Project Opened.
+D13_L2=[50937]Started Editing.
+D13_L3=[51258]Stopped Editing.
+D13_L4=[51313]Started Editing.
+D13_L5=[51795]Stopped Editing.
+D13_L6=[52241]Started Editing.
 
 [defines]
-buildcount=78
+buildcount=79
 enabled=0
 chip=1
 D1=
