@@ -1,0 +1,28 @@
+[defines]
+buildcount=1
+
+[PROJECT]
+Processor_Text=PIC16F887
+
+[Opened Files]
+1=mcoms.h
+t1=37
+2=mcoms.c
+t2=552
+Count=2
+
+[ProjectLog]
+Days=1
+D1=24-02-2023
+D1_L=4
+D1_L1=[48168]Stopped Editing.
+TotalEdit=5
+TotalDebug=0
+D1_E=5
+D1_D=0
+D1_L2=[48168]Project Closed.
+D1_L3=[48204]Project Opened.
+D1_L4=[48223]Project Closed.
+
+[fileformats]
+forcecoff=0

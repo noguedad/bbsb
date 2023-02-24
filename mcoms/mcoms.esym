@@ -1,10 +1,9 @@
-F N "i2c_send" 0 681 ""
-D G "__PCM__" 0 688 ""5.076""
-D G "__DEVICE__" 0 688 "887"
-D G "__DATE__" 0 688 ""18-feb.-23""
-D G "__TIME__" 0 688 ""14:31:23""
-D G "_UNICODE" 0 688 ""?""
-D G "__EVAL" 0 688 ""?"" "*:COPYRIGHT"
+D G "__PCM__" 0 682 ""5.076""
+D G "__DEVICE__" 0 682 "887"
+D G "__DATE__" 0 682 ""24-feb.-23""
+D G "__TIME__" 0 682 ""13:21:55""
+D G "_UNICODE" 0 682 ""?""
+D G "__EVAL" 0 682 ""?"" "*:COPYRIGHT"
 C G "" 0 15 1 "*"
 C G "" 0 16 1 "*"
 C G "" 0 17 2 "*"
@@ -1170,7 +1169,7 @@ d G "INT_RB4" 2 780 "0x1100B08"
 d G "INT_RB5" 2 781 "0x1200B08"
 d G "INT_RB6" 2 782 "0x1400B08"
 d G "INT_RB7" 2 783 "0x1800B08"
-D G "FW_VERSION" 1 21 ""2.0""
+D G "FW_VERSION" 1 21 ""3.0""
 D G "FW_REVISION" 1 22 ""F""
 D G "I2C_SCL" 1 48 "PIN_C3"
 D G "I2C_SDA" 1 49 "PIN_C4"
@@ -1240,50 +1239,50 @@ f G "RDA_isr" 1 138 "void()" `677
 F N "SSP_isr" 1 139 ""
 f G "SSP_isr" 1 139 "void()" `678 
 F N "parseCommand" 1 140 ""
-f G "parseCommand" 1 140 "void(int8 n,c p)" `679 
+f G "parseCommand" 1 140 "void()" `679 
 F N "doTest" 1 141 ""
-f G "doTest" 1 141 "void(c p)" `680 
+f G "doTest" 1 141 "void()" `680 
 F N "showNumber" 1 142 ""
 V L "??65535" 1 142 "int8" `682 
 V L "??65535" 1 142 "tPort" `683 
-f G "showNumber" 1 142 "void(int8 ,tPort )" `681 
+f G "showNumber" 1 142 "void(int8 ,tPort ,int8 n,rcmd p)" `681 
 F N "char2int" 1 143 ""
 V L "??65535" 1 143 "int8" `685 
-f G "char2int" 1 143 "int8(int8 ,int8 n,int8 PuertoF,int8 p)" `684 
+f G "char2int" 1 143 "int8(int8 )" `684 
 F N "doReset" 1 144 ""
-f G "doReset" 1 144 "void(int8 PuertoF,int8 p)" `686 
+f G "doReset" 1 144 "void(int8 d)" `686 
 F N "sendN2Port" 1 145 ""
 V L "??65535" 1 145 "int8" `688 
 V L "??65535" 1 145 "int8" `689 
 V L "??65535" 1 145 "int8" `690 
-f G "sendN2Port" 1 145 "void(int8 ,int8 ,int8 ,int8 mu,int8 sd,int8 su)" `687 
+f G "sendN2Port" 1 145 "void(int8 ,int8 ,int8 ,int8 b,int8 p)" `687 
 F N "timeSet" 1 146 ""
 V L "??65535" 1 146 "int8" `692 
 V L "??65535" 1 146 "int8" `693 
 V L "??65535" 1 146 "int8" `694 
 V L "??65535" 1 146 "int8" `695 
-f G "timeSet" 1 146 "void(int8 ,int8 ,int8 ,int8 ,int8 shu)" `691 
+f G "timeSet" 1 146 "void(int8 ,int8 ,int8 ,int8 ,int8 sd,int8 su)" `691 
 F N "shotSet" 1 147 ""
 V L "??65535" 1 147 "int8" `697 
 V L "??65535" 1 147 "int8" `698 
-f G "shotSet" 1 147 "void(int8 ,int8 )" `696 
+f G "shotSet" 1 147 "void(int8 ,int8 ,int8 shd,int8 shu)" `696 
 F N "doBuzz" 1 148 ""
 V L "??65535" 1 148 "int8" `700 
-f G "doBuzz" 1 148 "void(int8 ,int8 b,int8 u)" `699 
+f G "doBuzz" 1 148 "void(int8 )" `699 
 F N "setScoreL" 1 149 ""
 V L "??65535" 1 149 "int8" `702 
 V L "??65535" 1 149 "int8" `703 
 V L "??65535" 1 149 "int8" `704 
-f G "setScoreL" 1 149 "void(int8 ,int8 ,int8 ,int8 b,int8 u)" `701 
+f G "setScoreL" 1 149 "void(int8 ,int8 ,int8 ,int8 tPort,int8 u)" `701 
 F N "setScoreV" 1 150 ""
 V L "??65535" 1 150 "int8" `706 
 V L "??65535" 1 150 "int8" `707 
 V L "??65535" 1 150 "int8" `708 
-f G "setScoreV" 1 150 "void(int8 ,int8 ,int8 ,int8 a)" `705 
+f G "setScoreV" 1 150 "void(int8 ,int8 ,int8 ,int8 tPort,int8 u)" `705 
 F N "i2c_send" 1 151 ""
 V L "??65535" 1 151 "int8" `710 
 V L "??65535" 1 151 "int8" `711 
-f G "i2c_send" 1 151 "void(int8 ,int8 )" `709 
+f G "i2c_send" 1 151 "void(int8 ,int8 ,int8 b,int8 d)" `709 
 F N "addScoreL" 1 152 ""
 V L "??65535" 1 152 "int8" `713 
 f G "addScoreL" 1 152 "void(int8 )" `712 
@@ -1291,9 +1290,9 @@ F N "addScoreV" 1 153 ""
 V L "??65535" 1 153 "int8" `715 
 f G "addScoreV" 1 153 "void(int8 )" `714 
 F N "resScoreL" 1 154 ""
-f G "resScoreL" 1 154 "void(*void s1,*void s2,int8 n)" `716 
+f G "resScoreL" 1 154 "void(int8 b)" `716 
 F N "resScoreV" 1 155 ""
-f G "resScoreV" 1 155 "void(*void s2,int8 n)" `717  "(C) Copyright 1996,2008 Custom Computer Services            ////"
+f G "resScoreV" 1 155 "void()" `717  "(C) Copyright 1996,2008 Custom Computer Services            ////"
 D G "_STRING" 3 12 ""
 D G "_STDDEF" 4 13 ""
 D G "ptrdiff_t" 4 18 "unsigned int16"
@@ -1318,7 +1317,7 @@ F N "memmove" 3 34 ""
 V L "s1" 3 34 "*void" `719 
 V L "s2" 3 34 "*void" `720 
 V L "n" 3 34 "int8" `721 
-F G "memmove" 3 35 "*int8(*void s1,*void s2,int8 n)" `718 
+F G "memmove" 3 35 "*int8(*void s1,*void s2,int8 n,*void n,int8 n)" `718 
 V L "sc1" 3 36 "*int8" `722 
 V L "sc2" 3 37 "*int8" `723 
 D G "strcopy" 3 54 "strcpy"
@@ -1326,49 +1325,49 @@ F N "strncpy" 3 61 ""
 V L "s1" 3 61 "*int8" `725 
 V L "s2" 3 61 "*int8" `726 
 V L "n" 3 61 "int8" `727 
-F G "strncpy" 3 62 "*int8(*int8 s1,*int8 s2,int8 n,*int8 ispunct,*int8 memmove)" `724 
+F G "strncpy" 3 62 "*int8(*int8 s1,*int8 s2,int8 n,*int8 n,int8 sc1)" `724 
 V L "s" 3 63 "*int8" `728 
 F N "strcat" 3 78 ""
 V L "s1" 3 78 "*int8" `730 
 V L "s2" 3 78 "*int8" `731 
-F G "strcat" 3 79 "*int8(*int8 s1,*int8 s2,*int8 ispunct,*int8 memmove,int8 s1)" `729 
+F G "strcat" 3 79 "*int8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `729 
 V L "s" 3 80 "*int8" `732 
 F N "strncat" 3 96 ""
 V L "s1" 3 96 "*int8" `734 
 V L "s2" 3 96 "*int8" `735 
 V L "n" 3 96 "int8" `736 
-F G "strncat" 3 97 "*int8(*int8 s1,*int8 s2,int8 n,*void ispunct,*void memmove,int8 s1)" `733 
+F G "strncat" 3 97 "*int8(*int8 s1,*int8 s2,int8 n,*int8 n,int8 sc1)" `733 
 V L "s" 3 98 "*int8" `737 
 C L "memcmp" 3 19 3 "FUNCTION"
 F N "memcmp" 3 120 ""
 V L "s1" 3 120 "*void" `739 
 V L "s2" 3 120 "*void" `740 
 V L "n" 3 120 "int8" `741 
-F G "memcmp" 3 121 "sint8(*void s1,*void s2,int8 n)" `738 
+F G "memcmp" 3 121 "sint8(*void s1,*void s2,int8 n,*void n,int8 sc1)" `738 
 V L "su1" 3 122 "*int8" `742 
 V L "su2" 3 122 "*int8" `743 
 C L "strcmp" 3 19 2 "FUNCTION"
 F N "strcmp" 3 134 ""
 V L "s1" 3 134 "*int8" `745 
 V L "s2" 3 134 "*int8" `746 
-F G "strcmp" 3 135 "sint8(*int8 s1,*int8 s2,*int8 memmove)" `744 
+F G "strcmp" 3 135 "sint8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `744 
 C L "strcoll" 3 19 2 "FUNCTION"
 F N "strcoll" 3 144 ""
 V L "s1" 3 144 "*int8" `748 
 V L "s2" 3 144 "*int8" `749 
-F G "strcoll" 3 145 "sint8(*int8 s1,*int8 s2,*int8 memmove,int8 s1)" `747 
+F G "strcoll" 3 145 "sint8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `747 
 C L "strncmp" 3 19 4 "FUNCTION"
 F N "strncmp" 3 157 ""
 V L "s1" 3 157 "*int8" `751 
 V L "s2" 3 157 "*int8" `752 
 V L "n" 3 157 "int8" `753 
-F G "strncmp" 3 158 "sint8(*int8 s1,*int8 s2,int8 n,*int8 memmove,int8 s1)" `750 
+F G "strncmp" 3 158 "sint8(*int8 s1,*int8 s2,int8 n,*int8 n,int8 sc1)" `750 
 C L "strxfrm" 3 19 4 "FUNCTION"
 F N "strxfrm" 3 170 ""
 V L "s1" 3 170 "*int8" `755 
 V L "s2" 3 170 "*int8" `756 
 V L "n" 3 170 "int8" `757 
-F G "strxfrm" 3 171 "int8(*int8 s1,*int8 s2,int8 n)" `754 
+F G "strxfrm" 3 171 "int8(*int8 s1,*int8 s2,int8 n,*int8 n,int8 sc1)" `754 
 V L "c" 3 172 "int8" `758 
 V L "n1" 3 173 "int8" `759 
 C L "strxfrm" 3 19 1 "FUNCTION"
@@ -1376,53 +1375,53 @@ F N "memchr" 3 201 ""
 V L "s" 3 201 "*void" `761 
 V L "c" 3 201 "int8" `762 
 V L "n" 3 201 "int8" `763 
-F G "memchr" 3 202 "*int8(*void s,int8 c,int8 n)" `760 
+F G "memchr" 3 202 "*int8(*void s,int8 c,int8 n,int8 d,int8 sc1)" `760 
 V L "uc" 3 203 "int8" `764 
 V L "su" 3 204 "*int8" `765 
 F N "strchr" 3 215 ""
 V L "s" 3 215 "*int8" `767 
 V L "c" 3 215 "int8" `768 
-F G "strchr" 3 216 "*int8(*int8 s,int8 c,*int8 memmove)" `766 
+F G "strchr" 3 216 "*int8(*int8 s,int8 c,*int8 strcat,int8 d)" `766 
 C L "strcspn" 3 19 4 "FUNCTION"
 F N "strcspn" 3 227 ""
 V L "s1" 3 227 "*int8" `770 
 V L "s2" 3 227 "*int8" `771 
-F G "strcspn" 3 228 "int8(*int8 s1,*int8 s2)" `769 
+F G "strcspn" 3 228 "int8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `769 
 V L "sc1" 3 229 "*int8" `772 
 V L "sc2" 3 229 "*int8" `773 
 F N "strpbrk" 3 242 ""
 V L "s1" 3 242 "*int8" `775 
 V L "s2" 3 242 "*int8" `776 
-F G "strpbrk" 3 243 "*int8(*int8 s1,*int8 s2)" `774 
+F G "strpbrk" 3 243 "*int8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `774 
 V L "sc1" 3 244 "*int8" `777 
 V L "sc2" 3 244 "*int8" `778 
 F N "strrchr" 3 257 ""
 V L "s" 3 257 "*int8" `780 
 V L "c" 3 257 "int8" `781 
-F G "strrchr" 3 258 "*int8(*int8 s,int8 c,*int8 ispunct,*int8 memmove)" `779 
+F G "strrchr" 3 258 "*int8(*int8 s,int8 c,*int8 strcat,int8 d)" `779 
 V L "p" 3 259 "*int8" `782 
 C L "strspn" 3 19 2 "FUNCTION"
 F N "strspn" 3 272 ""
 V L "s1" 3 272 "*int8" `784 
 V L "s2" 3 272 "*int8" `785 
-F G "strspn" 3 273 "int8(*int8 s1,*int8 s2)" `783 
+F G "strspn" 3 273 "int8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `783 
 V L "sc1" 3 274 "*int8" `786 
 V L "sc2" 3 274 "*int8" `787 
 F N "strstr" 3 291 ""
 V L "s1" 3 291 "*int8" `789 
 V L "s2" 3 291 "*int8" `790 
-F G "strstr" 3 292 "*int8(*int8 s1,*int8 s2)" `788 
+F G "strstr" 3 292 "*int8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `788 
 V L "s" 3 293 "*int8" `791 
 V L "t" 3 293 "*int8" `792 
 C L "strlen" 3 19 2 "FUNCTION"
 F N "strlen" 3 318 ""
 V L "s" 3 318 "*int8" `794 
-F G "strlen" 3 319 "int8(*int8 s,*int8 ispunct,*int8 memmove)" `793 
+F G "strlen" 3 319 "int8(*int8 s)" `793 
 V L "sc" 3 320 "*int8" `795 
 F N "strtok" 3 341 ""
 V L "s1" 3 341 "*int8" `797 
 V L "s2" 3 341 "*int8" `798 
-F G "strtok" 3 342 "*int8(*int8 s1,*int8 s2)" `796 
+F G "strtok" 3 342 "*int8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `796 
 V L "beg" 3 343 "*int8" `799 
 V L "end" 3 343 "*int8" `800 
 V L "save" 3 344 "*int8" `801 
@@ -1430,10 +1429,10 @@ C L "stricmp" 3 19 6 "FUNCTION"
 F N "stricmp" 3 392 ""
 V L "s1" 3 392 "*int8" `803 
 V L "s2" 3 392 "*int8" `804 
-F G "stricmp" 3 393 "sint8(*int8 s1,*int8 s2)" `802 
+F G "stricmp" 3 393 "sint8(*int8 s1,*int8 s2,*int8 s2,*int8 n)" `802 
 F N "strlwr" 3 406 ""
 V L "s" 3 406 "*int8" `808 
-F G "strlwr" 3 407 "*int8(*int8 s,*int8 strcopy)" `807 
+F G "strlwr" 3 407 "*int8(*int8 s)" `807 
 V L "p" 3 408 "*int8" `809 
 F N "strupr" 3 420 ""
 V L "s" 3 420 "*int8" `811 
@@ -1447,7 +1446,7 @@ C L "setup" 0 24 1 "*PARAMETROS"
 C L "setup" 0 25 1 "*REGRESA"
 C L "setup" 0 26 1 "*RESUMEN"
 F N "setup" 0 28 ""
-F G "setup" 0 28 "void(int8 )" `813 
+F G "setup" 0 28 "void()" `813 
 F N "MAIN" 0 97 ""
 F G "MAIN" 0 97 "void()" `835 
 F N "RDA_isr" 0 105 ""

@@ -210,10 +210,10 @@ ROM Allocation:
 0000FE  @const834.call
 00010F  @PSTRINGC7_1
 000185  char2int
-0001C5  @goto46440
+0001C5  @goto17420
 0001D3  @WRITEBITA
 0001F5  showNumber
-00027C  @goto46388
+00027C  @goto17373
 000289  @I2C_WRITEU_1
 00029B  doBuzz
 0002B0  i2c_send
@@ -273,8 +273,8 @@ ROM Allocation:
 000EB8  doReset
 000EFD  shotSet
 000F62  timeSet
-000FC1  @goto45858
-000FC9  @goto46068
+000FC1  @goto16751
+000FC9  @goto16990
 001000  setup
 
 Project Directory:
@@ -282,7 +282,7 @@ Project Directory:
 
 Project Files:
     mcoms.c                                                 [18-feb.-23 14:31  CRC=6D91DB97]
-    mcoms.h                                                 [18-feb.-23 14:31  CRC=B7E88FF2]
+    mcoms.h                                                 [24-feb.-23 13:21  CRC=B7E88FF2]
     ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F887.h [15-ene.-18 14:53  CRC=9C71CB72]
     ..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [26-mar.-15 11:34  CRC=C4814297]
     ..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-sep.-14 10:47  CRC=897CEC6C]
@@ -292,7 +292,7 @@ Project Files:
 Source signature=D993D185
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=0162
+Hex file CRC=E406
 
 Units:
     mcoms (main)
@@ -308,7 +308,7 @@ Compiler Settings:
 
 Output Files:
     XREF file:   mcoms.xsym
-    Errors:      mcoms.err
+    Errors:      mcoms.h.err
     Ext Symbols: mcoms.esym
     INHX8:       mcoms.hex
     Symbols:     mcoms.sym

@@ -1,0 +1,97 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj",
+        "projectName": "winBBSB",
+        "projectPath": "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj",
+        "packagesPath": "C:\\Users\\nogue\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nogue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/F1uqAsUB99vFkS8Anc6kWeTGeOezbe8nE6z6EYE34XQaJksBc8/api": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "32feet.NET": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "DevExpress.Wpf.Core": {
+              "target": "Package",
+              "version": "[22.1.*-*, )"
+            },
+            "DevExpress.Wpf.Themes.All": {
+              "target": "Package",
+              "version": "[22.1.*-*, )"
+            },
+            "devexpress.wpf.controls": {
+              "target": "Package",
+              "version": "[22.1.6, )"
+            },
+            "devexpress.wpf.layoutcontrol": {
+              "target": "Package",
+              "version": "[22.1.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -54,13 +54,13 @@ stayupne=3
 stayupoe=1
 
 [ProjectLog]
-Days=13
+Days=14
 D1=07-03-2020
 D1_L=4
 D1_L1=[82337]Project Opened.
 D1_L2=[82455]Started Editing.
 D1_L3=[82520]Stopped Editing.
-TotalEdit=387
+TotalEdit=394
 TotalDebug=0
 D1_E=2
 D1_D=0
@@ -258,13 +258,21 @@ D12_E=10
 D12_D=0
 D12_L4=[67589]Project Closed.
 D13=18-02-2023
-D13_L=6
+D13_L=8
 D13_L1=[50859]Project Opened.
 D13_L2=[50937]Started Editing.
 D13_L3=[51258]Stopped Editing.
 D13_L4=[51313]Started Editing.
 D13_L5=[51795]Stopped Editing.
 D13_L6=[52241]Started Editing.
+D13_L7=[52403]Stopped Editing.
+D13_E=7
+D13_D=0
+D13_L8=[52403]Project Closed.
+D14=24-02-2023
+D14_L=2
+D14_L1=[47844]Project Opened.
+D14_L2=[47868]Project Closed.
 
 [defines]
 buildcount=79

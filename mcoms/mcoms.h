@@ -18,7 +18,7 @@
 
 #include <16F887.h>
 
-#define FW_VERSION   "2.0"
+#define FW_VERSION   "3.0"
 #define FW_REVISION  "F"
 
 // ::[CONFIGURACION DE PIC]::
@@ -53,7 +53,7 @@
 #define DEBUG     input_state(PIN_C2)
 
 // ::[CONFIGURACION PUERTOS]::
-#use rs232  (baud=9600,parity=N,xmit=RS232_TX,rcv=RS232_RX,bits=8,stream=RS232, ERRORS)
+#use rs232  (baud=9600,parity=N,xmit=RS232_TX,rcv=RS232_RX,bits=8,stream=RS232, ERRORS, DISABLE_INTS)
 //#use i2c    (Master,Fast,sda=I2C_SDA,scl=I2C_SCL)
 #use i2c    (master, scl=I2C_SCL, sda=I2C_SDA, fast)
 

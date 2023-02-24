@@ -1,4 +1,4 @@
-CCS PCM C Compiler, Version 5.076, 56587               18-feb.-23 14:31
+CCS PCM C Compiler, Version 5.076, 56587               24-feb.-23 13:21
 
                Filename:   C:\Users\nogue\Proyectos\bbsb\mcoms\mcoms.lst
 
@@ -236,7 +236,7 @@ CCS PCM C Compiler, Version 5.076, 56587               18-feb.-23 14:31
 00AE:  DATA A0,12
 00AF:  DATA 73,10
 00B0:  DATA 0D,00
-00B1:  DATA 32,17
+00B1:  DATA 33,17
 00B2:  DATA 30,00
 00B3:  DATA 46,00
 00B4:  DATA 2A,15
@@ -1076,7 +1076,7 @@ CCS PCM C Compiler, Version 5.076, 56587               18-feb.-23 14:31
 .................... #list 
 ....................  
 ....................  
-.................... #define FW_VERSION   "2.0" 
+.................... #define FW_VERSION   "3.0" 
 .................... #define FW_REVISION  "F" 
 ....................  
 .................... // ::[CONFIGURACION DE PIC]:: 

@@ -29,7 +29,7 @@ Page ROM  %  RAM    Vol Diff  Functions:
  Inline         0             @GETCH_BIU_1
 0     18   0    1             @I2C_WRITEU_1
 2    382   9    0   1990  3.4  setup
-0     17   0    0             @const814
+0     17   0    0   1990  3.4  @const814
 0     82   2    6             @PSTRINGC7_9600_62_63
 0     11   0    0             @const819
 0     17   0    0             @const820
@@ -57,7 +57,7 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0     21   1    2     78  1.6  doBuzz
 1   1985  47   25   8030  5.0  parseCommand
 0     16   0    0             @const846
-1      8   0    0             @goto45858
+1      8   0    0             @goto16751
 0      8   0    0             @const848
 0      8   0    0             @const849
 0      8   0    0             @const850
@@ -78,7 +78,7 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0      7   0    0             @const865
 0      7   0    0             @const866
 0      7   0    0             @const867
-1      9   0    0             @goto46068
+1      9   0    0             @goto16990
 0      8   0    0             @const869
 0     11   0    0             @const870
 0     11   0    0             @const871
@@ -99,26 +99,26 @@ Page ROM  %  RAM    Vol Diff  Functions:
  Inline         2    160  2.4  shotSet
  Inline         4    477  4.1  timeSet
 0    135   3    6   1046  4.9  showNumber
-0     13   0    0             @goto46388
+0     13   0    0             @goto17373
 0     34   1    6             @WRITEBITA
 0     64   2    1    463  3.7  char2int
-0     14   0    0             @goto46440
+0     14   0    0             @goto17420
  Inline         0     88  1.7  doReset
 0     15   0    5    112  3.8  sendN2Port
 0     19   0    2     80  2.0  i2c_send
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               19
+    Functions               20
     Statements              471
     Comments                368
-    Volume (V)              25221
-    Difficulty (D)          70.2
-    Effort to implement (E) 1770417
-    Time to implement (T)   27 hours, 19 minutes
+    Volume (V)              28504
+    Difficulty (D)          74.0
+    Effort to implement (E) 2107921
+    Time to implement (T)   32 hours, 32 minutes
     Est Delivered Bugs (B)  5
-    Cyclomatic Complexity   135
-    Maintainability (MI)    105
+    Cyclomatic Complexity   140
+    Maintainability (MI)    98
 
  Segment     Used  Free
 -----------  ----  ----

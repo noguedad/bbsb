@@ -1,0 +1,25 @@
+﻿<dx:ThemedWindow xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxco="http://schemas.devexpress.com/winfx/2008/xaml/controls" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+    x:Class="winBBSB.MainWindow"
+    Title="Basketball Bluetooth Score Board" Height="600" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Loaded="ThemedWindow_Loaded">
+    <Grid>
+        <dxco:Wizard x:Name="setupWizard" Finish="Finish_Wizard" Cancel="Cancel_Wizard" AnimationType="Fade">
+            <dxco:WelcomeWizardPage AllowNext="False" Title="BBSB 1.0" HeaderBackground="Orange" Header="Seleccionar dispositivo">
+                <dxlc:LayoutControl Orientation="Vertical" >
+                    <TextBlock TextWrapping="Wrap" Height="50">Bienvenido al asistente para configurar un nuevo juego, empecemos por seleccionar el dispositivo al que se conectará de la siguiente lista. Cuando lo tenga seleccionado, presione Siguiente</TextBlock>
+                    <dxb:GalleryControl x:Name="device_list" >
+                        <dxb:Gallery/>
+                    </dxb:GalleryControl>
+                    <dx:SimpleButton Click="click_update" Name="device_update" Width="80" Height="48" Content="Actualizar" />
+                </dxlc:LayoutControl>
+            </dxco:WelcomeWizardPage>
+            <dxco:WizardPage AllowBack="False" AllowNext="False" Title="BBSB 1.0"  HeaderBackground="Orange" Header="Equipo Local"/>
+            <dxco:WizardPage AllowBack="True" AllowNext="False" Title="BBSB 1.0"  HeaderBackground="Orange" Header="Equipo Visitante"/>
+            <dxco:CompletionWizardPage Title="BBSB 1.0"  HeaderBackground="Orange" Header="Terminado"/>
+        </dxco:Wizard>
+    </Grid>
+</dx:ThemedWindow>
