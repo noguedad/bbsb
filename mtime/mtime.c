@@ -1,3 +1,19 @@
+/**:COPYRIGHT
+            _ /      _ / 
+        _ /_ /_ /  _/_/
+         _ /       _ / 
+        _ /       _ / 
+       _ / _ / _/_ / _ /
+    
+   t1soluciones � 2020
+          PARA
+       Grupo APM
+    
+ */
+// * AUTOR: Victor Noguedad
+// * ARCHIVO: mtime.c
+// * RESUMEN: Programa principal del modulo de temporizadores
+// ::[CABECERAS]::
 #include <mtime.h>
 #include <string.h>
 #include <stdio.h>
@@ -217,7 +233,7 @@ void parseI2CCommand(void)
       if(DEBUG) {fputs("> Asignacion Puerto 4",RS232);}
       showNumber(c - 0x40, pTiempoSU);   
    }
-      if(c > 0x4F && c < 0x5A) //0x50 - 0x59
+   if(c > 0x4F && c < 0x5A) //0x50 - 0x59
    {
       if(DEBUG) {fputs("> Asignacion Puerto 5",RS232);}
       showNumber(c - 0x50, pTiempoMU);   
@@ -271,6 +287,7 @@ void buzz(int t)
                break;
    }
 }
+
 void parseCommand(void)
 {
    char c[10];
@@ -357,6 +374,7 @@ void showQuarter(int8 n)
       case 4: output_bit(PERIODO4, ON); break;
    }
 }
+
 void showNumber(int8 n, tPort p)
 {
    int1 a=0, b=0, c=0, d=0;

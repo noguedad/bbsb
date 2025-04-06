@@ -44,7 +44,7 @@
 
 //-- CONFIGURACION DE PUERTOS Y TIMERS --
 #use rs232  (baud=9600,parity=N,xmit=RS232_TX,rcv=RS232_RX,bits=8,stream=RS232)
-#use i2c    (Slave,Fast,sda=I2C_SDA,scl=I2C_SCL, address = I2C_TIMER, FORCE_HW)
+#use i2c    (Slave,Fast,sda=I2C_SDA,scl=I2C_SCL, address = I2C_SCORE, FORCE_HW)
 
 //-- DEFINICIONES --
 #define I2C_CMD_INIT    0xF0
@@ -97,7 +97,7 @@ void SSP_isr(void);
 void parseCommand(void);
 void doTest(void);
 void showNumber(int8, tPort);
-int8  char2int(char); 
+int8 char2int(char); 
 void doReset(void);
 void parseI2CCommand(void);
 

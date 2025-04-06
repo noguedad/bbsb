@@ -1,6 +1,23 @@
+/**:COPYRIGHT
+            _ /      _ / 
+        _ /_ /_ /  _/_/
+         _ /       _ / 
+        _ /       _ / 
+       _ / _ / _/_ / _ /
+    
+   t1soluciones � 2020
+          PARA
+       Grupo APM
+    
+ */
+// * AUTOR: Victor Noguedad
+// * ARCHIVO: mscore.c
+// * RESUMEN: Programa principal del modulo de puntajes
+// ::[CABECERAS]::
 #include <mscore.h>
 #include <string.h>
 #include <stdio.h>
+
 void setup()
 {
    output_a(0x00);

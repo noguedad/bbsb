@@ -108,7 +108,7 @@ void SSP_isr(void);
 void parseCommand(void);
 void doTest(void);
 void showNumber(int8, tPort);
-int8  char2int(char); 
+int8 char2int(char); 
 void doReset(void);
 void parseI2CCommand(void);
 void showQuarter(int8);

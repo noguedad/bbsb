@@ -1,5 +1,3 @@
-
-
 /**:COPYRIGHT
             _ /      _ / 
         _ /_ /_ /  _/_/
@@ -7,7 +5,7 @@
         _ /       _ / 
        _ / _ / _/_ / _ /
     
-   t1soluciones © 2020
+   t1soluciones ï¿½ 2020
           PARA
        Grupo APM
     
@@ -19,11 +17,6 @@
 #include <mcoms.h>
 #include <string.h>
 #include <stdio.h>
-
-// *FUNCION:      setup()
-// *PARAMETROS:   ninguno
-// *REGRESA:      VOID
-// *RESUMEN:      Configuracion inicial del dispositivo
 
 void setup() {
     output_a(0x00);

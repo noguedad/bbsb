@@ -1,25 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj": {}
+    "D:\\repos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj": {
+    "D:\\repos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj",
+        "projectUniqueName": "D:\\repos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj",
         "projectName": "winBBSB",
-        "projectPath": "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj",
-        "packagesPath": "C:\\Users\\nogue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nogue\\Proyectos\\bbsb\\bbsb_apps\\winBBSB\\obj\\",
+        "projectPath": "D:\\repos\\bbsb\\bbsb_apps\\winBBSB\\winBBSB.csproj",
+        "packagesPath": "C:\\Users\\Victor Noguedad\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\bbsb\\bbsb_apps\\winBBSB\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\nogue\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.1.config",
+          "C:\\Users\\Victor Noguedad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -28,10 +32,11 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 22.1\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\DevExpress 24.1\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/F1uqAsUB99vFkS8Anc6kWeTGeOezbe8nE6z6EYE34XQaJksBc8/api": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
@@ -43,7 +48,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net6.0-windows7.0": {
@@ -85,11 +96,11 @@
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             },
-            "Microsoft.WindowsDesktop.App": {
+            "Microsoft.WindowsDesktop.App.WPF": {
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
