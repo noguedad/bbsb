@@ -1,6 +1,6 @@
 #include <16F887.h>
 
-#define FW_VERSION   "2.0"
+#define FW_VERSION   "3.0"
 #define FW_REVISION  "F"
 
 //-- CONFIGURACION DE PIC --

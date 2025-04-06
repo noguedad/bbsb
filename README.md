@@ -10,7 +10,7 @@ El codigo se divide en 3 firmwares para tres modulos:</br></br>
 Los comandos que acepta deben de tener el formato <b>-[COMANDO]#</b>
 
 La lista de comandos es la siguiente:</br></br>
-<pre><b>Bn</b> :: Activa el buzzer en el modo <b>n</b>: 0 Toque corto, 1 Toque largo.</pre></br>
+<pre><b>Bn</b> :: Activa el buzzer en el modo <b>n</b>: 0 Toque corto, 1 Toque largo, 2 Toque corto doble.</pre></br>
 <pre><b>Fnn</b> :: Asigna faltas del jugador, <b>nn</b> es el numero de faltas a 2 digitos.</pre></br>
 <pre><b>Jnn</b> :: Asigna numero del jugador, <b>nn</b> es el numero de jugador a 2 digitos.</pre></br>
 <pre><b>L0</b> :: Asigna 0 al puntaje de local.</pre></br>

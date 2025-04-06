@@ -1,3 +1,8 @@
 {
-    "markdown.validate.enabled": true
+    "markdown.validate.enabled": true,
+    "files.associations": {
+        "*.md": "markdown",
+        "string.h": "c",
+        "mcoms.h": "c"
+    }
 }

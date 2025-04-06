@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("winBBSB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03e2fb9fd29219c1fd4f36ed9baa12679f2b9b38")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab7fe27f47648ea3d70a58c703a79aa806123ce6")]
 [assembly: System.Reflection.AssemblyProductAttribute("winBBSB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("winBBSB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
